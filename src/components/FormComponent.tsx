@@ -69,7 +69,6 @@ export const FormComponent: React.FC = () => {
     };
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        console.log(e);
         switch (e.target.name) {
             case "recipeName":
                 setRecipeName(e.target.value);
@@ -121,11 +120,6 @@ export const FormComponent: React.FC = () => {
                 return;
         }
     };
-
-    useEffect(() => {
-        console.log(imageFile);
-        console.log(imageFile);
-    }, [imageFile]);
 
     return (
         <div>
@@ -235,14 +229,14 @@ export const FormComponent: React.FC = () => {
                                 />
                             </Col>
                             <Col sm={1}>
-                                <Button color='danger' onClick={() => handleDeleteIngredient(ingredient.id)}>
+                                <Button color='danger' outline onClick={() => handleDeleteIngredient(ingredient.id)}>
                                     X
                                 </Button>
                             </Col>
                         </FormGroup>
                     );
                 })}
-                <Button color='primary' onClick={handleAddIngredient}>
+                <Button color='primary' outline onClick={handleAddIngredient}>
                     Add Ingredient
                 </Button>
                 <hr />
@@ -262,17 +256,18 @@ export const FormComponent: React.FC = () => {
                                 />
                             </Col>
                             <Col sm={1}>
-                                <Button color='danger' onClick={() => handleDeleteInstruction(step.id)}>
+                                <Button color='danger' outline onClick={() => handleDeleteInstruction(step.id)}>
                                     X
                                 </Button>
                             </Col>
                         </FormGroup>
                     );
                 })}
-                <Button color='primary' onClick={handleAddInstruction}>
+                <Button color='primary' onClick={handleAddInstruction} outline>
                     Add Instruction
                 </Button>
                 <hr />
+                <Button color='primary'>Add Recipe</Button>
             </Form>
         </div>
     );
