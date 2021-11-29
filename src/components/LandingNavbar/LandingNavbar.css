@@ -5,3 +5,9 @@ nav {
 img {
   width: 80%;
 }
+
+@media only screen and (max-width: 576px) {
+  button {
+    display: block;
+  }
+}

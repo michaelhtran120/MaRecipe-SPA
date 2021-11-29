@@ -1,3 +1,12 @@
+html {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  font-family: "Noto Sans", sans-serif;
+}
+
 .btn {
   -webkit-box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1) !important;
           box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1) !important;
@@ -6,4 +15,14 @@
 .btn-primary {
   background-color: #79b473 !important;
   border: none !important;
+}
+
+.btn-outline-primary {
+  color: #79b473 !important;
+  border-color: #79b473 !important;
+}
+
+.btn-outline-primary:hover {
+  color: white !important;
+  background-color: #79b473 !important;
 }
