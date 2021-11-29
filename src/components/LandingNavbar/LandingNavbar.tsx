@@ -32,7 +32,7 @@ const LandingNavbar: React.FC<Props> = ({ toggleLoginModal, isUserLoggedIn }): J
                             </Button>
                         </Nav>
                     ) : (
-                        <Link to='/dashboard'>Profile</Link>
+                        <Link to='/dashboard'>Dashboard</Link>
                     )}
                 </Navbar.Collapse>
             </Container>

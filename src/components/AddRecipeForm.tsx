@@ -17,7 +17,7 @@ interface Instruction {
     text: string;
 }
 
-export const FormComponent: React.FC = () => {
+const AddRecipeForm: React.FC = () => {
     const [recipeName, setRecipeName] = useState<string>("");
     const [imageFile, setImageFile] = useState<any>(null);
     const [ingredientList, setIngredientList] = useState<Ingredient[]>([
@@ -123,8 +123,7 @@ export const FormComponent: React.FC = () => {
 
     return (
         <div>
-            <Form className='p-5'>
-                <h1 className='text-start'>New Recipe</h1>
+            <Form className='p-5 pt-0'>
                 <FormGroup row className='justify-content-start'>
                     <Col md={6}>
                         <Label for='recipeName'>Recipe Name</Label>
@@ -152,7 +151,7 @@ export const FormComponent: React.FC = () => {
                         />
                         <FormText>Choose a cover photo for your recipe!</FormText>
                     </Col>
-                    <Col sm={6}>{imageFile ? <Image src={imageFile} id='image-preview' alt='recipe preview' height='200px' /> : <div></div>}</Col>
+                    <Col sm={6}>{imageFile ? <Image src={imageFile} id='image-preview' alt='recipe preview' /> : <div></div>}</Col>
                 </FormGroup>
                 <hr />
                 <h4>Ingredients</h4>
@@ -272,3 +271,4 @@ export const FormComponent: React.FC = () => {
         </div>
     );
 };
+export default AddRecipeForm;
