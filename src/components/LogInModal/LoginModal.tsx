@@ -10,7 +10,7 @@ interface Props {
 const LoginModal: React.FC<Props> = ({ open, toggleLoginModal, handleLogIn }): JSX.Element => {
     return (
         <>
-            <Modal show={open} onHide={toggleLoginModal} backdrop='static' keyboard={false}>
+            <Modal data-testid='loginModal' show={open} onHide={toggleLoginModal} backdrop='static' keyboard={false}>
                 <Modal.Header closeButton>
                     <Modal.Title>Login</Modal.Title>
                 </Modal.Header>
@@ -31,7 +31,7 @@ const LoginModal: React.FC<Props> = ({ open, toggleLoginModal, handleLogIn }): J
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant='secondary'>Close</Button>
-                    <Button onClick={handleLogIn} variant='primary'>
+                    <Button data-testid='modalLoginBtn' onClick={handleLogIn} variant='primary'>
                         Log In
                     </Button>
                 </Modal.Footer>

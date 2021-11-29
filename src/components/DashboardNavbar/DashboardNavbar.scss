@@ -1,0 +1,10 @@
+$primary: #79b473;
+
+nav {
+    border-bottom: 5px solid $primary;
+    .navbar-brand {
+        img {
+            width: 150px;
+        }
+    }
+}

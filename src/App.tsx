@@ -14,7 +14,7 @@ function App() {
         setIsUserLoggedIn(true);
         setTimeout(() => {
             navigate("/dashboard");
-        }, 2000);
+        }, 1000);
     };
 
     return (
