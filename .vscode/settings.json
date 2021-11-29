@@ -1,0 +1,26 @@
+{
+    "liveServer.settings.CustomBrowser": "chrome",
+    "liveSassCompile.settings.formats": [
+        {
+            // "format": "compressed",
+            "savePath": "~/"
+        }
+    ],
+    "liveSassCompile.settings.generateMap": false,
+    "files.autoSave": "onFocusChange",
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.wordWrap": "on",
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "prettier.jsxSingleQuote": true,
+    "react-native.packager.port": 19000,
+    "workbench.iconTheme": "material-icon-theme",
+    "material-icon-theme.folders.theme": "specific",
+    "liveSassCompile.settings.autoprefix": ["> 1%", "last 2 versions"],
+    "editor.minimap.enabled": false,
+    "prettier.tabWidth": 4,
+    "prettier.printWidth": 150,
+    "editor.fontFamily": "Fira Code",
+    "editor.fontLigatures": true,
+    "prettier.trailingComma": "none"
+}
