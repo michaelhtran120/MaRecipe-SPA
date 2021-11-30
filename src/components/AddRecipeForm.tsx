@@ -36,7 +36,6 @@ const AddRecipeForm: React.FC = () => {
             text: ""
         }
     ]);
-
     const handleAddIngredient = () => {
         setIngredientList([
             ...ingredientList,
@@ -59,15 +58,12 @@ const AddRecipeForm: React.FC = () => {
             }
         ]);
     };
-
     const handleDeleteIngredient = (ingredientId: string) => {
         setIngredientList(ingredientList.filter((aIngredient) => aIngredient.id !== ingredientId));
     };
-
     const handleDeleteInstruction = (stepId: string) => {
         setInstructions(instructions.filter((aStep) => aStep.id !== stepId));
     };
-
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         switch (e.target.name) {
             case "recipeName":

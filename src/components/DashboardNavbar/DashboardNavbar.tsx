@@ -1,13 +1,13 @@
 import React from "react";
 import "./DashboardNavbar.css";
-import logo from "../../assets/images/Logo-white.svg";
+import logo from "../../assets/images/logo.svg";
 import userIcon from "../../assets/images/user-icon.svg";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const DashboardNavbar: React.FC = (): JSX.Element => {
     return (
-        <Navbar sticky='top' bg='dark' variant='dark' expand='md'>
+        <Navbar sticky='top' bg='light' variant='light' expand='md'>
             <Container>
                 <Navbar.Brand className='ps-3' href='/'>
                     <img src={logo} alt='MaRecipe Logo' />

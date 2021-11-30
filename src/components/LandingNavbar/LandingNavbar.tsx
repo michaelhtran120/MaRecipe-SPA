@@ -6,10 +6,11 @@ import { Link } from "react-router-dom";
 
 interface Props {
     toggleLoginModal: (event: React.MouseEvent<HTMLButtonElement>) => void;
+    toggleSignUpModal: (event: React.MouseEvent<HTMLButtonElement>) => void;
     isUserLoggedIn: boolean;
 }
 
-const LandingNavbar: React.FC<Props> = ({ toggleLoginModal, isUserLoggedIn }): JSX.Element => {
+const LandingNavbar: React.FC<Props> = ({ toggleSignUpModal, toggleLoginModal, isUserLoggedIn }): JSX.Element => {
     return (
         <Navbar sticky='top' bg='white' expand='sm'>
             <Container fluid>
@@ -24,7 +25,7 @@ const LandingNavbar: React.FC<Props> = ({ toggleLoginModal, isUserLoggedIn }): J
                     </Nav>
                     {!isUserLoggedIn ? (
                         <Nav className='justify-content-end align-items-end'>
-                            <Button variant='outline-primary' className=' mt-sm-0 ms-3 me-sm-2 my-2 my-sm-0'>
+                            <Button variant='outline-primary' className=' mt-sm-0 ms-3 me-sm-2 my-2 my-sm-0' onClick={toggleSignUpModal}>
                                 Sign Up
                             </Button>
                             <Button variant='outline-primary' className=' mt-sm-0' onClick={toggleLoginModal}>
