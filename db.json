@@ -87,18 +87,18 @@
   ],
   "users": [
     {
-      "id": 1,
-      "email": "admin@admin.com",
-      "password": "admin",
-      "firstName": "Admin",
-      "lastName": "Admin"
+      "email": "emtr@admin.com",
+      "password": "$2a$10$qOFf0rH1cnoKA5U9rTJBi.9kjLHp.uC6eoKs3IkcBvWb7SetwzEWK",
+      "id": "0ec93064-b816-4e8f-8ea2-6d7305eab2b2",
+      "firstName": "EM",
+      "lastName": "TR"
     },
     {
-      "id": 3,
-      "firstName": "Mike",
-      "lastName": "T",
-      "email": "123@123.com",
-      "password": "asd"
+      "email": "michaelhtran120@gmail.com",
+      "password": "$2a$10$nhjN1vRYX4LmXKt9DN/aue/7pd9VUiwK4uTouupmvZHr/dQaYxztq",
+      "id": "d63f84b8-42fd-484e-aa04-b07172fa1c5c",
+      "firstName": "Michael",
+      "lastName": "Tran"
     }
   ]
 }

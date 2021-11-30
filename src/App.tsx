@@ -3,7 +3,6 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import "./App.css";
 import DashboardPage from "./pages/DashboardPage/DashboardPage";
 import LandingPage from "./pages/LandingPage/LandingPage";
-import axios from "axios";
 
 interface Credentials {
     userCredentials: {
@@ -20,32 +19,46 @@ function App() {
         email: "",
         password: ""
     });
-
+    const navigate = useNavigate();
     const handleLogInInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
         setCredentials({ ...credentials, [e.target.name]: e.target.value });
     };
 
-    const navigate = useNavigate();
+    const logIn = (): void => {
+        setIsUserLoggedIn(true);
+        navigate("/dashboard");
+    };
 
-    // const fetchUser = () => {
-    //     axios
-    //         .get("http://localhost:3004/users")
-    //         .then(function (response) {
-    //             console.log(response);
-    //         })
-    //         .catch(function (error) {
-    //             console.log(error);
-    //         });
-    // };
-
-    const handleLogInSubmit = (event: SyntheticEvent) => {
+    const handleLogInSubmit = async (event: SyntheticEvent) => {
         event.preventDefault();
         console.log("logged in");
-        setIsUserLoggedIn(true);
-        // fetchUser();
-        // setTimeout(() => {
-        //     navigate("/dashboard");
-        // }, 1000);
+        await fetch("http://localhost:3004/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            credentials: "include",
+            body: JSON.stringify({
+                email: credentials.email,
+                password: credentials.password
+            })
+        })
+            .then((res) => {
+                if (res.status === 200) {
+                    setTimeout(() => {
+                        logIn();
+                        setCredentials({
+                            email: "",
+                            password: ""
+                        });
+                    }, 1000);
+                }
+            })
+            .catch((err) => console.log(err.message));
+    };
+
+    const handleLogOut = () => {
+        setIsUserLoggedIn(false);
+        alert("Logged Out");
+        navigate("/");
     };
 
     return (
@@ -58,12 +71,16 @@ function App() {
                             email={credentials.email}
                             password={credentials.password}
                             handleLogInSubmit={handleLogInSubmit}
+                            logIn={logIn}
                             isUserLoggedIn={isUserLoggedIn}
                             handleLogInInput={handleLogInInput}
                         />
                     }
                 />
-                <Route path='dashboard' element={isUserLoggedIn ? <DashboardPage /> : <h1 className='p-3'>Forbidden 404 RAWR</h1>} />
+                <Route
+                    path='dashboard'
+                    element={isUserLoggedIn ? <DashboardPage handleLogOut={handleLogOut} /> : <h1 className='p-3'>Forbidden 404 RAWR</h1>}
+                />
                 <Route path='*' element={<h1>Page does not exist</h1>} />
             </Routes>
         </div>

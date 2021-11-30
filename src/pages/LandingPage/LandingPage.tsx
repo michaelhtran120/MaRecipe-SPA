@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, useEffect, useState } from "react";
+import React, { SyntheticEvent, useState } from "react";
 import LandingNavbar from "../../components/LandingNavbar/LandingNavbar";
 import LandingHero from "../../components/LandingHero/LandingHero";
 import LandingFeaturesSection from "../../components/LandingFeaturesSection/LandingFeaturesSection";
@@ -10,20 +10,12 @@ interface Props {
     handleLogInSubmit: (event: SyntheticEvent) => void;
     handleLogInInput: (event: React.ChangeEvent<HTMLInputElement>) => void;
     isUserLoggedIn: boolean;
+    logIn: () => void;
     email: string;
     password: string;
 }
 
-// interface Credentials {
-//     signUp: {
-//         email: string;
-//         password: string;
-//         firstName: string;
-//         lastName: string;
-//     };
-// }
-
-const LandingPage: React.FC<Props> = ({ email, password, handleLogInSubmit, isUserLoggedIn, handleLogInInput }): JSX.Element => {
+const LandingPage = ({ email, password, handleLogInSubmit, isUserLoggedIn, handleLogInInput, logIn }: Props): JSX.Element => {
     const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false);
 
     const [isSignUpModalOpen, setIsSignUpModalOpen] = useState<boolean>(false);
@@ -37,16 +29,19 @@ const LandingPage: React.FC<Props> = ({ email, password, handleLogInSubmit, isUs
     });
 
     const toggleLoginModal = (): void => {
+        if (isLoginModalOpen) {
+            setIsLoginModalOpen(!isLoginModalOpen);
+        }
         setIsLoginModalOpen(!isLoginModalOpen);
     };
+
     const toggleSignUpModal = (): void => {
         setIsSignUpModalOpen(!isSignUpModalOpen);
     };
 
     const handleSignUpSubmit = async (event: SyntheticEvent) => {
         event.preventDefault();
-        console.log("submit");
-        await fetch("http://localhost:3004/users", {
+        await fetch("http://localhost:3004/register", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -56,16 +51,23 @@ const LandingPage: React.FC<Props> = ({ email, password, handleLogInSubmit, isUs
                 email: signUpCredentials.email,
                 password: signUpCredentials.password
             })
-        });
+        })
+            .then((res) => {
+                console.log(res);
+                if (res.status === 400) {
+                    alert("Invalid credentials - email taken or password too short");
+                } else if (res.status === 201) {
+                    alert("Account Created Successfully");
+                    logIn();
+                }
+            })
+            .catch((err) => console.log(err));
     };
 
     const handleSignUpInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
         setSignUpCredentials({ ...signUpCredentials, [e.target.name]: e.target.value });
     };
 
-    useEffect(() => {
-        console.log(signUpCredentials);
-    }, [signUpCredentials]);
     return (
         <div>
             <LandingNavbar toggleLoginModal={toggleLoginModal} toggleSignUpModal={toggleSignUpModal} isUserLoggedIn={isUserLoggedIn} />

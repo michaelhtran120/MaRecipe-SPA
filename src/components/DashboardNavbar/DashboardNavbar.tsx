@@ -2,10 +2,13 @@ import React from "react";
 import "./DashboardNavbar.css";
 import logo from "../../assets/images/logo.svg";
 import userIcon from "../../assets/images/user-icon.svg";
-import { Navbar, Container, Nav } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 
-const DashboardNavbar: React.FC = (): JSX.Element => {
+interface Props {
+    handleLogOut: (event: React.MouseEvent<HTMLButtonElement>) => void;
+}
+
+const DashboardNavbar = ({ handleLogOut }: Props): JSX.Element => {
     return (
         <Navbar sticky='top' bg='light' variant='light' expand='md'>
             <Container>
@@ -20,9 +23,11 @@ const DashboardNavbar: React.FC = (): JSX.Element => {
                         <Nav.Link href='#'>Shopping List</Nav.Link>
                     </Nav>
                     <Nav>
-                        <Link to='#'>
-                            <img src={userIcon} alt='user profile' />
-                        </Link>
+                        <NavDropdown title={<img src={userIcon} alt='user profile' />} id='dashboard-nav-dropdown'>
+                            <NavDropdown.Item href='#action/3.1'>Profile</NavDropdown.Item>
+                            <NavDropdown.Divider />
+                            <NavDropdown.Item onClick={handleLogOut}>Log Out</NavDropdown.Item>
+                        </NavDropdown>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
