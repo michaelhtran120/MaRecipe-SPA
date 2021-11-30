@@ -44,6 +44,7 @@ const LandingPage = ({ email, password, handleLogInSubmit, isUserLoggedIn, handl
         await fetch("http://localhost:3004/register", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
+            credentials: "include",
             body: JSON.stringify({
                 id: uuidv4(),
                 firstName: signUpCredentials.firstName,

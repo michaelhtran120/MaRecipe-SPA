@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, useState } from "react";
+import React, { SyntheticEvent, useEffect, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import "./App.css";
 import DashboardPage from "./pages/DashboardPage/DashboardPage";
@@ -9,6 +9,12 @@ interface Credentials {
         email: string;
         password: string;
     };
+    currentUser: {
+        accessToken: string;
+        firstName: string;
+        lastName: string;
+        id: string;
+    };
 }
 
 // const API_URL = "http://localhost:3004/users/";
@@ -18,6 +24,12 @@ function App() {
     const [credentials, setCredentials] = useState<Credentials["userCredentials"]>({
         email: "",
         password: ""
+    });
+    const [currentUser, setCurrentUser] = useState<Credentials["currentUser"]>({
+        accessToken: "",
+        firstName: "",
+        lastName: "",
+        id: ""
     });
     const navigate = useNavigate();
     const handleLogInInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
@@ -31,29 +43,39 @@ function App() {
 
     const handleLogInSubmit = async (event: SyntheticEvent) => {
         event.preventDefault();
-        console.log("logged in");
-        await fetch("http://localhost:3004/login", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            credentials: "include",
-            body: JSON.stringify({
-                email: credentials.email,
-                password: credentials.password
-            })
-        })
-            .then((res) => {
-                if (res.status === 200) {
-                    setTimeout(() => {
-                        logIn();
-                        setCredentials({
-                            email: "",
-                            password: ""
-                        });
-                    }, 1000);
-                }
-            })
-            .catch((err) => console.log(err.message));
+        try {
+            const response = await fetch("http://localhost:3004/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                // credentials: "include",
+                body: JSON.stringify({
+                    email: credentials.email,
+                    password: credentials.password
+                })
+            });
+            if (response.status === 200) {
+                const user = await response.json();
+                setCurrentUser({
+                    accessToken: user.accessToken,
+                    firstName: user.user.firstName,
+                    lastName: user.user.lastName,
+                    id: user.user.id
+                });
+                setTimeout(() => {
+                    logIn();
+                    setCredentials({
+                        email: "",
+                        password: ""
+                    });
+                }, 1000);
+            }
+        } catch (error) {
+            console.log(error);
+        }
     };
+    useEffect(() => {
+        console.log(currentUser);
+    }, [currentUser]);
 
     const handleLogOut = () => {
         setIsUserLoggedIn(false);
