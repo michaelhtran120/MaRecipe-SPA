@@ -1,6 +1,7 @@
 import React from "react";
-import logo from "../../assets/images/Logo-white.svg";
 import "./DashboardNavbar.css";
+import logo from "../../assets/images/Logo-white.svg";
+import userIcon from "../../assets/images/user-icon.svg";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
@@ -19,7 +20,9 @@ const DashboardNavbar: React.FC = (): JSX.Element => {
                         <Nav.Link href='#'>Shopping List</Nav.Link>
                     </Nav>
                     <Nav>
-                        <Link to='#'>Profile</Link>
+                        <Link to='#'>
+                            <img src={userIcon} alt='user profile' />
+                        </Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
