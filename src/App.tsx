@@ -98,7 +98,7 @@ function App() {
                     }
                 />
                 <Route
-                    path='dashboard'
+                    path='dashboard/*'
                     element={
                         isUserLoggedIn ? (
                             <DashboardPage currentUser={currentUser} handleLogOut={handleLogOut} />

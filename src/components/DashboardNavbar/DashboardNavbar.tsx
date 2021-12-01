@@ -3,6 +3,7 @@ import "./DashboardNavbar.css";
 import logo from "../../assets/images/logo.svg";
 import userIcon from "../../assets/images/user-icon.svg";
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 interface Props {
     handleLogOut: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -30,9 +31,11 @@ const DashboardNavbar = ({ handleLogOut }: Props): JSX.Element => {
     return (
         <Navbar sticky='top' bg='light' variant='light' expand='md'>
             <Container fluid>
-                <Navbar.Brand className='ps-3' href='/'>
-                    <img src={logo} alt='MaRecipe Logo' />
-                </Navbar.Brand>
+                <Link to='/'>
+                    <Navbar.Brand className='ps-3'>
+                        <img src={logo} alt='MaRecipe Logo' />
+                    </Navbar.Brand>
+                </Link>
                 <Navbar.Toggle aria-controls='navbar-nav' />
                 <Navbar.Collapse className='ps-3 ps-md-0' id='navbar-nav'>
                     <Nav className='me-auto'>

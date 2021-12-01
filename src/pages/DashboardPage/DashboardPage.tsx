@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import "./DashboardPage.css";
 import { Col, Container, Modal, Row } from "react-bootstrap";
 import { Button } from "reactstrap";
+import { Route, Routes } from "react-router-dom";
 import AddRecipeForm from "../../components/AddRecipeForm";
 import DashboardNavbar from "../../components/DashboardNavbar/DashboardNavbar";
 
@@ -35,13 +36,20 @@ const DashboardPage = ({ handleLogOut, currentUser }: Props) => {
     return (
         <div>
             <DashboardNavbar handleLogOut={handleLogOut} />
-            <Container>
-                <Row>
-                    <Col>
-                        <h1 className='p-5'>{`Hello ${currentUser.firstName} ${currentUser.lastName}`}</h1>
-                    </Col>
-                </Row>
-            </Container>
+            <Routes>
+                <Route
+                    path='/'
+                    element={
+                        <Container>
+                            <Row>
+                                <Col>
+                                    <h1 className='p-5'>{`Hello ${currentUser.firstName} ${currentUser.lastName}`}</h1>
+                                </Col>
+                            </Row>
+                        </Container>
+                    }
+                />
+            </Routes>
             <Modal show={isAddRecipeModalOpen} fullscreen onHide={toggleModal}>
                 <Modal.Header closeButton>
                     <Modal.Title className='ps-5'>Add New Recipe</Modal.Title>
