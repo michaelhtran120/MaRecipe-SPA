@@ -47,7 +47,6 @@ function App() {
             const response = await fetch("http://localhost:3004/login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                // credentials: "include",
                 body: JSON.stringify({
                     email: credentials.email,
                     password: credentials.password
@@ -68,14 +67,13 @@ function App() {
                         password: ""
                     });
                 }, 1000);
+            } else if (response.status === 400) {
+                alert("Invalid credentials");
             }
         } catch (error) {
             console.log(error);
         }
     };
-    useEffect(() => {
-        console.log(currentUser);
-    }, [currentUser]);
 
     const handleLogOut = () => {
         setIsUserLoggedIn(false);
@@ -101,7 +99,13 @@ function App() {
                 />
                 <Route
                     path='dashboard'
-                    element={isUserLoggedIn ? <DashboardPage handleLogOut={handleLogOut} /> : <h1 className='p-3'>Forbidden 404 RAWR</h1>}
+                    element={
+                        isUserLoggedIn ? (
+                            <DashboardPage currentUser={currentUser} handleLogOut={handleLogOut} />
+                        ) : (
+                            <h1 className='p-3'>Forbidden 404 RAWR</h1>
+                        )
+                    }
                 />
                 <Route path='*' element={<h1>Page does not exist</h1>} />
             </Routes>
