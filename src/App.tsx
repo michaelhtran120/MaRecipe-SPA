@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, useEffect, useState } from "react";
+import React, { SyntheticEvent, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import "./App.css";
 import DashboardPage from "./pages/DashboardPage/DashboardPage";

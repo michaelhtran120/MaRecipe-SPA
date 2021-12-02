@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import "./DashboardPage.css";
-import { Col, Container, Modal, Row } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 import { Button } from "reactstrap";
 import AddRecipeForm from "../../components/AddRecipeForm";
 import DashboardNavbar from "../../components/DashboardNavbar/DashboardNavbar";
