@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Col, Form, FormGroup, FormText, Input, Label, Row } from "reactstrap";
 import Image from "react-bootstrap/Image";
 import { v4 as uuidv4 } from "uuid";
@@ -19,7 +19,7 @@ interface Instruction {
 
 const AddRecipeForm: React.FC = () => {
     const [recipeName, setRecipeName] = useState<string>("");
-    const [imageFile, setImageFile] = useState<any>(null);
+    const [imageLink, setImageLink] = useState<string | null>("");
     const [ingredientList, setIngredientList] = useState<Ingredient[]>([
         {
             id: uuidv4(),
@@ -69,18 +69,8 @@ const AddRecipeForm: React.FC = () => {
             case "recipeName":
                 setRecipeName(e.target.value);
                 break;
-            case "imageFile":
-                if (!e.target.files) return;
-                let file = e.target.files[0];
-                let reader = new FileReader();
-                reader.onload = function (event) {
-                    // The file's text will be printed here
-                    if (!event.target) return;
-                    setImageFile(event.target.result);
-                };
-                if (file) {
-                    reader.readAsDataURL(file);
-                }
+            case "imageLink":
+                setImageLink(e.target.value);
                 break;
             case "name":
             case "quantity":
@@ -120,35 +110,38 @@ const AddRecipeForm: React.FC = () => {
     return (
         <div>
             <Form className='p-5 pt-0'>
-                <FormGroup row className='justify-content-start'>
+                <Row className='justify-content-start'>
                     <Col md={6}>
-                        <Label for='recipeName'>Recipe Name</Label>
-                        <Input
-                            id='recipeName'
-                            value={recipeName}
-                            name='recipeName'
-                            placeholder='Recipe Name'
-                            type='text'
-                            onChange={(event) => {
-                                handleInputChange(event);
-                            }}
-                        />
-                        <Label for='imageFile' className='mt-3'>
-                            Image File
-                        </Label>
-                        <Input
-                            id='imageFile'
-                            name='imageFile'
-                            type='file'
-                            accept='.png, .jpg, .jpeg'
-                            onChange={(event) => {
-                                handleInputChange(event);
-                            }}
-                        />
-                        <FormText>Choose a cover photo for your recipe!</FormText>
+                        <FormGroup>
+                            <Label for='recipeName'>Recipe Name</Label>
+                            <Input
+                                id='recipeName'
+                                value={recipeName}
+                                name='recipeName'
+                                placeholder='Recipe Name'
+                                type='text'
+                                onChange={(event) => {
+                                    handleInputChange(event);
+                                }}
+                            />
+                        </FormGroup>
+                        <FormGroup>
+                            <Label for='imageLink' className='mt-3'>
+                                Image Link
+                            </Label>
+                            <Input
+                                id='imageLink'
+                                name='imageLink'
+                                type='text'
+                                onChange={(event) => {
+                                    handleInputChange(event);
+                                }}
+                            />
+                            <FormText>Provide a link to a cover photo for your recipe!</FormText>
+                        </FormGroup>
                     </Col>
-                    <Col sm={6}>{imageFile ? <Image src={imageFile} id='image-preview' alt='recipe preview' /> : <div></div>}</Col>
-                </FormGroup>
+                    <Col sm={6}>{imageLink ? <Image src={imageLink} id='image-preview' alt='recipe preview' /> : <div></div>}</Col>
+                </Row>
                 <hr />
                 <h4>Ingredients</h4>
                 <Row className='d-none d-md-flex'>

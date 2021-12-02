@@ -7,9 +7,15 @@ import { Link } from "react-router-dom";
 
 interface Props {
     handleLogOut: (event: React.MouseEvent<HTMLButtonElement>) => void;
+    currentUser: {
+        accessToken: string;
+        firstName: string;
+        lastName: string;
+        id: string;
+    };
 }
 
-const DashboardNavbar = ({ handleLogOut }: Props): JSX.Element => {
+const DashboardNavbar = ({ handleLogOut, currentUser }: Props): JSX.Element => {
     const [isWindowSmall, setIsWindowSmall] = useState<boolean>(false);
 
     window.addEventListener("resize", () => {
@@ -39,10 +45,13 @@ const DashboardNavbar = ({ handleLogOut }: Props): JSX.Element => {
                 <Navbar.Toggle aria-controls='navbar-nav' />
                 <Navbar.Collapse className='ps-3 ps-md-0' id='navbar-nav'>
                     <Nav className='me-auto'>
-                        <Nav.Link href='#'>Recipes</Nav.Link>
+                        <Nav.Link href='#' className='active'>
+                            Recipes
+                        </Nav.Link>
                         <Nav.Link href='#'>Community</Nav.Link>
                         <Nav.Link href='#'>Shopping List</Nav.Link>
                     </Nav>
+
                     <Nav>
                         {isWindowSmall ? (
                             <>
@@ -50,7 +59,15 @@ const DashboardNavbar = ({ handleLogOut }: Props): JSX.Element => {
                                 <Nav.Link onClick={handleLogOut}>Log Out</Nav.Link>
                             </>
                         ) : (
-                            <NavDropdown title={<img src={userIcon} alt='user profile' />} id='dashboard-nav-dropdown'>
+                            <NavDropdown
+                                title={
+                                    <>
+                                        {currentUser.firstName} {currentUser.lastName}
+                                        <img className='ps-1' src={userIcon} alt='user profile' />
+                                    </>
+                                }
+                                id='dashboard-nav-dropdown'
+                            >
                                 <NavDropdown.Item href='#action/3.1'>Profile</NavDropdown.Item>
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item onClick={handleLogOut}>Log Out</NavDropdown.Item>

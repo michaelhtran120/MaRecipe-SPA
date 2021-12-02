@@ -17,7 +17,7 @@ interface Credentials {
     };
 }
 
-// const API_URL = "http://localhost:3004/users/";
+const API_URL = "http://localhost:3004/";
 
 function App() {
     const [isUserLoggedIn, setIsUserLoggedIn] = useState<boolean>(false);
@@ -44,7 +44,7 @@ function App() {
     const handleLogInSubmit = async (event: SyntheticEvent) => {
         event.preventDefault();
         try {
-            const response = await fetch("http://localhost:3004/login", {
+            const response = await fetch(API_URL + "login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
