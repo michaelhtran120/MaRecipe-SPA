@@ -20,7 +20,7 @@ interface Credentials {
 const API_URL = "http://localhost:3004/";
 
 function App() {
-    const [isUserLoggedIn, setIsUserLoggedIn] = useState<boolean>(false);
+    const [isUserLoggedIn, setIsUserLoggedIn] = useState<boolean>(true);
     const [credentials, setCredentials] = useState<Credentials["userCredentials"]>({
         email: "",
         password: ""

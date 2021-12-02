@@ -20,10 +20,12 @@ const API_URL = "http://localhost:3004/";
 
 const fetchRecipes = async () => {
     const response = await fetch(API_URL + "recipes");
-    if (response.status === 200) {
-        const recipes = await response.json();
-        console.log(recipes);
+    if (!response.ok) {
+        const message = `An error has occured: ${response.status}`;
+        throw new Error(message);
     }
+    const recipes = await response.json();
+    console.log(recipes);
 };
 
 const DashboardPage = ({ handleLogOut, currentUser }: Props) => {
@@ -40,7 +42,9 @@ const DashboardPage = ({ handleLogOut, currentUser }: Props) => {
             isInitialMount.current = false;
         } else {
             console.log("dashboard mounted");
-            fetchRecipes();
+            fetchRecipes().catch((error) => {
+                console.log(error.message);
+            });
         }
     });
 
