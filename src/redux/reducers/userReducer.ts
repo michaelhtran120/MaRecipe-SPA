@@ -26,6 +26,8 @@ const userReducer = (state: CurrentUser = initialState, action: UserAction) => {
                 lastName: "",
                 id: ""
             };
+        default:
+            return state;
     }
 };
 

@@ -9,13 +9,12 @@ import { v4 as uuidv4 } from "uuid";
 interface Props {
     handleLogInSubmit: (event: SyntheticEvent) => void;
     handleLogInInput: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    isUserLoggedIn: boolean;
-    logIn: () => void;
+    isUserLoggedIn: number;
     email: string;
     password: string;
 }
 
-const LandingPage = ({ email, password, handleLogInSubmit, isUserLoggedIn, handleLogInInput, logIn }: Props): JSX.Element => {
+const LandingPage = ({ email, password, handleLogInSubmit, isUserLoggedIn, handleLogInInput }: Props): JSX.Element => {
     const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false);
 
     const [isSignUpModalOpen, setIsSignUpModalOpen] = useState<boolean>(false);
@@ -59,7 +58,6 @@ const LandingPage = ({ email, password, handleLogInSubmit, isUserLoggedIn, handl
                     alert("Invalid credentials - email taken or password too short");
                 } else if (res.status === 201) {
                     alert("Account Created Successfully");
-                    logIn();
                 }
             })
             .catch((err) => console.log(err));
@@ -71,7 +69,7 @@ const LandingPage = ({ email, password, handleLogInSubmit, isUserLoggedIn, handl
 
     return (
         <div>
-            <LandingNavbar toggleLoginModal={toggleLoginModal} toggleSignUpModal={toggleSignUpModal} isUserLoggedIn={isUserLoggedIn} />
+            <LandingNavbar toggleLoginModal={toggleLoginModal} toggleSignUpModal={toggleSignUpModal} />
             <LandingHero />
             <LandingFeaturesSection />
             <LoginModal

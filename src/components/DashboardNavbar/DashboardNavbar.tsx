@@ -3,10 +3,12 @@ import "./DashboardNavbar.css";
 import logo from "../../assets/images/logo.svg";
 import userIcon from "../../assets/images/user-icon.svg";
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { bindActionCreators } from "redux";
+import { actionCreators } from "../../redux/index";
 
 interface Props {
-    handleLogOut: (event: React.MouseEvent<HTMLButtonElement>) => void;
     currentUser: {
         accessToken: string;
         firstName: string;
@@ -15,8 +17,13 @@ interface Props {
     };
 }
 
-const DashboardNavbar = ({ handleLogOut, currentUser }: Props): JSX.Element => {
+const DashboardNavbar = ({ currentUser }: Props): JSX.Element => {
+    const dispatch = useDispatch();
+    const { logOut } = bindActionCreators(actionCreators, dispatch);
+
     const [isWindowSmall, setIsWindowSmall] = useState<boolean>(false);
+
+    const navigate = useNavigate();
 
     window.addEventListener("resize", () => {
         if (window.innerWidth < 768) {
@@ -56,7 +63,14 @@ const DashboardNavbar = ({ handleLogOut, currentUser }: Props): JSX.Element => {
                         {isWindowSmall ? (
                             <>
                                 <Nav.Link>Profile</Nav.Link>
-                                <Nav.Link onClick={handleLogOut}>Log Out</Nav.Link>
+                                <Nav.Link
+                                    onClick={() => {
+                                        navigate("/");
+                                        logOut();
+                                    }}
+                                >
+                                    Log Out
+                                </Nav.Link>
                             </>
                         ) : (
                             <NavDropdown
@@ -70,7 +84,14 @@ const DashboardNavbar = ({ handleLogOut, currentUser }: Props): JSX.Element => {
                             >
                                 <NavDropdown.Item href='#action/3.1'>Profile</NavDropdown.Item>
                                 <NavDropdown.Divider />
-                                <NavDropdown.Item onClick={handleLogOut}>Log Out</NavDropdown.Item>
+                                <NavDropdown.Item
+                                    onClick={() => {
+                                        navigate("/");
+                                        logOut();
+                                    }}
+                                >
+                                    Log Out
+                                </NavDropdown.Item>
                             </NavDropdown>
                         )}
                     </Nav>

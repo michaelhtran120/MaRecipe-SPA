@@ -2,19 +2,12 @@ import React, { useEffect, useState, useRef } from "react";
 import "./DashboardPage.css";
 import { Modal } from "react-bootstrap";
 import { Button } from "reactstrap";
+import { useSelector } from "react-redux";
+import { State } from "../../redux/index";
+
 import AddRecipeForm from "../../components/AddRecipeForm";
 import DashboardNavbar from "../../components/DashboardNavbar/DashboardNavbar";
 import DashboardRecipesPage from "../DashboardRecipesPage/DashboardRecipesPage";
-
-interface Props {
-    handleLogOut: (event: React.MouseEvent<HTMLButtonElement>) => void;
-    currentUser: {
-        accessToken: string;
-        firstName: string;
-        lastName: string;
-        id: string;
-    };
-}
 
 const API_URL = "http://localhost:3004/";
 
@@ -28,8 +21,10 @@ const fetchRecipes = async () => {
     console.log(recipes);
 };
 
-const DashboardPage = ({ handleLogOut, currentUser }: Props) => {
+const DashboardPage = () => {
     const [isAddRecipeModalOpen, setIsAddRecipeModalOpen] = useState<boolean>(false);
+
+    const user = useSelector((state: State) => state.user);
 
     const toggleModal = (): void => {
         setIsAddRecipeModalOpen(!isAddRecipeModalOpen);
@@ -50,7 +45,7 @@ const DashboardPage = ({ handleLogOut, currentUser }: Props) => {
 
     return (
         <div>
-            <DashboardNavbar handleLogOut={handleLogOut} currentUser={currentUser} />
+            <DashboardNavbar currentUser={user} />
 
             <DashboardRecipesPage />
 
