@@ -1,5 +1,5 @@
-import React, { SyntheticEvent, useEffect, useState } from "react";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import React, { SyntheticEvent, useState } from "react";
+import { Route, Routes, useNavigate, Link } from "react-router-dom";
 import "./App.css";
 import DashboardPage from "./pages/DashboardPage/DashboardPage";
 import LandingPage from "./pages/LandingPage/LandingPage";
@@ -20,15 +20,14 @@ function App() {
     const dispatch = useDispatch();
     const { logIn } = bindActionCreators(actionCreators, dispatch);
     const user = useSelector((state: State) => state.user);
-    useEffect(() => {
-        console.log(user);
-    }, [user]);
 
     const [credentials, setCredentials] = useState<Credentials["userCredentials"]>({
         email: "",
         password: ""
     });
+
     const navigate = useNavigate();
+
     const handleLogInInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
         setCredentials({ ...credentials, [e.target.name]: e.target.value });
     };
@@ -82,8 +81,28 @@ function App() {
                         />
                     }
                 />
-                <Route path='dashboard/*' element={user.id.length ? <DashboardPage /> : <h1 className='p-3'>Forbidden 404 RAWR</h1>} />
-                <Route path='*' element={<h1>Page does not exist</h1>} />
+                <Route
+                    path='dashboard'
+                    element={
+                        user.id.length ? (
+                            <DashboardPage />
+                        ) : (
+                            <div className='p-5'>
+                                <h1>Forbidden 404 RAWR</h1>
+                                <Link to='/'>Back To Landing</Link>
+                            </div>
+                        )
+                    }
+                />
+                <Route
+                    path='*'
+                    element={
+                        <div className='p-5'>
+                            <h1>Page does not exist</h1>
+                            <Link to='/'>Back To Landing</Link>
+                        </div>
+                    }
+                />
             </Routes>
         </div>
     );
