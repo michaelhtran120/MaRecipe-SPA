@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./DashboardPage.css";
 import { Modal } from "react-bootstrap";
 import { Button } from "reactstrap";
-import { actionCreators, State } from "../../redux/index";
-import { useDispatch, useSelector } from "react-redux";
+import { actionCreators } from "../../redux/index";
+import { useDispatch } from "react-redux";
 
 import AddRecipeForm from "../../components/AddRecipeForm";
 import DashboardNavbar from "../../components/DashboardNavbar/DashboardNavbar";
@@ -13,7 +13,6 @@ import DashboardRecipesPage from "../DashboardRecipesPage/DashboardRecipesPage";
 
 const DashboardPage = () => {
     const dispatch = useDispatch();
-    const recipes = useSelector((state: State) => state.recipes.recipes);
 
     const [isAddRecipeModalOpen, setIsAddRecipeModalOpen] = useState<boolean>(false);
 

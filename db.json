@@ -33,7 +33,7 @@
             ],
             "servings": 5,
             "instructions": ["step 1", "step 2", "step 3", "step 4"],
-            "featured": true
+            "featured": false
         },
         {
             "id": "ra1",
@@ -76,7 +76,7 @@
             ],
             "servings": 1,
             "instructions": ["step 1", "step 2", "step 3", "step 4"],
-            "featured": true
+            "featured": false
         },
         {
             "id": "fr1",
@@ -119,7 +119,7 @@
             ],
             "servings": 3,
             "instructions": ["step 1", "step 2", "step 3", "step 4"],
-            "featured": true
+            "featured": false
         },
         {
             "id": "ssal1",
@@ -326,7 +326,7 @@
             ],
             "servings": 2,
             "instructions": ["step 1", "step 2", "step 3", "step 4"],
-            "featured": false
+            "featured": true
         }
     ],
     "users": [
@@ -336,7 +336,7 @@
             "id": "7039c09c-665e-4ef1-aa12-e40fc2cee9f1",
             "firstName": "Michael",
             "lastName": "Tran",
-            "recipes": ["ssal1-4", "ra1"]
+            "recipes": ["ssal1", "ra1"]
         },
         {
             "email": "a@b.com",

@@ -1,5 +1,5 @@
 import React from "react";
-import "./FeaturedRecipes.css";
+import "./UserRecipes.css";
 import { Button, Card, Container, Row, Image, Col } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { State } from "../../redux";
@@ -31,9 +31,8 @@ const RecipeCard = ({
     description: Recipe["description"];
 }): JSX.Element => {
     return (
-        <Card className='recipe-card'>
+        <Card className='user-recipe-card'>
             <Image className='recipe-image' src={url} fluid />
-
             <Card.Body>
                 <Card.Title>{title}</Card.Title>
                 <Card.Text>{description}</Card.Text>
@@ -43,21 +42,32 @@ const RecipeCard = ({
     );
 };
 
-const FeaturedRecipes = () => {
-    const recipeState = useSelector((state: State) => state.recipes);
-    const featuredRecipes = recipeState.recipes.filter((recipe: Recipe) => recipe.featured);
+const UserRecipes = () => {
+    const { user, recipes } = useSelector((state: State) => state);
+    const userRecipesIds = user.userInfo.user.recipes;
+    const allRecipes = recipes.recipes;
+    console.log(allRecipes);
+    console.log(userRecipesIds);
+
+    const getUserRecipes = (): Recipe[] => {
+        let userRecipes: Recipe[] = [];
+        allRecipes.forEach((recipe: Recipe) => {
+            if (userRecipesIds.includes(recipe.id)) {
+                userRecipes.push(recipe);
+            }
+        });
+        return userRecipes;
+    };
+
     return (
         <div>
             <Container className='fluid'>
-                <Row className='featured-row'>
-                    {recipeState.loading === false && recipeState.recipes.length > 0 ? (
+                <Row className='user-row'>
+                    {recipes.loading === false && recipes.recipes.length > 0 ? (
                         <>
-                            {featuredRecipes.map((aRecipe: Recipe) => (
+                            {getUserRecipes().map((aRecipe: Recipe) => (
                                 <RecipeCard title={aRecipe.title} url={aRecipe.imageUrl} description={aRecipe.description} key={aRecipe.id} />
                             ))}
-                            <Card className='recipe-card'>
-                                <Card.Body className='text-center'>See More</Card.Body>
-                            </Card>
                         </>
                     ) : (
                         <h1>Loading please wait.....</h1>
@@ -68,4 +78,4 @@ const FeaturedRecipes = () => {
     );
 };
 
-export default FeaturedRecipes;
+export default UserRecipes;

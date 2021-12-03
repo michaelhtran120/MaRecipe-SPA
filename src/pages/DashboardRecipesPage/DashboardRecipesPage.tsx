@@ -1,6 +1,7 @@
 import React from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import FeaturedRecipes from "../../components/FeaturedRecipes/FeaturedRecipes";
+import UserRecipes from "../../components/UserRecipes/UserRecipes";
 
 const DashboardRecipesPage = () => {
     return (
@@ -11,6 +12,7 @@ const DashboardRecipesPage = () => {
             </Row>
             <Row className='mt-5'>
                 <h2 className='ps-4'>Your Recipes</h2>
+                <UserRecipes />
             </Row>
         </Container>
     );
