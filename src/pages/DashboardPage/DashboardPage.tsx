@@ -1,47 +1,29 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import "./DashboardPage.css";
 import { Modal } from "react-bootstrap";
 import { Button } from "reactstrap";
-import { useSelector } from "react-redux";
-import { State } from "../../redux/index";
+import { actionCreators, State } from "../../redux/index";
+import { useDispatch, useSelector } from "react-redux";
 
 import AddRecipeForm from "../../components/AddRecipeForm";
 import DashboardNavbar from "../../components/DashboardNavbar/DashboardNavbar";
 import DashboardRecipesPage from "../DashboardRecipesPage/DashboardRecipesPage";
 
-const API_URL = "http://localhost:3004/";
-
-const fetchRecipes = async () => {
-    const response = await fetch(API_URL + "recipes");
-    if (!response.ok) {
-        const message = `An error has occured: ${response.status}`;
-        throw new Error(message);
-    }
-    const recipes = await response.json();
-    console.log(recipes);
-};
+// const API_URL = "http://localhost:3004/";
 
 const DashboardPage = () => {
-    const [isAddRecipeModalOpen, setIsAddRecipeModalOpen] = useState<boolean>(false);
+    const dispatch = useDispatch();
+    const { user } = useSelector((state: State) => state);
 
-    const user = useSelector((state: State) => state.user);
+    const [isAddRecipeModalOpen, setIsAddRecipeModalOpen] = useState<boolean>(false);
 
     const toggleModal = (): void => {
         setIsAddRecipeModalOpen(!isAddRecipeModalOpen);
     };
 
-    const isInitialMount = useRef(true);
-
     useEffect(() => {
-        if (isInitialMount.current) {
-            isInitialMount.current = false;
-        } else {
-            console.log("dashboard mounted");
-            fetchRecipes().catch((error) => {
-                console.log(error.message);
-            });
-        }
-    });
+        dispatch(actionCreators.fetchRecipes());
+    }, [dispatch]);
 
     return (
         <div>
