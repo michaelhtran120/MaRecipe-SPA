@@ -1,0 +1,36 @@
+.featured-row {
+  overflow-x: hidden;
+  overflow: scroll;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  padding: 10px 0px;
+}
+
+.featured-row .recipe-card {
+  width: 300px;
+  height: 400px;
+}
+
+.featured-row .recipe-card:hover {
+  -webkit-box-shadow: 0 10px 20px rgba(124, 182, 117, 0.19), 0 6px 6px rgba(124, 182, 117, 0.23);
+          box-shadow: 0 10px 20px rgba(124, 182, 117, 0.19), 0 6px 6px rgba(124, 182, 117, 0.23);
+  -webkit-transform: scale(1.02);
+          transform: scale(1.02);
+  -webkit-transition: all 400ms ease-in-out;
+  transition: all 400ms ease-in-out;
+}
+
+.featured-row .recipe-card .recipe-image {
+  width: 100%;
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+
+.featured-row .recipe-card button {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}

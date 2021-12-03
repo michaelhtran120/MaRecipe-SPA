@@ -13,7 +13,7 @@ import DashboardRecipesPage from "../DashboardRecipesPage/DashboardRecipesPage";
 
 const DashboardPage = () => {
     const dispatch = useDispatch();
-    const { user } = useSelector((state: State) => state);
+    const recipes = useSelector((state: State) => state.recipes.recipes);
 
     const [isAddRecipeModalOpen, setIsAddRecipeModalOpen] = useState<boolean>(false);
 
@@ -27,7 +27,7 @@ const DashboardPage = () => {
 
     return (
         <div>
-            <DashboardNavbar currentUser={user} />
+            <DashboardNavbar />
 
             <DashboardRecipesPage />
 

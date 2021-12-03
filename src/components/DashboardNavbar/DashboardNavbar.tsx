@@ -4,22 +4,14 @@ import logo from "../../assets/images/logo.svg";
 import userIcon from "../../assets/images/user-icon.svg";
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
-import { actionCreators } from "../../redux/index";
+import { actionCreators, State } from "../../redux/index";
 
-interface Props {
-    currentUser: {
-        accessToken: string;
-        firstName: string;
-        lastName: string;
-        id: string;
-    };
-}
-
-const DashboardNavbar = ({ currentUser }: Props): JSX.Element => {
+const DashboardNavbar = (): JSX.Element => {
     const dispatch = useDispatch();
     const { logOut } = bindActionCreators(actionCreators, dispatch);
+    const { user } = useSelector((state: State) => state);
 
     const [isWindowSmall, setIsWindowSmall] = useState<boolean>(false);
 
@@ -76,8 +68,8 @@ const DashboardNavbar = ({ currentUser }: Props): JSX.Element => {
                             <NavDropdown
                                 title={
                                     <>
-                                        {currentUser.firstName} {currentUser.lastName}
-                                        <img className='ps-1' src={userIcon} alt='user profile' />
+                                        {user.userInfo.user.firstName} {user.userInfo.user.lastName}
+                                        <img className='ms-2' src={userIcon} alt='user profile' />
                                     </>
                                 }
                                 id='dashboard-nav-dropdown'

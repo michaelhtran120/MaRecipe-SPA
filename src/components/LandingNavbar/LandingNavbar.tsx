@@ -25,7 +25,7 @@ const LandingNavbar: React.FC<Props> = ({ toggleSignUpModal, toggleLoginModal })
                         {/* <Nav.Link href='#home'>Home</Nav.Link>
                         <Nav.Link href='#link'>Link</Nav.Link> */}
                     </Nav>
-                    {!user.id.length ? (
+                    {!user.userInfo ? (
                         <Nav className='justify-content-end align-items-end'>
                             <Button variant='outline-primary' className=' mt-sm-0 ms-3 me-sm-2 my-2 my-sm-0' onClick={toggleSignUpModal}>
                                 Sign Up

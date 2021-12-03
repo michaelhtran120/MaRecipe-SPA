@@ -12,7 +12,7 @@ const LandingHero: React.FC = (): JSX.Element => {
                 {/* Hero section video background */}
                 <div id='video-container'>
                     <div id='video-overlay' />
-                    <video poster='./media/poster.jpg' autoPlay muted loop>
+                    <video poster='./media/poster.jpg' autoPlay={true} muted={true} loop={true}>
                         <source src={videoOgv} type='video/ogv' />
                         <source src={videoMp4} type='video/mp4' />
                     </video>

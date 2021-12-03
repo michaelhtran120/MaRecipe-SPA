@@ -3,7 +3,8 @@
         {
             "id": "cc1",
             "title": "chocolate cake",
-            "imageURL": "https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1006&q=80",
+            "imageUrl": "https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1006&q=80",
+            "description": "Decadent chocolately cake, smile on your face, but bad for your waist.",
             "ingredients": [
                 {
                     "id": "1absiomd-1",
@@ -31,12 +32,14 @@
                 }
             ],
             "servings": 5,
-            "instructions": ["step 1", "step 2", "step 3", "step 4"]
+            "instructions": ["step 1", "step 2", "step 3", "step 4"],
+            "featured": true
         },
         {
             "id": "ra1",
             "title": "Ramen",
-            "imageURL": "https://images.unsplash.com/photo-1600326145359-3a44909d1a39?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cmFtZW58ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60",
+            "imageUrl": "https://images.unsplash.com/photo-1600326145359-3a44909d1a39?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cmFtZW58ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60",
+            "description": "Nomz - ramen - your average ramen without the 24-36 process.",
             "ingredients": [
                 {
                     "id": "1absiomd-1",
@@ -72,12 +75,14 @@
                 }
             ],
             "servings": 1,
-            "instructions": ["step 1", "step 2", "step 3", "step 4"]
+            "instructions": ["step 1", "step 2", "step 3", "step 4"],
+            "featured": true
         },
         {
             "id": "fr1",
             "title": "Fried Rice",
-            "imageURL": "https://images.unsplash.com/photo-1596560548464-f010549b84d7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
+            "imageUrl": "https://images.unsplash.com/photo-1596560548464-f010549b84d7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
+            "description": "Uncle Roger would approve of this!",
             "ingredients": [
                 {
                     "id": "fr1-1",
@@ -113,12 +118,14 @@
                 }
             ],
             "servings": 3,
-            "instructions": ["step 1", "step 2", "step 3", "step 4"]
+            "instructions": ["step 1", "step 2", "step 3", "step 4"],
+            "featured": true
         },
         {
             "id": "ssal1",
             "title": "Summer Salad",
-            "imageURL": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+            "imageUrl": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+            "description": "It's just a salad. Added 'Summer' to make it sound fancier and maybe healther?",
             "ingredients": [
                 {
                     "id": "ssal1-1",
@@ -154,7 +161,172 @@
                 }
             ],
             "servings": 2,
-            "instructions": ["step 1", "step 2", "step 3", "step 4"]
+            "instructions": ["step 1", "step 2", "step 3", "step 4"],
+            "featured": false
+        },
+        {
+            "id": "cc2",
+            "title": "chocolate cake",
+            "imageUrl": "https://images.unsplash.com/photo-1517427294546-5aa121f68e8a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGNob2NvbGF0ZSUyMGNha2V8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60",
+            "description": "Decadent chocolately cake TWOOOO, smile on your face, but bad for your waist.",
+            "ingredients": [
+                {
+                    "id": "1absiomd2-1",
+                    "name": "flour",
+                    "quantity": 100,
+                    "proteins": 0,
+                    "carbs": 100,
+                    "fats": 2
+                },
+                {
+                    "id": "1absiomd2-2",
+                    "name": "sugar",
+                    "quantity": 50,
+                    "proteins": 0,
+                    "carbs": 50,
+                    "fats": 0
+                },
+                {
+                    "id": "1absiomd2-3",
+                    "name": "cocoa powder",
+                    "quantity": 75,
+                    "proteins": 15,
+                    "carbs": 10,
+                    "fats": 5
+                }
+            ],
+            "servings": 5,
+            "instructions": ["step 1", "step 2", "step 3", "step 4"],
+            "featured": true
+        },
+        {
+            "id": "ra2",
+            "title": "Ramen",
+            "imageUrl": "https://images.unsplash.com/photo-1589211548263-d3c229d952dd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fHJhbWVufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
+            "description": "Nomz again - ramen - your average ramen without the 24-36 process.",
+            "ingredients": [
+                {
+                    "id": "1absiomd2-1",
+                    "name": "egg noodles",
+                    "quantity": 100,
+                    "proteins": 10,
+                    "carbs": 80,
+                    "fats": 5
+                },
+                {
+                    "id": "1absiomd2-2",
+                    "name": "chicken broth",
+                    "quantity": 200,
+                    "proteins": 5,
+                    "carbs": 10,
+                    "fats": 3
+                },
+                {
+                    "id": "1absiomd2-3",
+                    "name": "spinach",
+                    "quantity": 100,
+                    "proteins": 5,
+                    "carbs": 10,
+                    "fats": 0
+                },
+                {
+                    "id": "1absiomd2-4",
+                    "name": "egg",
+                    "quantity": 50,
+                    "proteins": 5,
+                    "carbs": 0,
+                    "fats": 6
+                }
+            ],
+            "servings": 1,
+            "instructions": ["step 1", "step 2", "step 3", "step 4"],
+            "featured": true
+        },
+        {
+            "id": "fr2",
+            "title": "Fried Rice",
+            "imageUrl": "https://images.unsplash.com/photo-1603133872878-684f208fb84b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8ZnJpZWQlMjByaWNlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
+            "description": "Uncle Roger would approve of this as well!",
+            "ingredients": [
+                {
+                    "id": "fr2-1",
+                    "name": "rice",
+                    "quantity": 200,
+                    "proteins": 15,
+                    "carbs": 140,
+                    "fats": 2
+                },
+                {
+                    "id": "fr2-2",
+                    "name": "garlic",
+                    "quantity": 50,
+                    "proteins": 2,
+                    "carbs": 15,
+                    "fats": 3
+                },
+                {
+                    "id": "fr2-3",
+                    "name": "green onions",
+                    "quantity": 70,
+                    "proteins": 1,
+                    "carbs": 10,
+                    "fats": 0
+                },
+                {
+                    "id": "fr2-4",
+                    "name": "egg",
+                    "quantity": 100,
+                    "proteins": 10,
+                    "carbs": 0,
+                    "fats": 12
+                }
+            ],
+            "servings": 3,
+            "instructions": ["step 1", "step 2", "step 3", "step 4"],
+            "featured": true
+        },
+        {
+            "id": "ssal2",
+            "title": "Summer Salad",
+            "imageUrl": "https://images.unsplash.com/photo-1553455860-2fa544e14141?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHNhbGFkfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
+            "description": "It's not just a salad this.",
+            "ingredients": [
+                {
+                    "id": "ssal2-1",
+                    "name": "olives",
+                    "quantity": 50,
+                    "proteins": 2,
+                    "carbs": 15,
+                    "fats": 2
+                },
+                {
+                    "id": "ssal2-2",
+                    "name": "red onions",
+                    "quantity": 75,
+                    "proteins": 5,
+                    "carbs": 15,
+                    "fats": 1
+                },
+                {
+                    "id": "ssal2-3",
+                    "name": "spinach",
+                    "quantity": 100,
+                    "proteins": 5,
+                    "carbs": 10,
+                    "fats": 0
+                },
+                {
+                    "id": "ssal2-4",
+                    "name": "jalapenos",
+                    "quantity": 25,
+                    "proteins": 4,
+                    "carbs": 10,
+                    "fats": 2
+                }
+            ],
+            "servings": 2,
+            "instructions": ["step 1", "step 2", "step 3", "step 4"],
+            "featured": false
         }
     ],
     "users": [
@@ -163,7 +335,15 @@
             "password": "$2a$10$Ba5RTBvx8.PlPb.LHJPV6Ok7.jkZ5s029oyKE1OYVn8HLe5tGRaLC",
             "id": "7039c09c-665e-4ef1-aa12-e40fc2cee9f1",
             "firstName": "Michael",
-            "lastName": "Tran"
+            "lastName": "Tran",
+            "recipes": ["ssal1-4", "ra1"]
+        },
+        {
+            "email": "a@b.com",
+            "password": "$2a$10$auYS4CNctFRjB6ewbxbbo.WroSbt1VOCsbxcZfUGQHZA0jthan8Ka",
+            "firstName": "a",
+            "lastName": "b",
+            "id": "ytWEq_0"
         }
     ]
 }

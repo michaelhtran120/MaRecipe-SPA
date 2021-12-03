@@ -14,7 +14,7 @@ interface Ingredient {
 
 interface Instruction {
     id: string;
-    text: string;
+    instruction: string;
 }
 
 const AddRecipeForm: React.FC = () => {
@@ -33,9 +33,10 @@ const AddRecipeForm: React.FC = () => {
     const [instructions, setInstructions] = useState<Instruction[]>([
         {
             id: uuidv4(),
-            text: ""
+            instruction: ""
         }
     ]);
+    const [servings, setServings] = useState<string>("1");
     const handleAddIngredient = () => {
         setIngredientList([
             ...ingredientList,
@@ -54,7 +55,7 @@ const AddRecipeForm: React.FC = () => {
             ...instructions,
             {
                 id: uuidv4(),
-                text: ""
+                instruction: ""
             }
         ]);
     };
@@ -62,7 +63,7 @@ const AddRecipeForm: React.FC = () => {
         setIngredientList(ingredientList.filter((aIngredient) => aIngredient.id !== ingredientId));
     };
     const handleDeleteInstruction = (stepId: string) => {
-        setInstructions(instructions.filter((aStep) => aStep.id !== stepId));
+        setInstructions(instructions.filter((aInstruction) => aInstruction.id !== stepId));
     };
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         switch (e.target.name) {
@@ -89,18 +90,21 @@ const AddRecipeForm: React.FC = () => {
                 });
                 setIngredientList(updatedIngredientList);
                 break;
-            case "text":
-                const updatedInstructions = instructions.map((aStep) => {
-                    if (aStep.id === e.target.dataset.id) {
+            case "instruction":
+                const updatedInstructions = instructions.map((aInstruction) => {
+                    if (aInstruction.id === e.target.dataset.id) {
                         return {
-                            ...aStep,
+                            ...aInstruction,
                             [e.target.name]: e.target.value
                         };
                     } else {
-                        return aStep;
+                        return aInstruction;
                     }
                 });
                 setInstructions(updatedInstructions);
+                break;
+            case "servings":
+                setServings(e.target.value);
                 break;
             default:
                 return;
@@ -229,22 +233,22 @@ const AddRecipeForm: React.FC = () => {
                 </Button>
                 <hr />
                 <h4>Cooking Instructions</h4>
-                {instructions.map((step) => {
+                {instructions.map((aInstruction) => {
                     return (
-                        <FormGroup row key={step.id}>
+                        <FormGroup row key={aInstruction.id}>
                             <Col sm={11}>
                                 <Input
                                     type='text'
                                     placeholder='Add instruction details....'
-                                    value={step.text}
-                                    id={`${step.id}-text`}
-                                    name='text'
+                                    value={aInstruction.instruction}
+                                    id={`${aInstruction.id}-text`}
+                                    name='instruction'
                                     onChange={(event) => handleInputChange(event)}
-                                    data-id={step.id}
+                                    data-id={aInstruction.id}
                                 />
                             </Col>
                             <Col sm={1}>
-                                <Button color='danger' outline onClick={() => handleDeleteInstruction(step.id)}>
+                                <Button color='danger' outline onClick={() => handleDeleteInstruction(aInstruction.id)}>
                                     X
                                 </Button>
                             </Col>
@@ -255,7 +259,25 @@ const AddRecipeForm: React.FC = () => {
                     Add Instruction
                 </Button>
                 <hr />
-                <Button color='primary'>Add Recipe</Button>
+                <FormGroup>
+                    <Col xs={12} md={6} lg={4}>
+                        <Label for='servings'>Servings</Label>
+                        <Input
+                            id='servings'
+                            value={servings}
+                            name='servings'
+                            placeholder='Servings..'
+                            type='number'
+                            onChange={(event) => {
+                                handleInputChange(event);
+                            }}
+                        />
+                    </Col>
+                </FormGroup>
+                <hr />
+                <Button type='submit' color='primary'>
+                    Add Recipe
+                </Button>
             </Form>
         </div>
     );
