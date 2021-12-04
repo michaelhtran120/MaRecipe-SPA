@@ -1,6 +1,6 @@
 import React from "react";
 import "./UserRecipes.css";
-import { Button, Card, Container, Row, Image, Col } from "react-bootstrap";
+import { Button, Card, Container, Row, Image } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { State } from "../../redux";
 
@@ -46,8 +46,6 @@ const UserRecipes = () => {
     const { user, recipes } = useSelector((state: State) => state);
     const userRecipesIds = user.userInfo.user.recipes;
     const allRecipes = recipes.recipes;
-    console.log(allRecipes);
-    console.log(userRecipesIds);
 
     const getUserRecipes = (): Recipe[] => {
         let userRecipes: Recipe[] = [];
@@ -70,7 +68,7 @@ const UserRecipes = () => {
                             ))}
                         </>
                     ) : (
-                        <h1>Loading please wait.....</h1>
+                        <></>
                     )}
                 </Row>
             </Container>

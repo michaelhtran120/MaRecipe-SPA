@@ -1,6 +1,6 @@
 import React from "react";
 import "./FeaturedRecipes.css";
-import { Button, Card, Container, Row, Image, Col } from "react-bootstrap";
+import { Button, Card, Container, Row, Image } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { State } from "../../redux";
 
@@ -60,7 +60,7 @@ const FeaturedRecipes = () => {
                             </Card>
                         </>
                     ) : (
-                        <h1>Loading please wait.....</h1>
+                        <></>
                     )}
                 </Row>
             </Container>

@@ -47,7 +47,6 @@ const DashboardNavbar = (): JSX.Element => {
                         <Nav.Link href='#' className='active'>
                             Recipes
                         </Nav.Link>
-                        <Nav.Link href='#'>Community</Nav.Link>
                         <Nav.Link href='#'>Shopping List</Nav.Link>
                     </Nav>
 
