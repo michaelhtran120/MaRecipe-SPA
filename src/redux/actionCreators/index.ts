@@ -1,4 +1,5 @@
 import { Dispatch } from "redux";
+import { AddRecipeAction } from "../actions/index";
 import { CurrentUser, Recipe } from "../actions";
 import { ActionType } from "../actionTypes";
 
@@ -58,24 +59,29 @@ export const logOut = () => {
     };
 };
 
-export const postRecipe = (recipeArray: Recipe[], user: CurrentUser) => {
-    return async (dispatch: Dispatch) => {
+export const postRecipe = (recipeArray: Recipe[], user: CurrentUser, toggleModal: () => void) => {
+    return async (dispatch: any) => {
         try {
             const response = await fetch(API_URL + `users/${user.id}`, {
                 method: "PUT",
                 headers: { "Content-type": "application/json" },
                 body: JSON.stringify({
                     email: user.email,
-                    password: "admin1",
+                    password: localStorage.getItem("pw"),
                     firstName: user.firstName,
                     lastName: user.lastName,
                     recipes: recipeArray
                 })
             });
+            console.log(response);
             if (!response.ok) {
                 const message = `An error has occured: ${response.status}`;
                 throw new Error(message);
             }
+
+            dispatch(addRecipe(recipeArray));
+            alert("Recipe successfully added");
+            toggleModal();
         } catch (error) {
             console.log(error);
         }

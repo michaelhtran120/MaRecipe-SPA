@@ -1,4 +1,4 @@
-import { Recipe, RecipeAction } from "../actions/index";
+import { Recipe, AddRecipeAction } from "../actions/index";
 import { ActionType } from "../actionTypes/index";
 
 const initialState = {
@@ -13,7 +13,7 @@ const recipeReducer = (
         error: string;
         recipes: Recipe[];
     } = initialState,
-    action: RecipeAction
+    action: AddRecipeAction
 ) => {
     switch (action.type) {
         case ActionType.FETCH_RECIPES_REQUEST:

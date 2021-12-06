@@ -24,7 +24,7 @@ const DashboardPage = () => {
                     <Modal.Title className='ps-5'>Add New Recipe</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <AddRecipeForm />
+                    <AddRecipeForm toggleAddRecipeModal={toggleModal} />
                 </Modal.Body>
             </Modal>
             <Button id='add-recipe-btn' onClick={toggleModal}>

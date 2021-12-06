@@ -20,7 +20,11 @@ interface Instruction {
     instruction: string;
 }
 
-const AddRecipeForm: React.FC = () => {
+type Props = {
+    toggleAddRecipeModal: () => void;
+};
+
+const AddRecipeForm = ({ toggleAddRecipeModal }: Props) => {
     const { user } = useSelector((state: State) => state);
     const dispatch = useDispatch();
     const { postRecipe } = bindActionCreators(actionCreators, dispatch);
@@ -138,8 +142,13 @@ const AddRecipeForm: React.FC = () => {
             favorite: favorite
         };
         const newUserRecipeArray = [...user.userInfo.user.recipes, newRecipe];
-        postRecipe(newUserRecipeArray, user.userInfo.user);
+        postRecipe(newUserRecipeArray, user.userInfo.user, toggleAddRecipeModal);
+        // toggleAddRecipeModal();
     };
+
+    useEffect(() => {
+        console.log(user);
+    }, [user]);
 
     return (
         <div>

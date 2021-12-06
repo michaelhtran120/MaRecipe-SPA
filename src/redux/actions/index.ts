@@ -26,9 +26,9 @@ export interface Recipe {
     favorite: boolean;
 }
 
-export type RecipeAction = {
+export type AddRecipeAction = {
     type: string;
-    payload: any;
+    payload: Recipe[];
 };
 
 export type UserAction = {
