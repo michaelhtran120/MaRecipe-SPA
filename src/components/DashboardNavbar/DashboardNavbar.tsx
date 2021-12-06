@@ -33,6 +33,12 @@ const DashboardNavbar = (): JSX.Element => {
         }
     }, []);
 
+    const handleLogOut = () => {
+        navigate("/");
+        logOut();
+        localStorage.clear();
+    };
+
     return (
         <Navbar sticky='top' bg='light' variant='light' expand='md'>
             <Container fluid>
@@ -54,15 +60,7 @@ const DashboardNavbar = (): JSX.Element => {
                         {isWindowSmall ? (
                             <>
                                 <Nav.Link>Profile</Nav.Link>
-                                <Nav.Link
-                                    onClick={() => {
-                                        navigate("/");
-                                        logOut();
-                                        localStorage.removeItem("pw");
-                                    }}
-                                >
-                                    Log Out
-                                </Nav.Link>
+                                <Nav.Link onClick={handleLogOut}>Log Out</Nav.Link>
                             </>
                         ) : (
                             <NavDropdown
@@ -76,15 +74,7 @@ const DashboardNavbar = (): JSX.Element => {
                             >
                                 <NavDropdown.Item href='#action/3.1'>Profile</NavDropdown.Item>
                                 <NavDropdown.Divider />
-                                <NavDropdown.Item
-                                    onClick={() => {
-                                        navigate("/");
-                                        logOut();
-                                        localStorage.removeItem("pw");
-                                    }}
-                                >
-                                    Log Out
-                                </NavDropdown.Item>
+                                <NavDropdown.Item onClick={handleLogOut}>Log Out</NavDropdown.Item>
                             </NavDropdown>
                         )}
                     </Nav>

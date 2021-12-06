@@ -25,7 +25,9 @@ export const logIn = (credentials: { email: string; password: string }) => {
             const user = await response.json();
             console.log(user);
             dispatch(logInSuccess(user));
+            localStorage.setItem("email", credentials.email);
             localStorage.setItem("pw", credentials.password);
+            localStorage.setItem("user", JSON.stringify(user));
         } catch (error) {
             console.log(error);
             dispatch(logInFail(error));

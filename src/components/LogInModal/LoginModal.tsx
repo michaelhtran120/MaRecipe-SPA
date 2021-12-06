@@ -43,7 +43,6 @@ const LoginModal = ({ open, toggleLoginModal }: Props): JSX.Element => {
             isComponentMounted.current = true;
         } else if (user.userInfo) {
             navigate("dashboard");
-            console.log(user);
         }
     }, [user, navigate]);
 
