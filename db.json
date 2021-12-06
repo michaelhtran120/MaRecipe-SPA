@@ -2,7 +2,7 @@
     "users": [
         {
             "email": "admin@admin.com",
-            "password": "$2a$10$TzokJ0cpXxWL.smA.p0HQ.kX971OuDE4Z8r/dS5p7aydcZb8YqJbm",
+            "password": "$2a$10$z8YVVBhc1yeeqzGgQ7pfcOFL7uI9/SvHq6wAVj7Qxkd.Gp2bk6i2e",
             "firstName": "Michael",
             "lastName": "Tran",
             "recipes": [

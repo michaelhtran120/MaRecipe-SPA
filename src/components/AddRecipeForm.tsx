@@ -143,7 +143,6 @@ const AddRecipeForm = ({ toggleAddRecipeModal }: Props) => {
         };
         const newUserRecipeArray = [...user.userInfo.user.recipes, newRecipe];
         postRecipe(newUserRecipeArray, user.userInfo.user, toggleAddRecipeModal);
-        // toggleAddRecipeModal();
     };
 
     useEffect(() => {

@@ -83,6 +83,7 @@ export const postRecipe = (recipeArray: Recipe[], user: CurrentUser, toggleModal
             alert("Recipe successfully added");
             toggleModal();
         } catch (error) {
+            alert(error);
             console.log(error);
         }
     };
