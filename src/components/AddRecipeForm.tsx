@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, useState } from "react";
+import React, { SyntheticEvent, useEffect, useState } from "react";
 import { Button, Col, Form, FormGroup, FormText, Input, Label, Row } from "reactstrap";
 import Image from "react-bootstrap/Image";
 import { v4 as uuidv4 } from "uuid";
@@ -25,6 +25,7 @@ const AddRecipeForm: React.FC = () => {
     const dispatch = useDispatch();
     const { postRecipe } = bindActionCreators(actionCreators, dispatch);
     const [recipeName, setRecipeName] = useState<string>("");
+    const [description, setDescription] = useState<string>("");
     const [imageLink, setImageLink] = useState<string | null>("");
     const [ingredientList, setIngredientList] = useState<Ingredient[]>([
         {
@@ -43,6 +44,7 @@ const AddRecipeForm: React.FC = () => {
         }
     ]);
     const [servings, setServings] = useState<string>("1");
+    const [favorite, setFavorite] = useState<boolean>(false);
     const handleAddIngredient = () => {
         setIngredientList([
             ...ingredientList,
@@ -79,6 +81,9 @@ const AddRecipeForm: React.FC = () => {
             case "imageLink":
                 setImageLink(e.target.value);
                 break;
+            case "description":
+                setDescription(e.target.value);
+                break;
             case "name":
             case "quantity":
             case "proteins":
@@ -112,6 +117,9 @@ const AddRecipeForm: React.FC = () => {
             case "servings":
                 setServings(e.target.value);
                 break;
+            case "favorite":
+                setFavorite(e.target.checked);
+                break;
             default:
                 return;
         }
@@ -123,15 +131,13 @@ const AddRecipeForm: React.FC = () => {
             id: uuidv4(),
             title: recipeName,
             imageUrl: imageLink,
-            description: "",
+            description: description,
             ingredients: ingredientList,
             servings: servings,
             instructions: instructions,
-            favorite: false
+            favorite: favorite
         };
         const newUserRecipeArray = [...user.userInfo.user.recipes, newRecipe];
-        // addRecipe(newUserRecipeArray);
-        console.log(user.userInfo.user);
         postRecipe(newUserRecipeArray, user.userInfo.user);
     };
 
@@ -167,8 +173,33 @@ const AddRecipeForm: React.FC = () => {
                             />
                             <FormText>Provide a link to a cover photo for your recipe!</FormText>
                         </FormGroup>
+                        <FormGroup>
+                            <Label for='description' className='mt-3'>
+                                Description (Max 200 characters)
+                            </Label>
+                            <Input
+                                id='description'
+                                name='description'
+                                type='textarea'
+                                onChange={(event) => {
+                                    handleInputChange(event);
+                                }}
+                                style={{ height: "200px" }}
+                                maxLength={200}
+                            />
+                        </FormGroup>
                     </Col>
-                    <Col sm={6}>{imageLink ? <Image src={imageLink} id='image-preview' alt='recipe preview' /> : <div></div>}</Col>
+                    <Col sm={6}>
+                        <Label>Image Preview</Label>
+                        <hr />
+                        {imageLink ? (
+                            <>
+                                <Image src={imageLink} id='image-preview' alt='recipe preview' style={{ maxWidth: "300px" }} />
+                            </>
+                        ) : (
+                            <div></div>
+                        )}
+                    </Col>
                 </Row>
                 <hr />
                 <h4>Ingredients</h4>
@@ -285,7 +316,7 @@ const AddRecipeForm: React.FC = () => {
                 <hr />
                 <FormGroup>
                     <Col xs={12} md={6} lg={4}>
-                        <Label for='servings'>Servings</Label>
+                        <Label for='servings'>Serving Quantity</Label>
                         <Input
                             id='servings'
                             value={servings}
@@ -297,6 +328,12 @@ const AddRecipeForm: React.FC = () => {
                             }}
                         />
                     </Col>
+                </FormGroup>
+                <FormGroup check>
+                    <Label check>
+                        Favorite?
+                        <Input type='checkbox' name='favorite' value='favorite' onChange={(event) => handleInputChange(event)} />
+                    </Label>
                 </FormGroup>
                 <hr />
                 <Button type='submit' color='primary'>

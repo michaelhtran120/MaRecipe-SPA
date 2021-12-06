@@ -66,18 +66,16 @@ export const postRecipe = (recipeArray: Recipe[], user: CurrentUser) => {
                 headers: { "Content-type": "application/json" },
                 body: JSON.stringify({
                     email: user.email,
-                    password: localStorage.getItem("user"),
+                    password: "admin1",
                     firstName: user.firstName,
                     lastName: user.lastName,
-                    id: user.id,
                     recipes: recipeArray
                 })
             });
-            console.log(response);
-            // if (!response.ok) {
-            //     const message = `An error has occured: ${response.status}`;
-            //     throw new Error(message);
-            // }
+            if (!response.ok) {
+                const message = `An error has occured: ${response.status}`;
+                throw new Error(message);
+            }
         } catch (error) {
             console.log(error);
         }
