@@ -1,12 +1,12 @@
 import { Dispatch } from "redux";
-import { CurrentUser, RecipeAction, Recipe } from "../actions";
+import { CurrentUser, Recipe } from "../actions";
 import { ActionType } from "../actionTypes";
 
 //LOGIN ACTION CREATORS
 const API_URL = "http://localhost:3004/";
 
 export const logIn = (credentials: { email: string; password: string }) => {
-    return async function (dispatch: Dispatch) {
+    return async (dispatch: Dispatch) => {
         dispatch(logInRequest());
         try {
             const response = await fetch(API_URL + "login", {
@@ -24,6 +24,7 @@ export const logIn = (credentials: { email: string; password: string }) => {
             const user = await response.json();
             console.log(user);
             dispatch(logInSuccess(user));
+            localStorage.setItem("pw", credentials.password);
         } catch (error) {
             console.log(error);
             dispatch(logInFail(error));
@@ -57,49 +58,37 @@ export const logOut = () => {
     };
 };
 
-//RECIPES ACTION CREATORS
-export const fetchRecipes = () => {
-    return async function (dispatch: Dispatch) {
-        dispatch(fetchRecipeRequest());
+export const postRecipe = (recipeArray: Recipe[], user: CurrentUser) => {
+    return async (dispatch: Dispatch) => {
         try {
-            const response = await fetch(API_URL + "recipes");
-            if (!response.ok) {
-                const message = `An error has occured: ${response.status}`;
-                alert(message);
-                throw new Error(message);
-            }
-            const recipes = await response.json();
-            dispatch(fetchRecipeSuccess(recipes));
+            const response = await fetch(API_URL + `users/${user.id}`, {
+                method: "PUT",
+                headers: { "Content-type": "application/json" },
+                body: JSON.stringify({
+                    email: user.email,
+                    password: localStorage.getItem("user"),
+                    firstName: user.firstName,
+                    lastName: user.lastName,
+                    id: user.id,
+                    recipes: recipeArray
+                })
+            });
+            console.log(response);
+            // if (!response.ok) {
+            //     const message = `An error has occured: ${response.status}`;
+            //     throw new Error(message);
+            // }
         } catch (error) {
             console.log(error);
-            dispatch(fetchRecipeFail(error));
         }
     };
 };
 
-const fetchRecipeRequest = () => {
-    return {
-        type: ActionType.FETCH_RECIPES_REQUEST
-    };
-};
-const fetchRecipeSuccess = (recipes: Recipe[]) => {
-    return {
-        type: ActionType.FETCH_RECIPES_SUCCESS,
-        payload: recipes
-    };
-};
-const fetchRecipeFail = (error: any) => {
-    return {
-        type: ActionType.FETCH_RECIPES_FAIL,
-        payload: error
-    };
-};
-
-export const addRecipe = (recipe: Recipe) => {
-    return (dispatch: Dispatch<RecipeAction>) => {
+export const addRecipe = (recipeArray: Recipe[]) => {
+    return (dispatch: Dispatch) => {
         dispatch({
             type: ActionType.ADD_RECIPE,
-            payload: recipe
+            payload: recipeArray
         });
     };
 };

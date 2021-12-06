@@ -1,14 +1,13 @@
 $primary: #79b473;
 $primary-hover-shadow: rgba(124, 182, 117, 0.582);
 
-.user-row {
+.featured-row {
     overflow-x: hidden;
     overflow: scroll;
     flex-wrap: nowrap;
-    justify-content: start;
 
     padding: 10px 0px;
-    .user-recipe-card {
+    .recipe-card {
         width: 300px;
         height: 400px;
         margin-right: 10px;

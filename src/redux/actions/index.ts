@@ -1,11 +1,11 @@
-import { AnyMxRecord } from "dns";
-
 export interface CurrentUser {
     accessToken: string;
+    email: string;
+    password: string;
     firstName: string;
     lastName: string;
     id: string;
-    recipes: string[];
+    recipes: Recipe[];
 }
 
 export interface Recipe {
@@ -23,7 +23,7 @@ export interface Recipe {
     }[];
     instructions: string[];
     servings: number;
-    featured: boolean;
+    favorite: boolean;
 }
 
 export type RecipeAction = {

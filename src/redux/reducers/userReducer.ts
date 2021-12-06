@@ -7,11 +7,11 @@ const initialState = {
     userInfo: null
 };
 
-const userLoginReducer = (
+const userReducer = (
     state: {
         loading: boolean;
         error: string;
-        userInfo: CurrentUser | null;
+        userInfo: CurrentUser | any;
     } = initialState,
     action: UserAction
 ) => {
@@ -39,9 +39,20 @@ const userLoginReducer = (
                 ...state,
                 userInfo: null
             };
+        case ActionType.ADD_RECIPE:
+            return {
+                ...state,
+                userInfo: {
+                    ...state.userInfo,
+                    user: {
+                        ...state.userInfo.user,
+                        recipes: action.payload
+                    }
+                }
+            };
         default:
             return state;
     }
 };
 
-export default userLoginReducer;
+export default userReducer;

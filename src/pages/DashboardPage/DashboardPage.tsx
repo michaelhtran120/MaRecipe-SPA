@@ -1,28 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./DashboardPage.css";
 import { Modal } from "react-bootstrap";
 import { Button } from "reactstrap";
-import { actionCreators } from "../../redux/index";
-import { useDispatch } from "react-redux";
-
 import AddRecipeForm from "../../components/AddRecipeForm";
 import DashboardNavbar from "../../components/DashboardNavbar/DashboardNavbar";
 import DashboardRecipesPage from "../DashboardRecipesPage/DashboardRecipesPage";
 
-// const API_URL = "http://localhost:3004/";
-
 const DashboardPage = () => {
-    const dispatch = useDispatch();
-
     const [isAddRecipeModalOpen, setIsAddRecipeModalOpen] = useState<boolean>(false);
 
     const toggleModal = (): void => {
         setIsAddRecipeModalOpen(!isAddRecipeModalOpen);
     };
-
-    useEffect(() => {
-        dispatch(actionCreators.fetchRecipes());
-    }, [dispatch]);
 
     return (
         <div>

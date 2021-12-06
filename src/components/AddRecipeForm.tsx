@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { SyntheticEvent, useState } from "react";
 import { Button, Col, Form, FormGroup, FormText, Input, Label, Row } from "reactstrap";
 import Image from "react-bootstrap/Image";
 import { v4 as uuidv4 } from "uuid";
+import { actionCreators, State } from "../redux/index";
+import { bindActionCreators } from "redux";
+import { useSelector, useDispatch } from "react-redux";
 
 interface Ingredient {
     id: string;
@@ -18,6 +21,9 @@ interface Instruction {
 }
 
 const AddRecipeForm: React.FC = () => {
+    const { user } = useSelector((state: State) => state);
+    const dispatch = useDispatch();
+    const { postRecipe } = bindActionCreators(actionCreators, dispatch);
     const [recipeName, setRecipeName] = useState<string>("");
     const [imageLink, setImageLink] = useState<string | null>("");
     const [ingredientList, setIngredientList] = useState<Ingredient[]>([
@@ -111,9 +117,27 @@ const AddRecipeForm: React.FC = () => {
         }
     };
 
+    const handleSubmit = (e: SyntheticEvent) => {
+        e.preventDefault();
+        const newRecipe = {
+            id: uuidv4(),
+            title: recipeName,
+            imageUrl: imageLink,
+            description: "",
+            ingredients: ingredientList,
+            servings: servings,
+            instructions: instructions,
+            favorite: false
+        };
+        const newUserRecipeArray = [...user.userInfo.user.recipes, newRecipe];
+        // addRecipe(newUserRecipeArray);
+        console.log(user.userInfo.user);
+        postRecipe(newUserRecipeArray, user.userInfo.user);
+    };
+
     return (
         <div>
-            <Form className='p-5 pt-0'>
+            <Form onSubmit={handleSubmit} className='p-5 pt-0'>
                 <Row className='justify-content-start'>
                     <Col md={6}>
                         <FormGroup>

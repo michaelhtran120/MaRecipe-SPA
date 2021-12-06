@@ -37,7 +37,8 @@ const SignUpModal = ({ open, toggleSignUpModal }: Props): JSX.Element => {
                     firstName: signUpCredentials.firstName,
                     lastName: signUpCredentials.lastName,
                     email: signUpCredentials.email,
-                    password: signUpCredentials.password
+                    password: signUpCredentials.password,
+                    recipes: []
                 })
             });
             if (!response.ok) {
@@ -46,6 +47,7 @@ const SignUpModal = ({ open, toggleSignUpModal }: Props): JSX.Element => {
             }
             const user = await response.json();
             logInSuccess(user);
+            localStorage.setItem("pw", signUpCredentials.password);
         } catch (error) {
             console.log(error);
         }

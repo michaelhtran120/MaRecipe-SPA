@@ -58,6 +58,7 @@ const DashboardNavbar = (): JSX.Element => {
                                     onClick={() => {
                                         navigate("/");
                                         logOut();
+                                        localStorage.removeItem("pw");
                                     }}
                                 >
                                     Log Out
@@ -79,6 +80,7 @@ const DashboardNavbar = (): JSX.Element => {
                                     onClick={() => {
                                         navigate("/");
                                         logOut();
+                                        localStorage.removeItem("pw");
                                     }}
                                 >
                                     Log Out

@@ -1,28 +1,22 @@
 import React from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import { State } from "../../redux";
-import FeaturedRecipes from "../../components/FeaturedRecipes/FeaturedRecipes";
+import UserFavoriteRecipes from "../../components/UserFavoriteRecipes/UserFavoriteRecipes";
 import UserRecipes from "../../components/UserRecipes/UserRecipes";
+import { State } from "../../redux";
 
 const DashboardRecipesPage = () => {
-    const { recipes } = useSelector((state: State) => state);
+    const { user } = useSelector((state: State) => state);
     return (
         <Container className='pt-3'>
-            {recipes.loading === false && recipes.recipes.length > 0 ? (
-                <>
-                    <Row>
-                        <h2 className='ps-4'>Featured Recipes</h2>
-                        <FeaturedRecipes />
-                    </Row>
-                    <Row className='mt-5'>
-                        <h2 className='ps-4'>Your Recipes</h2>
-                        <UserRecipes />
-                    </Row>
-                </>
-            ) : (
-                <p>Data loading, please wait...</p>
-            )}
+            <Row className='mt-5'>
+                <h2 className='ps-4'>Your Favorites</h2>
+                {user.userInfo.user.recipes.length > 0 ? <UserFavoriteRecipes /> : <h2>No Favorites</h2>}
+            </Row>
+            <Row>
+                <h2 className='ps-4'>Your Recipes</h2>
+                {user.userInfo.user.recipes.length > 0 ? <UserRecipes /> : <h2>No Recipes added yet</h2>}
+            </Row>
         </Container>
     );
 };
