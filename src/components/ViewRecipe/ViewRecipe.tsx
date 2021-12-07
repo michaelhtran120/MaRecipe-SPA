@@ -1,9 +1,9 @@
 import React from "react";
 import { Container, Image, Row } from "react-bootstrap";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { State } from "../../redux";
-import { Recipe } from "../../redux/actions";
+import { Recipe, Ingredients, Instructions } from "../../redux/actions";
 
 const ViewRecipe = () => {
     const { recipeId } = useParams();
@@ -11,14 +11,25 @@ const ViewRecipe = () => {
     const recipeData = user.userInfo.user.recipes.filter((aRecipe: Recipe) => aRecipe.id === recipeId)[0];
     console.log(recipeData);
     return (
-        <Container className='p-3 p-md-5'>
-            <h1>Title {recipeId}</h1>
-            <p>Description</p>
-            <Image />
+        <Container className='p-3 p-md-5 text-center'>
+            <h1>{recipeData.name}</h1>
+            <p>{recipeData.description}</p>
+            <Image src={recipeData.imageUrl} />
             <p>Summary Per Serving - Cals: Macros:</p>
             <ul>
-                <li></li>
+                {recipeData.ingredients.map((aIngredient: Ingredients) => (
+                    <li key={aIngredient.id} className='text-start'>
+                        {aIngredient.name} - {`${aIngredient.quantity} grams`}
+                    </li>
+                ))}
             </ul>
+            <ol>
+                {recipeData.instructions.map((aInstruction: Instructions) => (
+                    <li className='text-start' key={aInstruction.id}>
+                        {aInstruction.instruction}
+                    </li>
+                ))}
+            </ol>
             <Row></Row>
         </Container>
     );

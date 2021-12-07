@@ -12,7 +12,7 @@ const RecipeCard = ({
     description,
     data
 }: {
-    title: Recipe["title"];
+    title: Recipe["name"];
     url: Recipe["imageUrl"];
     description: Recipe["description"];
     data: Recipe;
@@ -49,7 +49,7 @@ const UserRecipes = () => {
             <Container className='fluid'>
                 <Row className='featured-row'>
                     {userRecipes.map((aRecipe: Recipe) => (
-                        <RecipeCard title={aRecipe.title} url={aRecipe.imageUrl} description={aRecipe.description} key={aRecipe.id} data={aRecipe} />
+                        <RecipeCard title={aRecipe.name} url={aRecipe.imageUrl} description={aRecipe.description} key={aRecipe.id} data={aRecipe} />
                     ))}
                     <Card className='recipe-card'>
                         <Card.Body className='text-center'>See More</Card.Body>

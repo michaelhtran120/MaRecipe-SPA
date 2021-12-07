@@ -10,21 +10,28 @@ export interface CurrentUser {
 
 export interface Recipe {
     id: string;
-    title: string;
+    name: string;
     imageUrl: string;
     description: string;
-    ingredients: {
-        id: string;
-        name: string;
-        quantity: number;
-        proteins: number;
-        carbs: number;
-        fats: number;
-    }[];
-    instructions: string[];
+    ingredients: Ingredients[];
+    instructions: Instructions[];
     servings: number;
     favorite: boolean;
 }
+
+export type Ingredients = {
+    id: string;
+    name: string;
+    quantity: number;
+    proteins: number;
+    carbs: number;
+    fats: number;
+};
+
+export type Instructions = {
+    id: string;
+    instruction: string;
+};
 
 export type AddRecipeAction = {
     type: string;

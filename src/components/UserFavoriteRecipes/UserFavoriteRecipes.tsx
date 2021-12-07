@@ -10,7 +10,7 @@ const RecipeCard = ({
     url,
     description
 }: {
-    title: Recipe["title"];
+    title: Recipe["name"];
     url: Recipe["imageUrl"];
     description: Recipe["description"];
 }): JSX.Element => {
@@ -40,7 +40,7 @@ const UserFavoriteRecipes = () => {
             <Container className='fluid'>
                 <Row className='user-row'>
                     {getFavoriteRecipes().map((aRecipe: Recipe) => (
-                        <RecipeCard title={aRecipe.title} url={aRecipe.imageUrl} description={aRecipe.description} key={aRecipe.id} />
+                        <RecipeCard title={aRecipe.name} url={aRecipe.imageUrl} description={aRecipe.description} key={aRecipe.id} />
                     ))}
                 </Row>
             </Container>

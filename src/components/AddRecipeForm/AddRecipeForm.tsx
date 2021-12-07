@@ -133,7 +133,7 @@ const AddRecipeForm = ({ toggleAddRecipeModal }: Props) => {
         e.preventDefault();
         const newRecipe = {
             id: uuidv4(),
-            title: recipeName,
+            name: recipeName,
             imageUrl: imageLink,
             description: description,
             ingredients: ingredientList,
