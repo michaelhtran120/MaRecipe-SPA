@@ -3,33 +3,24 @@ import "./UserRecipes.css";
 import { Button, Card, Container, Row, Image } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { State } from "../../redux";
+import { Recipe } from "../../redux/actions";
+import { useNavigate } from "react-router";
 
-interface Recipe {
-    id: string;
-    title: string;
-    imageUrl: string;
-    description: string;
-    ingredients: {
-        id: string;
-        name: string;
-        quantity: number;
-        proteins: number;
-        carbs: number;
-        fats: number;
-    }[];
-    instructions: string[];
-    servings: number;
-    featured: boolean;
-}
 const RecipeCard = ({
     title,
     url,
-    description
+    description,
+    data
 }: {
     title: Recipe["title"];
     url: Recipe["imageUrl"];
     description: Recipe["description"];
+    data: Recipe;
 }): JSX.Element => {
+    const navigate = useNavigate();
+    const handleClick = (data: Recipe) => {
+        navigate(`/dashboard/${data.id}`, { state: data });
+    };
     return (
         <Card className='recipe-card'>
             <Image className='recipe-image' src={url} fluid />
@@ -37,7 +28,14 @@ const RecipeCard = ({
             <Card.Body>
                 <Card.Title>{title}</Card.Title>
                 <Card.Text>{description}</Card.Text>
-                <Button variant='primary'>See Details</Button>
+                <Button
+                    variant='primary'
+                    onClick={() => {
+                        handleClick(data);
+                    }}
+                >
+                    See Details
+                </Button>
             </Card.Body>
         </Card>
     );
@@ -51,7 +49,7 @@ const UserRecipes = () => {
             <Container className='fluid'>
                 <Row className='featured-row'>
                     {userRecipes.map((aRecipe: Recipe) => (
-                        <RecipeCard title={aRecipe.title} url={aRecipe.imageUrl} description={aRecipe.description} key={aRecipe.id} />
+                        <RecipeCard title={aRecipe.title} url={aRecipe.imageUrl} description={aRecipe.description} key={aRecipe.id} data={aRecipe} />
                     ))}
                     <Card className='recipe-card'>
                         <Card.Body className='text-center'>See More</Card.Body>

@@ -2,7 +2,7 @@ import React, { SyntheticEvent, useEffect, useState } from "react";
 import { Button, Col, Form, FormGroup, FormText, Input, Label, Row } from "reactstrap";
 import Image from "react-bootstrap/Image";
 import { v4 as uuidv4 } from "uuid";
-import { actionCreators, State } from "../redux/index";
+import { actionCreators, State } from "../../redux/index";
 import { bindActionCreators } from "redux";
 import { useSelector, useDispatch } from "react-redux";
 

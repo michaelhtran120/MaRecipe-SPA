@@ -39,10 +39,6 @@ const DashboardNavbar = (): JSX.Element => {
         localStorage.clear();
     };
 
-    useEffect(() => {
-        console.log(user);
-    }, [user]);
-
     return (
         <Navbar sticky='top' bg='light' variant='light' expand='md'>
             <Container fluid>
@@ -53,14 +49,7 @@ const DashboardNavbar = (): JSX.Element => {
                 </Link>
                 <Navbar.Toggle aria-controls='navbar-nav' />
                 <Navbar.Collapse className='ps-3 ps-md-0' id='navbar-nav'>
-                    <Nav className='me-auto'>
-                        <Nav.Link href='#' className='active'>
-                            Recipes
-                        </Nav.Link>
-                        <Nav.Link href='#'>Shopping List</Nav.Link>
-                    </Nav>
-
-                    <Nav>
+                    <Nav className='ms-auto'>
                         {isWindowSmall ? (
                             <>
                                 <Nav.Link>Profile</Nav.Link>

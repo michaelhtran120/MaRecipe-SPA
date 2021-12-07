@@ -16,18 +16,14 @@ function App() {
     useEffect(() => {
         if (localStorage.getItem("user")) {
             setIsUserLoggedIn(true);
-            console.log(user);
         } else {
             setIsUserLoggedIn(false);
-            console.log(user);
         }
     }, [user]);
 
     useEffect(() => {
         if (isUserLoggedIn) {
             const localStorageUser = JSON.parse(localStorage.getItem("user") || "{}");
-            // console.log(localStorageUser);
-            // console.log(localStorageUser.user);
             dispatch(actionCreators.logInSuccess(localStorageUser));
         }
     }, [isUserLoggedIn, dispatch]);
@@ -37,7 +33,7 @@ function App() {
             <Routes>
                 <Route path='/' element={<LandingPage />} />
                 <Route
-                    path='dashboard'
+                    path='dashboard/*'
                     element={
                         user.userInfo ? (
                             <DashboardPage />

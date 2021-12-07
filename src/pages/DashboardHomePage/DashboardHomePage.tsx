@@ -5,7 +5,7 @@ import UserFavoriteRecipes from "../../components/UserFavoriteRecipes/UserFavori
 import UserRecipes from "../../components/UserRecipes/UserRecipes";
 import { State } from "../../redux";
 
-const DashboardRecipesPage = () => {
+const DashboardHomePage = () => {
     const { user } = useSelector((state: State) => state);
     return (
         <Container className='pt-3'>
@@ -21,4 +21,4 @@ const DashboardRecipesPage = () => {
     );
 };
 
-export default DashboardRecipesPage;
+export default DashboardHomePage;

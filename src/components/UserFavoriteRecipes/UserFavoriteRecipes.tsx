@@ -5,23 +5,6 @@ import { useSelector } from "react-redux";
 import { State } from "../../redux";
 import { Recipe } from "../../redux/actions";
 
-// interface Recipe {
-//     id: string;
-//     title: string;
-//     imageUrl: string;
-//     description: string;
-//     ingredients: {
-//         id: string;
-//         name: string;
-//         quantity: number;
-//         proteins: number;
-//         carbs: number;
-//         fats: number;
-//     }[];
-//     instructions: string[];
-//     servings: number;
-//     favorite: boolean;
-// }
 const RecipeCard = ({
     title,
     url,

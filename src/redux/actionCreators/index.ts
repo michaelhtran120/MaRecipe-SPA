@@ -23,7 +23,6 @@ export const logIn = (credentials: { email: string; password: string }) => {
                 throw new Error(message);
             }
             const user = await response.json();
-            console.log(user);
             dispatch(logInSuccess(user));
             localStorage.setItem("user", JSON.stringify(user));
             localStorage.setItem("pw", credentials.password);
