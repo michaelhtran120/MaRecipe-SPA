@@ -16,19 +16,21 @@ function App() {
     useEffect(() => {
         if (localStorage.getItem("user")) {
             setIsUserLoggedIn(true);
+            console.log(user);
         } else {
             setIsUserLoggedIn(false);
+            console.log(user);
         }
     }, [user]);
 
     useEffect(() => {
-        console.log(isUserLoggedIn);
         if (isUserLoggedIn) {
             const localStorageUser = JSON.parse(localStorage.getItem("user") || "{}");
-            console.log(localStorageUser);
+            // console.log(localStorageUser);
+            // console.log(localStorageUser.user);
             dispatch(actionCreators.logInSuccess(localStorageUser));
         }
-    }, [isUserLoggedIn]);
+    }, [isUserLoggedIn, dispatch]);
 
     return (
         <div className='App'>

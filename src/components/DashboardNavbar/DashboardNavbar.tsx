@@ -39,6 +39,10 @@ const DashboardNavbar = (): JSX.Element => {
         localStorage.clear();
     };
 
+    useEffect(() => {
+        console.log(user);
+    }, [user]);
+
     return (
         <Navbar sticky='top' bg='light' variant='light' expand='md'>
             <Container fluid>

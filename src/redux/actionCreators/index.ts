@@ -1,6 +1,6 @@
 import { Dispatch } from "redux";
 import { AddRecipeAction } from "../actions/index";
-import { CurrentUser, Recipe } from "../actions";
+import { CurrentUser, Recipe, UserInfo } from "../actions";
 import { ActionType } from "../actionTypes";
 
 //LOGIN ACTION CREATORS
@@ -25,9 +25,8 @@ export const logIn = (credentials: { email: string; password: string }) => {
             const user = await response.json();
             console.log(user);
             dispatch(logInSuccess(user));
-            localStorage.setItem("email", credentials.email);
-            localStorage.setItem("pw", credentials.password);
             localStorage.setItem("user", JSON.stringify(user));
+            localStorage.setItem("pw", credentials.password);
         } catch (error) {
             console.log(error);
             dispatch(logInFail(error));
@@ -61,17 +60,17 @@ export const logOut = () => {
     };
 };
 
-export const postRecipe = (recipeArray: Recipe[], user: CurrentUser, toggleModal: () => void) => {
+export const postRecipe = (recipeArray: Recipe[], user: UserInfo["userInfo"], toggleModal: () => void) => {
     return async (dispatch: any) => {
         try {
-            const response = await fetch(API_URL + `users/${user.id}`, {
+            const response = await fetch(API_URL + `users/${user.user.id}`, {
                 method: "PUT",
                 headers: { "Content-type": "application/json" },
                 body: JSON.stringify({
-                    email: user.email,
+                    email: user.user.email,
                     password: localStorage.getItem("pw"),
-                    firstName: user.firstName,
-                    lastName: user.lastName,
+                    firstName: user.user.firstName,
+                    lastName: user.user.lastName,
                     recipes: recipeArray
                 })
             });
@@ -83,6 +82,8 @@ export const postRecipe = (recipeArray: Recipe[], user: CurrentUser, toggleModal
 
             dispatch(addRecipe(recipeArray));
             alert("Recipe successfully added");
+            user.user.recipes = recipeArray;
+            localStorage.setItem("user", JSON.stringify(user));
             toggleModal();
         } catch (error) {
             alert(error);

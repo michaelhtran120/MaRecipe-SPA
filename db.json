@@ -1,177 +1,225 @@
 {
-    "users": [
+  "users": [
+    {
+      "email": "admin@admin.com",
+      "password": "$2a$10$wfelf/MlJtMFujDAEIG1RO4zibhffoqGwCq/EWB5vbmrUiITZ8MXW",
+      "firstName": "Michael",
+      "lastName": "Tran",
+      "recipes": [
         {
-            "email": "admin@admin.com",
-            "password": "$2a$10$z8YVVBhc1yeeqzGgQ7pfcOFL7uI9/SvHq6wAVj7Qxkd.Gp2bk6i2e",
-            "firstName": "Michael",
-            "lastName": "Tran",
-            "recipes": [
-                {
-                    "id": "cc1",
-                    "title": "chocolate cake",
-                    "imageUrl": "https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1006&q=80",
-                    "description": "Decadent chocolately cake, smile on your face, but bad for your waist.",
-                    "ingredients": [
-                        {
-                            "id": "1absiomd-1",
-                            "name": "flour",
-                            "quantity": 100,
-                            "proteins": 0,
-                            "carbs": 100,
-                            "fats": 2
-                        },
-                        {
-                            "id": "1absiomd-2",
-                            "name": "sugar",
-                            "quantity": 50,
-                            "proteins": 0,
-                            "carbs": 50,
-                            "fats": 0
-                        },
-                        {
-                            "id": "1absiomd-3",
-                            "name": "cocoa powder",
-                            "quantity": 75,
-                            "proteins": 15,
-                            "carbs": 10,
-                            "fats": 5
-                        }
-                    ],
-                    "servings": 5,
-                    "instructions": ["step 1", "step 2", "step 3", "step 4"],
-                    "favorite": false
-                },
-                {
-                    "id": "ra1",
-                    "title": "Ramen",
-                    "imageUrl": "https://images.unsplash.com/photo-1600326145359-3a44909d1a39?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cmFtZW58ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60",
-                    "description": "Nomz - ramen - your average ramen without the 24-36 process.",
-                    "ingredients": [
-                        {
-                            "id": "1absiomd-1",
-                            "name": "egg noodles",
-                            "quantity": 100,
-                            "proteins": 10,
-                            "carbs": 80,
-                            "fats": 5
-                        },
-                        {
-                            "id": "1absiomd-2",
-                            "name": "chicken broth",
-                            "quantity": 200,
-                            "proteins": 5,
-                            "carbs": 10,
-                            "fats": 3
-                        },
-                        {
-                            "id": "1absiomd-3",
-                            "name": "spinach",
-                            "quantity": 100,
-                            "proteins": 5,
-                            "carbs": 10,
-                            "fats": 0
-                        },
-                        {
-                            "id": "1absiomd-4",
-                            "name": "egg",
-                            "quantity": 50,
-                            "proteins": 5,
-                            "carbs": 0,
-                            "fats": 6
-                        }
-                    ],
-                    "servings": 1,
-                    "instructions": ["step 1", "step 2", "step 3", "step 4"],
-                    "favorite": true
-                },
-                {
-                    "id": "fr1",
-                    "title": "Fried Rice",
-                    "imageUrl": "https://images.unsplash.com/photo-1596560548464-f010549b84d7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
-                    "description": "Uncle Roger would approve of this!",
-                    "ingredients": [
-                        {
-                            "id": "fr1-1",
-                            "name": "rice",
-                            "quantity": 200,
-                            "proteins": 15,
-                            "carbs": 140,
-                            "fats": 2
-                        },
-                        {
-                            "id": "fr1-2",
-                            "name": "garlic",
-                            "quantity": 50,
-                            "proteins": 2,
-                            "carbs": 15,
-                            "fats": 3
-                        },
-                        {
-                            "id": "fr1-3",
-                            "name": "green onions",
-                            "quantity": 70,
-                            "proteins": 1,
-                            "carbs": 10,
-                            "fats": 0
-                        },
-                        {
-                            "id": "fr1-4",
-                            "name": "egg",
-                            "quantity": 100,
-                            "proteins": 10,
-                            "carbs": 0,
-                            "fats": 12
-                        }
-                    ],
-                    "servings": 3,
-                    "instructions": ["step 1", "step 2", "step 3", "step 4"],
-                    "favorite": false
-                },
-                {
-                    "id": "ssal1",
-                    "title": "Summer Salad",
-                    "imageUrl": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
-                    "description": "It's just a salad. Added 'Summer' to make it sound fancier and maybe healther?",
-                    "ingredients": [
-                        {
-                            "id": "ssal1-1",
-                            "name": "olives",
-                            "quantity": 50,
-                            "proteins": 2,
-                            "carbs": 15,
-                            "fats": 2
-                        },
-                        {
-                            "id": "ssal1-2",
-                            "name": "red onions",
-                            "quantity": 75,
-                            "proteins": 5,
-                            "carbs": 15,
-                            "fats": 1
-                        },
-                        {
-                            "id": "ssal1-3",
-                            "name": "spinach",
-                            "quantity": 100,
-                            "proteins": 5,
-                            "carbs": 10,
-                            "fats": 0
-                        },
-                        {
-                            "id": "ssal1-4",
-                            "name": "jalapenos",
-                            "quantity": 25,
-                            "proteins": 4,
-                            "carbs": 10,
-                            "fats": 2
-                        }
-                    ],
-                    "servings": 2,
-                    "instructions": ["step 1", "step 2", "step 3", "step 4"],
-                    "favorite": true
-                }
-            ],
-            "id": "1"
+          "id": "cc1",
+          "title": "chocolate cake",
+          "imageUrl": "https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1006&q=80",
+          "description": "Decadent chocolately cake, smile on your face, but bad for your waist.",
+          "ingredients": [
+            {
+              "id": "1absiomd-1",
+              "name": "flour",
+              "quantity": 100,
+              "proteins": 0,
+              "carbs": 100,
+              "fats": 2
+            },
+            {
+              "id": "1absiomd-2",
+              "name": "sugar",
+              "quantity": 50,
+              "proteins": 0,
+              "carbs": 50,
+              "fats": 0
+            },
+            {
+              "id": "1absiomd-3",
+              "name": "cocoa powder",
+              "quantity": 75,
+              "proteins": 15,
+              "carbs": 10,
+              "fats": 5
+            }
+          ],
+          "servings": 5,
+          "instructions": [
+            "step 1",
+            "step 2",
+            "step 3",
+            "step 4"
+          ],
+          "favorite": false
+        },
+        {
+          "id": "ra1",
+          "title": "Ramen",
+          "imageUrl": "https://images.unsplash.com/photo-1600326145359-3a44909d1a39?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cmFtZW58ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60",
+          "description": "Nomz - ramen - your average ramen without the 24-36 process.",
+          "ingredients": [
+            {
+              "id": "1absiomd-1",
+              "name": "egg noodles",
+              "quantity": 100,
+              "proteins": 10,
+              "carbs": 80,
+              "fats": 5
+            },
+            {
+              "id": "1absiomd-2",
+              "name": "chicken broth",
+              "quantity": 200,
+              "proteins": 5,
+              "carbs": 10,
+              "fats": 3
+            },
+            {
+              "id": "1absiomd-3",
+              "name": "spinach",
+              "quantity": 100,
+              "proteins": 5,
+              "carbs": 10,
+              "fats": 0
+            },
+            {
+              "id": "1absiomd-4",
+              "name": "egg",
+              "quantity": 50,
+              "proteins": 5,
+              "carbs": 0,
+              "fats": 6
+            }
+          ],
+          "servings": 1,
+          "instructions": [
+            "step 1",
+            "step 2",
+            "step 3",
+            "step 4"
+          ],
+          "favorite": true
+        },
+        {
+          "id": "fr1",
+          "title": "Fried Rice",
+          "imageUrl": "https://images.unsplash.com/photo-1596560548464-f010549b84d7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
+          "description": "Uncle Roger would approve of this!",
+          "ingredients": [
+            {
+              "id": "fr1-1",
+              "name": "rice",
+              "quantity": 200,
+              "proteins": 15,
+              "carbs": 140,
+              "fats": 2
+            },
+            {
+              "id": "fr1-2",
+              "name": "garlic",
+              "quantity": 50,
+              "proteins": 2,
+              "carbs": 15,
+              "fats": 3
+            },
+            {
+              "id": "fr1-3",
+              "name": "green onions",
+              "quantity": 70,
+              "proteins": 1,
+              "carbs": 10,
+              "fats": 0
+            },
+            {
+              "id": "fr1-4",
+              "name": "egg",
+              "quantity": 100,
+              "proteins": 10,
+              "carbs": 0,
+              "fats": 12
+            }
+          ],
+          "servings": 3,
+          "instructions": [
+            "step 1",
+            "step 2",
+            "step 3",
+            "step 4"
+          ],
+          "favorite": false
+        },
+        {
+          "id": "ssal1",
+          "title": "Summer Salad",
+          "imageUrl": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+          "description": "It's just a salad. Added 'Summer' to make it sound fancier and maybe healther?",
+          "ingredients": [
+            {
+              "id": "ssal1-1",
+              "name": "olives",
+              "quantity": 50,
+              "proteins": 2,
+              "carbs": 15,
+              "fats": 2
+            },
+            {
+              "id": "ssal1-2",
+              "name": "red onions",
+              "quantity": 75,
+              "proteins": 5,
+              "carbs": 15,
+              "fats": 1
+            },
+            {
+              "id": "ssal1-3",
+              "name": "spinach",
+              "quantity": 100,
+              "proteins": 5,
+              "carbs": 10,
+              "fats": 0
+            },
+            {
+              "id": "ssal1-4",
+              "name": "jalapenos",
+              "quantity": 25,
+              "proteins": 4,
+              "carbs": 10,
+              "fats": 2
+            }
+          ],
+          "servings": 2,
+          "instructions": [
+            "step 1",
+            "step 2",
+            "step 3",
+            "step 4"
+          ],
+          "favorite": true
+        },
+        {
+          "id": "2c7bd673-9a2a-4cfe-bb83-e1bf295486dc",
+          "title": "TEST RECIPE",
+          "imageUrl": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8Zm9vZHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
+          "description": "TEST SALAD",
+          "ingredients": [
+            {
+              "id": "513576b6-1f40-4952-b071-9217fb1ed826",
+              "name": "TEST",
+              "quantity": "10",
+              "proteins": "10",
+              "carbs": "10",
+              "fats": "10"
+            }
+          ],
+          "servings": "4",
+          "instructions": [
+            {
+              "id": "62115b15-f9bc-4f95-802e-6a6d7210cc12",
+              "instruction": "TEST"
+            },
+            {
+              "id": "7c27ffc6-2ab6-4098-8cdb-6ed455ed2126",
+              "instruction": "TEST2"
+            }
+          ],
+          "favorite": true
         }
-    ]
+      ],
+      "id": "1"
+    }
+  ]
 }

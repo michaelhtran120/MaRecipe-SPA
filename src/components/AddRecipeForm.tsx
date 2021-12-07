@@ -142,7 +142,7 @@ const AddRecipeForm = ({ toggleAddRecipeModal }: Props) => {
             favorite: favorite
         };
         const newUserRecipeArray = [...user.userInfo.user.recipes, newRecipe];
-        postRecipe(newUserRecipeArray, user.userInfo.user, toggleAddRecipeModal);
+        postRecipe(newUserRecipeArray, user.userInfo, toggleAddRecipeModal);
     };
 
     useEffect(() => {

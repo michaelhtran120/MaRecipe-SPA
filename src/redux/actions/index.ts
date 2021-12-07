@@ -35,3 +35,10 @@ export type UserAction = {
     type: string;
     payload: any;
 };
+
+export interface UserInfo {
+    userInfo: {
+        accessToken: string;
+        user: CurrentUser;
+    };
+}
