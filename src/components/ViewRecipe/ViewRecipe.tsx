@@ -16,6 +16,7 @@ const ViewRecipe = () => {
             <p>{recipeData.description}</p>
             <Image src={recipeData.imageUrl} />
             <p>Summary Per Serving - Cals: Macros:</p>
+            <h2>Recipe Ingredients</h2>
             <ul>
                 {recipeData.ingredients.map((aIngredient: Ingredients) => (
                     <li key={aIngredient.id} className='text-start'>
@@ -23,6 +24,7 @@ const ViewRecipe = () => {
                     </li>
                 ))}
             </ul>
+            <h2>Recipe Instructions</h2>
             <ol>
                 {recipeData.instructions.map((aInstruction: Instructions) => (
                     <li className='text-start' key={aInstruction.id}>

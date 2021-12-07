@@ -4,6 +4,44 @@ import { useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actionCreators } from "../../redux/index";
 
+const sampleRecipe = {
+    id: "2c7bd673-9a2a-4cfe-bb83-e1bf295486dc",
+    name: "SAMPLE RECIPE",
+    imageUrl:
+        "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8Zm9vZHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
+    description: "This is a sample recipe",
+    ingredients: [
+        {
+            id: "ing1",
+            name: "SAMPLE INGREDIENT 1",
+            quantity: "10",
+            proteins: "10",
+            carbs: "10",
+            fats: "10"
+        },
+        {
+            id: "ing2",
+            name: "SAMPLE INGREDIENT 2",
+            quantity: "10",
+            proteins: "10",
+            carbs: "10",
+            fats: "10"
+        }
+    ],
+    servings: "1",
+    instructions: [
+        {
+            id: "62115b15-f9bc-4f95-802e-6a6d7210cc12",
+            instruction: "SAMPLE INSTRUCTION 1"
+        },
+        {
+            id: "7c27ffc6-2ab6-4098-8cdb-6ed455ed2126",
+            instruction: "SAMPLE INSTRUCTION 2"
+        }
+    ],
+    favorite: true
+};
+
 interface Props {
     open: boolean;
     toggleSignUpModal: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -12,7 +50,7 @@ interface Props {
 const SignUpModal = ({ open, toggleSignUpModal }: Props): JSX.Element => {
     const dispatch = useDispatch();
     // Using logInSuccess action creator to update user state with user sign up data.
-    const { logInSuccess } = bindActionCreators(actionCreators, dispatch);
+    const { logInSuccess, logIn } = bindActionCreators(actionCreators, dispatch);
 
     const [signUpCredentials, setSignUpCredentials] = useState({
         id: "",
@@ -38,7 +76,7 @@ const SignUpModal = ({ open, toggleSignUpModal }: Props): JSX.Element => {
                     lastName: signUpCredentials.lastName,
                     email: signUpCredentials.email,
                     password: signUpCredentials.password,
-                    recipes: []
+                    recipes: [sampleRecipe]
                 })
             });
             if (!response.ok) {
@@ -46,7 +84,12 @@ const SignUpModal = ({ open, toggleSignUpModal }: Props): JSX.Element => {
                 throw new Error(message);
             }
             const user = await response.json();
-            logInSuccess(user);
+            console.log(user);
+            const logInCredentials = {
+                email: signUpCredentials.email,
+                password: signUpCredentials.password
+            };
+            logIn(logInCredentials);
             localStorage.setItem("pw", signUpCredentials.password);
         } catch (error) {
             console.log(error);
