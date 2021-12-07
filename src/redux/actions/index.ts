@@ -15,17 +15,17 @@ export interface Recipe {
     description: string;
     ingredients: Ingredients[];
     instructions: Instructions[];
-    servings: number;
+    servings: string;
     favorite: boolean;
 }
 
 export type Ingredients = {
     id: string;
     name: string;
-    quantity: number;
-    proteins: number;
-    carbs: number;
-    fats: number;
+    quantity: string;
+    proteins: string;
+    carbs: string;
+    fats: string;
 };
 
 export type Instructions = {

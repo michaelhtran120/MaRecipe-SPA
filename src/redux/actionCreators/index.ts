@@ -1,5 +1,4 @@
 import { Dispatch } from "redux";
-import { AddRecipeAction } from "../actions/index";
 import { CurrentUser, Recipe, UserInfo } from "../actions";
 import { ActionType } from "../actionTypes";
 

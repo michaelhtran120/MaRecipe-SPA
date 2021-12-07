@@ -50,7 +50,7 @@ interface Props {
 const SignUpModal = ({ open, toggleSignUpModal }: Props): JSX.Element => {
     const dispatch = useDispatch();
     // Using logInSuccess action creator to update user state with user sign up data.
-    const { logInSuccess, logIn } = bindActionCreators(actionCreators, dispatch);
+    const { logIn } = bindActionCreators(actionCreators, dispatch);
 
     const [signUpCredentials, setSignUpCredentials] = useState({
         id: "",

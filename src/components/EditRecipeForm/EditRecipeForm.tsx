@@ -5,51 +5,24 @@ import { v4 as uuidv4 } from "uuid";
 import { actionCreators, State } from "../../redux/index";
 import { bindActionCreators } from "redux";
 import { useSelector, useDispatch } from "react-redux";
-import { Ingredients, Instructions } from "../../redux/actions/index";
-
-// interface Ingredient {
-//     id: string;
-//     name: string;
-//     quantity: string;
-//     proteins: string;
-//     carbs: string;
-//     fats: string;
-// }
-
-// interface Instruction {
-//     id: string;
-//     instruction: string;
-// }
+import { Recipe, Ingredients, Instructions } from "../../redux/actions/index";
 
 type Props = {
-    toggleAddRecipeModal: () => void;
+    toggleEditRecipeModal: () => void;
+    recipe: Recipe;
 };
 
-const AddRecipeForm = ({ toggleAddRecipeModal }: Props) => {
+const EditRecipeForm = ({ toggleEditRecipeModal, recipe }: Props) => {
     const { user } = useSelector((state: State) => state);
     const dispatch = useDispatch();
     const { postRecipe } = bindActionCreators(actionCreators, dispatch);
-    const [recipeName, setRecipeName] = useState<string>("");
-    const [description, setDescription] = useState<string>("");
-    const [imageLink, setImageLink] = useState<string>("");
-    const [ingredientList, setIngredientList] = useState<Ingredients[]>([
-        {
-            id: uuidv4(),
-            name: "",
-            quantity: "",
-            proteins: "",
-            carbs: "",
-            fats: ""
-        }
-    ]);
-    const [instructions, setInstructions] = useState<Instructions[]>([
-        {
-            id: uuidv4(),
-            instruction: ""
-        }
-    ]);
-    const [servings, setServings] = useState<string>("1");
-    const [favorite, setFavorite] = useState<boolean>(false);
+    const [recipeName, setRecipeName] = useState<string>(recipe.name);
+    const [description, setDescription] = useState<string>(recipe.description);
+    const [imageLink, setImageLink] = useState<string>(recipe.imageUrl);
+    const [ingredientList, setIngredientList] = useState<Ingredients[]>(recipe.ingredients);
+    const [instructions, setInstructions] = useState<Instructions[]>(recipe.instructions);
+    const [servings, setServings] = useState<string>(recipe.servings);
+    const [favorite, setFavorite] = useState<boolean>(recipe.favorite);
     const handleAddIngredient = () => {
         setIngredientList([
             ...ingredientList,
@@ -129,6 +102,9 @@ const AddRecipeForm = ({ toggleAddRecipeModal }: Props) => {
                 return;
         }
     };
+    useEffect(() => {
+        console.log(description);
+    }, [description]);
 
     const handleSubmit = (e: SyntheticEvent) => {
         e.preventDefault();
@@ -143,13 +119,8 @@ const AddRecipeForm = ({ toggleAddRecipeModal }: Props) => {
             favorite: favorite
         };
         const newUserRecipeArray = [...user.userInfo.user.recipes, newRecipe];
-        postRecipe(newUserRecipeArray, user.userInfo, toggleAddRecipeModal);
+        postRecipe(newUserRecipeArray, user.userInfo, toggleEditRecipeModal);
     };
-
-    useEffect(() => {
-        console.log(user);
-    }, [user]);
-
     return (
         <div>
             <Form onSubmit={handleSubmit} className='p-5 pt-0'>
@@ -348,10 +319,10 @@ const AddRecipeForm = ({ toggleAddRecipeModal }: Props) => {
                 </FormGroup>
                 <hr />
                 <Button type='submit' color='primary'>
-                    Add Recipe
+                    Save Changes
                 </Button>
             </Form>
         </div>
     );
 };
-export default AddRecipeForm;
+export default EditRecipeForm;
