@@ -51,9 +51,6 @@ const UserRecipes = () => {
                     {userRecipes.map((aRecipe: Recipe) => (
                         <RecipeCard title={aRecipe.name} url={aRecipe.imageUrl} description={aRecipe.description} key={aRecipe.id} data={aRecipe} />
                     ))}
-                    <Card className='recipe-card'>
-                        <Card.Body className='text-center'>See More</Card.Body>
-                    </Card>
                 </Row>
             </Container>
         </div>
