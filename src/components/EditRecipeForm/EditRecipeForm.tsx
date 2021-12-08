@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, useEffect, useState } from "react";
+import React, { SyntheticEvent, useState } from "react";
 import { Button, Col, Form, FormGroup, FormText, Input, Label, Row } from "reactstrap";
 import Image from "react-bootstrap/Image";
 import { v4 as uuidv4 } from "uuid";
@@ -6,6 +6,7 @@ import { actionCreators, State } from "../../redux/index";
 import { bindActionCreators } from "redux";
 import { useSelector, useDispatch } from "react-redux";
 import { Recipe, Ingredients, Instructions } from "../../redux/actions/index";
+import { useNavigate } from "react-router";
 
 type Props = {
     toggleEditRecipeModal: () => void;
@@ -15,6 +16,7 @@ type Props = {
 const EditRecipeForm = ({ toggleEditRecipeModal, recipe }: Props) => {
     const { user } = useSelector((state: State) => state);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const { postRecipe } = bindActionCreators(actionCreators, dispatch);
     const [recipeName, setRecipeName] = useState<string>(recipe.name);
     const [description, setDescription] = useState<string>(recipe.description);
@@ -102,24 +104,33 @@ const EditRecipeForm = ({ toggleEditRecipeModal, recipe }: Props) => {
                 return;
         }
     };
-    useEffect(() => {
-        console.log(description);
-    }, [description]);
 
     const handleSubmit = (e: SyntheticEvent) => {
         e.preventDefault();
-        const newRecipe = {
-            id: uuidv4(),
-            name: recipeName,
-            imageUrl: imageLink,
-            description: description,
-            ingredients: ingredientList,
-            servings: servings,
-            instructions: instructions,
-            favorite: favorite
-        };
-        const newUserRecipeArray = [...user.userInfo.user.recipes, newRecipe];
+        recipe.name = recipeName;
+        recipe.imageUrl = imageLink;
+        recipe.description = description;
+        recipe.ingredients = ingredientList;
+        recipe.instructions = instructions;
+        recipe.servings = servings;
+        recipe.favorite = favorite;
+
+        // const newRecipe = {
+        //     id: recipe.id,
+        //     name: recipeName,
+        //     imageUrl: imageLink,
+        //     description: description,
+        //     ingredients: ingredientList,
+        //     servings: servings,
+        //     instructions: instructions,
+        //     favorite: favorite
+        // };
+
+        let newUserRecipeArray = user.userInfo.user.recipes.filter((aRecipe: Recipe) => aRecipe.id !== recipe.id);
+        newUserRecipeArray = [recipe, ...newUserRecipeArray];
+        console.log(newUserRecipeArray);
         postRecipe(newUserRecipeArray, user.userInfo, toggleEditRecipeModal);
+        navigate(`/dashboard/${recipe.id}`);
     };
     return (
         <div>

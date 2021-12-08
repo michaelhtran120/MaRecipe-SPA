@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Container, Image, Row, Modal } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -9,7 +9,12 @@ import EditRecipeForm from "../EditRecipeForm/EditRecipeForm";
 const ViewRecipe = () => {
     const { recipeId } = useParams();
     const user = useSelector((state: State) => state.user);
-    const recipeData = user.userInfo.user.recipes.filter((aRecipe: Recipe) => aRecipe.id === recipeId)[0];
+    const [recipeData, setRecipeData] = useState<Recipe>(user.userInfo.user.recipes.filter((aRecipe: Recipe) => aRecipe.id === recipeId)[0]);
+
+    // useEffect(() => {
+    //     setRecipeData(user.userInfo.user.recipes.filter((aRecipe: Recipe) => aRecipe.id === recipeId)[0]);
+    //     console.log(recipeData);
+    // }, [user]);
 
     const [isEditRecipeModalOpen, setIsEditRecipeModalOpen] = useState<boolean>(false);
 
@@ -44,6 +49,7 @@ const ViewRecipe = () => {
 
                 <Row></Row>
             </Container>
+
             <Modal show={isEditRecipeModalOpen} fullscreen onHide={toggleEditRecipeModal}>
                 <Modal.Header closeButton>
                     <Modal.Title className='ps-5'>Add New Recipe</Modal.Title>

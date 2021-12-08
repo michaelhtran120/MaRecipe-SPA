@@ -2,15 +2,15 @@
   "users": [
     {
       "email": "admin@admin.com",
-      "password": "$2a$10$kuB2VdMgZqYU99jTXCPB1erDqopdmk2tOOF62TDhgmB.vZrFxP7mG",
+      "password": "$2a$10$CqoRrgM.EoSMI0t9YJC69ONeXOuExAuBc1RKcOH/luDRgxYNFjT/2",
       "firstName": "Michael",
       "lastName": "Tran",
       "recipes": [
         {
-          "id": "2c7bd673-9a2a-4cfe-bb83-e1bf295486dc",
-          "name": "TEST RECIPE",
+          "id": "b139d7a9-3589-4606-9d39-bac226b4b58a",
+          "name": "Update Recipe 2",
           "imageUrl": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8Zm9vZHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
-          "description": "TEST SALAD",
+          "description": "update test",
           "ingredients": [
             {
               "id": "513576b6-1f40-4952-b071-9217fb1ed826",
