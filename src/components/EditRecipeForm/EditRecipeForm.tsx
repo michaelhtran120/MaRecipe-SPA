@@ -314,7 +314,7 @@ const EditRecipeForm = ({ toggleEditRecipeModal, recipe }: Props) => {
                 <FormGroup check>
                     <Label check>
                         Favorite?
-                        <Input type='checkbox' name='favorite' value='favorite' onChange={(event) => handleInputChange(event)} />
+                        <Input type='checkbox' name='favorite' defaultChecked={favorite} onChange={(event) => handleInputChange(event)} />
                     </Label>
                 </FormGroup>
                 <hr />

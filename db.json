@@ -2,38 +2,10 @@
   "users": [
     {
       "email": "admin@admin.com",
-      "password": "$2a$10$CqoRrgM.EoSMI0t9YJC69ONeXOuExAuBc1RKcOH/luDRgxYNFjT/2",
+      "password": "$2a$10$fIRThlRjvlyeSYKlTQcQiOn406dUp5S1qq7rAgXkHHQVZVCzz3TGS",
       "firstName": "Michael",
       "lastName": "Tran",
       "recipes": [
-        {
-          "id": "b139d7a9-3589-4606-9d39-bac226b4b58a",
-          "name": "Update Recipe 2",
-          "imageUrl": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8Zm9vZHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
-          "description": "update test",
-          "ingredients": [
-            {
-              "id": "513576b6-1f40-4952-b071-9217fb1ed826",
-              "name": "TEST",
-              "quantity": "10",
-              "proteins": "10",
-              "carbs": "10",
-              "fats": "10"
-            }
-          ],
-          "servings": "4",
-          "instructions": [
-            {
-              "id": "62115b15-f9bc-4f95-802e-6a6d7210cc12",
-              "instruction": "TEST"
-            },
-            {
-              "id": "7c27ffc6-2ab6-4098-8cdb-6ed455ed2126",
-              "instruction": "TEST2"
-            }
-          ],
-          "favorite": true
-        },
         {
           "id": "e7f13bc5-1d7d-425d-b0f1-8ad75e6926e4",
           "name": "Ramen",
@@ -66,6 +38,34 @@
             {
               "id": "c1dbef67-d837-4484-9b15-d6d8ee035f15",
               "instruction": "Soft boil egg, add egg into cold water and bring up to a boil. Let it sit in boil for 1-2 minutes then take out immediately and put into an ice bath."
+            }
+          ],
+          "favorite": false
+        },
+        {
+          "id": "b139d7a9-3589-4606-9d39-bac226b4b58a",
+          "name": "Update Recipe 2",
+          "imageUrl": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8Zm9vZHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
+          "description": "update test",
+          "ingredients": [
+            {
+              "id": "513576b6-1f40-4952-b071-9217fb1ed826",
+              "name": "TEST",
+              "quantity": "10",
+              "proteins": "10",
+              "carbs": "10",
+              "fats": "10"
+            }
+          ],
+          "servings": "4",
+          "instructions": [
+            {
+              "id": "62115b15-f9bc-4f95-802e-6a6d7210cc12",
+              "instruction": "TEST"
+            },
+            {
+              "id": "7c27ffc6-2ab6-4098-8cdb-6ed455ed2126",
+              "instruction": "TEST2"
             }
           ],
           "favorite": true

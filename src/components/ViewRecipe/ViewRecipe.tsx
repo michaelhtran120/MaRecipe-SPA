@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Button, Container, Image, Row, Modal, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { State } from "../../redux";
 import { Recipe, Ingredients, Instructions } from "../../redux/actions";
 import EditRecipeForm from "../EditRecipeForm/EditRecipeForm";
@@ -9,6 +10,7 @@ import EditRecipeForm from "../EditRecipeForm/EditRecipeForm";
 const ViewRecipe = () => {
     const { recipeId } = useParams();
     const user = useSelector((state: State) => state.user);
+    const navigate = useNavigate();
     const [recipeData, setRecipeData] = useState<Recipe>(user.userInfo.user.recipes.filter((aRecipe: Recipe) => aRecipe.id === recipeId)[0]);
 
     // useEffect(() => {
@@ -24,8 +26,9 @@ const ViewRecipe = () => {
 
     return (
         <>
-            <Container className='p-3 p-md-5 recipe-view'>
-                <h1>{recipeData.name}</h1>
+            <Container className='p-3 p-md-5 pt-md-2 recipe-view'>
+                <a onClick={() => navigate("/dashboard")}>&larr; Dashboard</a>
+                <h1 className='mt-4'>{recipeData.name}</h1>
                 <p>{recipeData.description}</p>
                 <Row className='justify-content-end '>
                     <Col md={6}>
@@ -60,7 +63,7 @@ const ViewRecipe = () => {
                 </ol>
                 <Button onClick={toggleEditRecipeModal}>Edit Recipe</Button>
 
-                <Row></Row>
+                {/* <Button style={{ position: "absolute", top: 90, left: 125 }}>Return to Dashboard</Button> */}
             </Container>
 
             <Modal show={isEditRecipeModalOpen} fullscreen onHide={toggleEditRecipeModal}>
