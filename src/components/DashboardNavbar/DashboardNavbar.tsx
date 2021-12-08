@@ -52,7 +52,7 @@ const DashboardNavbar = (): JSX.Element => {
                     <Nav className='ms-auto'>
                         {isWindowSmall ? (
                             <>
-                                <Nav.Link>Profile</Nav.Link>
+                                {/* <Nav.Link>Profile</Nav.Link> */}
                                 <Nav.Link onClick={handleLogOut}>Log Out</Nav.Link>
                             </>
                         ) : (
@@ -65,8 +65,8 @@ const DashboardNavbar = (): JSX.Element => {
                                 }
                                 id='dashboard-nav-dropdown'
                             >
-                                <NavDropdown.Item href='#action/3.1'>Profile</NavDropdown.Item>
-                                <NavDropdown.Divider />
+                                {/* <NavDropdown.Item href='#action/3.1'>Profile</NavDropdown.Item> */}
+                                {/* <NavDropdown.Divider /> */}
                                 <NavDropdown.Item onClick={handleLogOut}>Log Out</NavDropdown.Item>
                             </NavDropdown>
                         )}

@@ -115,17 +115,6 @@ const EditRecipeForm = ({ toggleEditRecipeModal, recipe }: Props) => {
         recipe.servings = servings;
         recipe.favorite = favorite;
 
-        // const newRecipe = {
-        //     id: recipe.id,
-        //     name: recipeName,
-        //     imageUrl: imageLink,
-        //     description: description,
-        //     ingredients: ingredientList,
-        //     servings: servings,
-        //     instructions: instructions,
-        //     favorite: favorite
-        // };
-
         let newUserRecipeArray = user.userInfo.user.recipes.filter((aRecipe: Recipe) => aRecipe.id !== recipe.id);
         newUserRecipeArray = [recipe, ...newUserRecipeArray];
         console.log(newUserRecipeArray);

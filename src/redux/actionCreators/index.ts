@@ -79,7 +79,7 @@ export const postRecipe = (recipeArray: Recipe[], user: UserInfo["userInfo"], to
             }
 
             dispatch(addRecipe(recipeArray));
-            alert("Recipe successfully added");
+            alert("Your recipes have been updated/posted!");
             user.user.recipes = recipeArray;
             localStorage.setItem("user", JSON.stringify(user));
             toggleModal();

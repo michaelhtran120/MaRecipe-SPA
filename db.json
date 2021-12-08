@@ -127,15 +127,15 @@
     },
     {
       "email": "admin2@admin.com",
-      "password": "$2a$10$vGoP0EKtekFN2cJxz75x/O78WpLYTCv6czEGNMiLA0EWmdjB0iUiC",
+      "password": "$2a$10$V987p/BDywMRMdP216WEwOLhqPK.scXte8yTor2fvVaPqFfVwiHR6",
       "firstName": "admin",
       "lastName": "test2",
       "recipes": [
         {
           "id": "2c7bd673-9a2a-4cfe-bb83-e1bf295486dc",
-          "name": "SAMPLE RECIPE",
+          "name": "SAMPLE RECIPE Update Test",
           "imageUrl": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8Zm9vZHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
-          "description": "This is a sample recipe",
+          "description": "This is a sample recipe TESTE",
           "ingredients": [
             {
               "id": "ing1",
