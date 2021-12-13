@@ -7,16 +7,22 @@ html {
   font-family: "Noto Sans", sans-serif;
 }
 
-.dashboard-btn {
-  display: inline-block;
-  padding: 6px 10px 6px 0;
-  cursor: pointer;
+.btn {
+  -webkit-box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1) !important;
+          box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1) !important;
 }
 
-.dashboard-btn:hover {
-  color: #79b473;
-  -webkit-transform: translateX(10%);
-          transform: translateX(10%);
-  -webkit-transition: all 450ms ease-in-out;
-  transition: all 450ms ease-in-out;
+.btn-primary {
+  background-color: #79b473 !important;
+  border: none !important;
+}
+
+.btn-outline-primary {
+  color: #79b473 !important;
+  border-color: #79b473 !important;
+}
+
+.btn-outline-primary:hover {
+  color: white !important;
+  background-color: #79b473 !important;
 }
