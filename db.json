@@ -2,10 +2,46 @@
   "users": [
     {
       "email": "admin@admin.com",
-      "password": "$2a$10$fIRThlRjvlyeSYKlTQcQiOn406dUp5S1qq7rAgXkHHQVZVCzz3TGS",
+      "password": "$2a$10$dt/aHO2sU8ORF0yo25M2QeGKK.qPpRCTTRSG5N996V5Y10oz.2ioe",
       "firstName": "Michael",
       "lastName": "Tran",
       "recipes": [
+        {
+          "id": "b139d7a9-3589-4606-9d39-bac226b4b58a",
+          "name": "Update Recipe",
+          "imageUrl": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8Zm9vZHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
+          "description": "update test",
+          "ingredients": [
+            {
+              "id": "513576b6-1f40-4952-b071-9217fb1ed826",
+              "name": "Ingredient 1",
+              "quantity": "10",
+              "proteins": "10",
+              "carbs": "20",
+              "fats": "30"
+            },
+            {
+              "id": "c3cabafb-469b-4cb9-b4a7-dd0b91214848",
+              "name": "Ingredient 2",
+              "quantity": "10",
+              "proteins": "1",
+              "carbs": "2",
+              "fats": "3"
+            }
+          ],
+          "servings": "4",
+          "instructions": [
+            {
+              "id": "62115b15-f9bc-4f95-802e-6a6d7210cc12",
+              "instruction": "TEST"
+            },
+            {
+              "id": "7c27ffc6-2ab6-4098-8cdb-6ed455ed2126",
+              "instruction": "TEST2"
+            }
+          ],
+          "favorite": true
+        },
         {
           "id": "e7f13bc5-1d7d-425d-b0f1-8ad75e6926e4",
           "name": "Ramen",
@@ -41,34 +77,6 @@
             }
           ],
           "favorite": false
-        },
-        {
-          "id": "b139d7a9-3589-4606-9d39-bac226b4b58a",
-          "name": "Update Recipe 2",
-          "imageUrl": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8Zm9vZHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
-          "description": "update test",
-          "ingredients": [
-            {
-              "id": "513576b6-1f40-4952-b071-9217fb1ed826",
-              "name": "TEST",
-              "quantity": "10",
-              "proteins": "10",
-              "carbs": "10",
-              "fats": "10"
-            }
-          ],
-          "servings": "4",
-          "instructions": [
-            {
-              "id": "62115b15-f9bc-4f95-802e-6a6d7210cc12",
-              "instruction": "TEST"
-            },
-            {
-              "id": "7c27ffc6-2ab6-4098-8cdb-6ed455ed2126",
-              "instruction": "TEST2"
-            }
-          ],
-          "favorite": true
         },
         {
           "id": "169d6e79-64aa-40da-bc34-5326122cfcf9",

@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { State } from "../../redux";
 import { Recipe, Ingredients, Instructions } from "../../redux/actions";
 import EditRecipeForm from "../EditRecipeForm/EditRecipeForm";
+import macroCalc from "../../helper/macroCalc";
+import calorieCalc from "../../helper/calorieCalc";
 
 const ViewRecipe = () => {
     const { recipeId } = useParams();
@@ -13,23 +15,24 @@ const ViewRecipe = () => {
     const navigate = useNavigate();
     const [recipeData, setRecipeData] = useState<Recipe>(user.userInfo.user.recipes.filter((aRecipe: Recipe) => aRecipe.id === recipeId)[0]);
 
-    // useEffect(() => {
-    //     setRecipeData(user.userInfo.user.recipes.filter((aRecipe: Recipe) => aRecipe.id === recipeId)[0]);
-    //     console.log(recipeData);
-    // }, [user]);
-
     const [isEditRecipeModalOpen, setIsEditRecipeModalOpen] = useState<boolean>(false);
 
     const toggleEditRecipeModal = () => {
         setIsEditRecipeModalOpen(!isEditRecipeModalOpen);
     };
 
+    const carbsFromIngredients = recipeData.ingredients.map((ingredient) => ingredient.carbs);
+    const proteinsFromIngredients = recipeData.ingredients.map((ingredient) => ingredient.proteins);
+    const fatsFromIngredients = recipeData.ingredients.map((ingredient) => ingredient.fats);
+    const recipeMacros = macroCalc(carbsFromIngredients, proteinsFromIngredients, fatsFromIngredients);
+
     return (
         <>
             <Container className='p-3 p-md-5 pt-md-2 recipe-view'>
-                <a onClick={() => navigate("/dashboard")}>&larr; Dashboard</a>
+                <Button onClick={() => navigate("/dashboard")}>&larr; Dashboard</Button>
                 <h1 className='mt-4'>{recipeData.name}</h1>
                 <p>{recipeData.description}</p>
+                <hr />
                 <Row className='justify-content-end '>
                     <Col md={6}>
                         <Image style={{ width: "100%" }} src={recipeData.imageUrl} />
@@ -37,8 +40,16 @@ const ViewRecipe = () => {
                             Recipe makes {recipeData.servings} {parseInt(recipeData.servings) > 1 ? "servings" : "serving"}.
                         </p>
                         <p className='mt-4 mb-0 lead'>Per Serving</p>
-                        <p className='m-0'>Cals:</p>
-                        <p>Macros:</p>
+                        <p className='m-0'>
+                            Calories:{" "}
+                            {calorieCalc(recipeMacros.totalCarbs, recipeMacros.totalProteins, recipeMacros.totalFats) /
+                                parseFloat(recipeData.servings)}
+                        </p>
+                        <span>Carbohydrates: {recipeMacros.totalCarbs / parseFloat(recipeData.servings)} grams</span>
+                        <br />
+                        <span>Proteins: {recipeMacros.totalProteins / parseFloat(recipeData.servings)} grams</span>
+                        <br />
+                        <span>Fats: {recipeMacros.totalFats / parseFloat(recipeData.servings)} grams</span>
                     </Col>
                     <hr className='d-md-none' />
                     <Col md={6}>
@@ -79,3 +90,8 @@ const ViewRecipe = () => {
 };
 
 export default ViewRecipe;
+
+// useEffect(() => {
+//     setRecipeData(user.userInfo.user.recipes.filter((aRecipe: Recipe) => aRecipe.id === recipeId)[0]);
+//     console.log(recipeData);
+// }, [user]);
