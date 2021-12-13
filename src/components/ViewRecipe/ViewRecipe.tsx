@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./ViewRecipe.css";
 import { Button, Container, Image, Row, Modal, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -32,7 +33,9 @@ const ViewRecipe = () => {
     return (
         <>
             <Container className='p-3 p-md-5 pt-md-2 recipe-view'>
-                <Button onClick={() => navigate("/dashboard")}>&larr; Dashboard</Button>
+                <span className='dashboard-btn' onClick={() => navigate("/dashboard")}>
+                    &larr; Dashboard
+                </span>
                 <h1 className='mt-4'>{recipeData.name}</h1>
                 <p>{recipeData.description}</p>
                 <hr />

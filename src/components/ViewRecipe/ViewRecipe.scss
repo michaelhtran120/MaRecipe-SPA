@@ -1,0 +1,19 @@
+$primary: #79b473;
+
+.btn {
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1) !important;
+}
+
+.btn-primary {
+    background-color: $primary !important;
+    border: none !important;
+}
+
+.btn-outline-primary {
+    color: $primary !important;
+    border-color: $primary !important;
+    &:hover {
+        color: white !important;
+        background-color: $primary !important;
+    }
+}
