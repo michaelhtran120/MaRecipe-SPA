@@ -21,9 +21,12 @@ const ViewRecipe = () => {
         setIsEditRecipeModalOpen(!isEditRecipeModalOpen);
     };
 
+    // Return carbs, proteins, fats from each ingredient in the recipe.
     const carbsFromIngredients = recipeData.ingredients.map((ingredient) => ingredient.carbs);
     const proteinsFromIngredients = recipeData.ingredients.map((ingredient) => ingredient.proteins);
     const fatsFromIngredients = recipeData.ingredients.map((ingredient) => ingredient.fats);
+
+    // macroCalc returns an object of carbs, proteins and fats key values
     const recipeMacros = macroCalc(carbsFromIngredients, proteinsFromIngredients, fatsFromIngredients);
 
     return (

@@ -10,14 +10,7 @@ const LandingFeaturesSection: React.FC = (): JSX.Element => {
                     <Col className='text-center'>
                         <h2>All your recipes in one place</h2>
                         <p className='lead'>Tired of having to remember recipes?</p>
-                        <p className='lead'>With MaRecipe, keep all your facorite recipes in one place</p>
-                    </Col>
-                </Row>
-                <Row className='p-5 d-flex justify-content-center'>
-                    <Col className='text-center'>
-                        <h2>Discover and learn new flavors</h2>
-                        <p className='lead'>Explore our database of recipes.</p>
-                        <p className='lead'>Find others that have a similar palette</p>
+                        <p className='lead'>With MaRecipe, keep all your favorite recipes in one place</p>
                     </Col>
                 </Row>
             </Container>
