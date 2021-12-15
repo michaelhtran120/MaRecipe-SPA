@@ -6,7 +6,7 @@ import { Routes, Route } from "react-router-dom";
 import AddRecipeForm from "../../components/AddRecipeForm/AddRecipeForm";
 import DashboardNavbar from "../../components/DashboardNavbar/DashboardNavbar";
 import DashboardHomePage from "../DashboardHomePage/DashboardHomePage";
-import ViewRecipe from "../ViewRecipePage/ViewRecipe";
+import RecipePage from "../ViewRecipePage/RecipePage";
 
 const DashboardPage = () => {
     const [isAddRecipeModalOpen, setIsAddRecipeModalOpen] = useState<boolean>(false);
@@ -38,7 +38,7 @@ const DashboardPage = () => {
                         </>
                     }
                 />
-                <Route path='/:recipeId' element={<ViewRecipe />} />
+                <Route path='/:recipeId' element={<RecipePage />} />
             </Routes>
         </div>
     );

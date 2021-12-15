@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./ViewRecipe.css";
+import "./RecipePage.css";
 import { Button, Container, Image, Row, Modal, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -11,23 +11,12 @@ import EditRecipeForm from "../../components/EditRecipeForm/EditRecipeForm";
 import macroCalc from "../../helper/macroCalc";
 import calorieCalc from "../../helper/calorieCalc";
 
-const ViewRecipe = () => {
-    const { recipeId } = useParams();
-    const user = useSelector((state: State) => state.user);
-    const [recipeData, setRecipeData] = useState<Recipe>(user.userInfo.user.recipes.filter((aRecipe: Recipe) => aRecipe.id === recipeId)[0]);
-
-    return <>{recipeData ? <DisplayRecipe recipeData={recipeData} /> : <h1>No Recipe</h1>}</>;
-};
-
-export default ViewRecipe;
-
 const DisplayRecipe = ({ recipeData }: { recipeData: Recipe }) => {
     const { recipeId } = useParams();
     const user = useSelector((state: State) => state.user);
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { deleteRecipe } = bindActionCreators(actionCreators, dispatch);
-
     const [isEditRecipeModalOpen, setIsEditRecipeModalOpen] = useState<boolean>(false);
 
     const toggleEditRecipeModal = () => {
@@ -42,15 +31,15 @@ const DisplayRecipe = ({ recipeData }: { recipeData: Recipe }) => {
     // macroCalc returns an object of carbs, proteins and fats key values
     const recipeMacros = macroCalc(carbsFromIngredients, proteinsFromIngredients, fatsFromIngredients);
 
-    const handleDelete = (id: string): void => {
+    const handleDelete = (): void => {
         const filterRecipes = user.userInfo.user.recipes.filter((aRecipe: Recipe) => aRecipe.id !== recipeId);
         deleteRecipe(filterRecipes, user.userInfo, navigate("/dashboard"));
     };
     return (
         <>
             <Container className='p-3 p-md-5 pt-md-2 recipe-view'>
-                <span className='dashboard-btn' onClick={() => navigate("/dashboard")}>
-                    &larr; Dashboard
+                <span className='dashboard-btn mt-3' onClick={() => navigate("/dashboard")}>
+                    &larr; Back To Dashboard
                 </span>
                 <h1 className='mt-4'>{recipeData.name}</h1>
                 <p>{recipeData.description}</p>
@@ -94,12 +83,12 @@ const DisplayRecipe = ({ recipeData }: { recipeData: Recipe }) => {
                         </li>
                     ))}
                 </ol>
-                <Row>
+                <Row className='justify-content-between'>
                     <Col>
                         <Button onClick={toggleEditRecipeModal}>Edit Recipe</Button>
                     </Col>
                     <Col>
-                        <Button onClick={() => handleDelete(recipeData.id)} className='delete-btn'>
+                        <Button variant='secondary' onClick={() => handleDelete()} className='delete-btn'>
                             Delete Recipe
                         </Button>
                     </Col>
@@ -117,3 +106,16 @@ const DisplayRecipe = ({ recipeData }: { recipeData: Recipe }) => {
         </>
     );
 };
+
+
+const RecipePage = () => {
+    const { recipeId } = useParams();
+    const user = useSelector((state: State) => state.user);
+    const [recipeData, setRecipeData] = useState<Recipe>(user.userInfo.user.recipes.filter((aRecipe: Recipe) => aRecipe.id === recipeId)[0]);
+
+    return <>{recipeData ? <DisplayRecipe recipeData={recipeData} /> : <h1>No Recipe</h1>}</>;
+};
+
+export default RecipePage;
+
+

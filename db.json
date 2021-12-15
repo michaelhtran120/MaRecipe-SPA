@@ -135,7 +135,7 @@
     },
     {
       "email": "admin2@admin.com",
-      "password": "$2a$10$V987p/BDywMRMdP216WEwOLhqPK.scXte8yTor2fvVaPqFfVwiHR6",
+      "password": "$2a$10$WLMLoapr1i9TMQ1dW5tE2uDzgpZ03skuFPYeNcMMtsDtYvV4gyAgi",
       "firstName": "admin",
       "lastName": "test2",
       "recipes": [

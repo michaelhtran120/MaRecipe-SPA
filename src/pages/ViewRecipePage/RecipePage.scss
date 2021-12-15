@@ -1,0 +1,32 @@
+$primary: #79b473;
+
+.dashboard-btn {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.dashboard-btn:hover {
+    color: $primary;
+
+    transform: translateX(10%);
+    transition: all 450ms ease-in-out;
+}
+
+.btn-primary {
+    &:hover {
+        color: $primary;
+        background-color: white !important;
+        border: 1px solid $primary !important;
+    }
+}
+
+.btn-secondary {
+    color: white;
+    background-color: red;
+    border: none;
+    &:hover {
+        background-color: white;
+        color: red;
+        border: 1px solid red;
+    }
+}
