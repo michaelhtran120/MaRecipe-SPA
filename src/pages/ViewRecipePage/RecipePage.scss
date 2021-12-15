@@ -12,7 +12,7 @@ $primary: #79b473;
     transition: all 450ms ease-in-out;
 }
 
-.btn-primary {
+.edit-btn {
     &:hover {
         color: $primary;
         background-color: white !important;
@@ -20,13 +20,10 @@ $primary: #79b473;
     }
 }
 
-.btn-secondary {
-    color: white;
-    background-color: red;
-    border: none;
+.btn-danger {
     &:hover {
         background-color: white;
-        color: red;
-        border: 1px solid red;
+        color: #dc3545;
+        border: 1px solid #dc3545;
     }
 }

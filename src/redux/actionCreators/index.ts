@@ -9,7 +9,7 @@ export const logIn = (credentials: { email: string; password: string }) => {
     return async (dispatch: Dispatch) => {
         dispatch(logInRequest());
         try {
-            const response = await fetch(API_URL + "login", {
+            const response =  await fetch(API_URL + "login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({

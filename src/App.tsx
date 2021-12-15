@@ -5,7 +5,6 @@ import DashboardPage from "./pages/DashboardPage/DashboardPage";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import { useSelector, useDispatch } from "react-redux";
 import { actionCreators } from "./redux";
-
 import { State } from "./redux";
 
 function App() {
@@ -13,6 +12,7 @@ function App() {
     const dispatch = useDispatch();
     const [isUserLoggedIn, setIsUserLoggedIn] = useState<boolean | null>(!(localStorage.getItem("user") === null));
 
+    // If user refreshes page, check if there is user data in local
     useEffect(() => {
         if (localStorage.getItem("user")) {
             setIsUserLoggedIn(true);
@@ -23,6 +23,7 @@ function App() {
 
     useEffect(() => {
         if (isUserLoggedIn) {
+            // Argument of type 'string | null' is not assignable to parameter of type 'string'. 
             const localStorageUser = JSON.parse(localStorage.getItem("user") || "{}");
             dispatch(actionCreators.logInSuccess(localStorageUser));
         }

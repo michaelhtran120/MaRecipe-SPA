@@ -62,7 +62,7 @@ const DisplayRecipe = ({ recipeData }: { recipeData: Recipe }) => {
                         <br />
                         <span>Fats: {recipeMacros.totalFats / parseFloat(recipeData.servings)} grams</span>
                     </Col>
-                    <hr className='d-md-none' />
+                    <hr className='d-md-none my-3' />
                     <Col md={6}>
                         <h2>Recipe Ingredients</h2>
                         <ul>
@@ -73,6 +73,7 @@ const DisplayRecipe = ({ recipeData }: { recipeData: Recipe }) => {
                             ))}
                         </ul>
                     </Col>
+                    <hr className='d-md-none' />
                 </Row>
                 <hr className='d-none d-md-block' />
                 <h2>Recipe Instructions</h2>
@@ -83,12 +84,15 @@ const DisplayRecipe = ({ recipeData }: { recipeData: Recipe }) => {
                         </li>
                     ))}
                 </ol>
+                <hr />
                 <Row className='justify-content-between'>
-                    <Col>
-                        <Button onClick={toggleEditRecipeModal}>Edit Recipe</Button>
+                    <Col xs={4}>
+                        <Button className='edit-btn' onClick={toggleEditRecipeModal}>
+                            Edit Recipe
+                        </Button>
                     </Col>
-                    <Col>
-                        <Button variant='secondary' onClick={() => handleDelete()} className='delete-btn'>
+                    <Col xs={4}>
+                        <Button variant='danger' onClick={() => handleDelete()} className='delete-btn'>
                             Delete Recipe
                         </Button>
                     </Col>
@@ -107,15 +111,14 @@ const DisplayRecipe = ({ recipeData }: { recipeData: Recipe }) => {
     );
 };
 
-
 const RecipePage = () => {
     const { recipeId } = useParams();
     const user = useSelector((state: State) => state.user);
-    const [recipeData, setRecipeData] = useState<Recipe>(user.userInfo.user.recipes.filter((aRecipe: Recipe) => aRecipe.id === recipeId)[0]);
+    // const [recipeData, setRecipeData] = useState<Recipe>(user.userInfo.user.recipes.filter((aRecipe: Recipe) => aRecipe.id === recipeId)[0]);
+
+    const recipeData = user.userInfo.user.recipes.filter((aRecipe: Recipe) => aRecipe.id === recipeId)[0]
 
     return <>{recipeData ? <DisplayRecipe recipeData={recipeData} /> : <h1>No Recipe</h1>}</>;
 };
 
 export default RecipePage;
-
-
