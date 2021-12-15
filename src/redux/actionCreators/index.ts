@@ -72,13 +72,12 @@ export const postRecipe = (recipeArray: Recipe[], user: UserInfo["userInfo"], to
                     recipes: recipeArray
                 })
             });
-            console.log(response);
             if (!response.ok) {
                 const message = `An error has occured: ${response.status}`;
                 throw new Error(message);
             }
 
-            dispatch(addRecipe(recipeArray));
+            dispatch(updateRecipes(recipeArray));
             alert("Your recipes have been updated/posted!");
             user.user.recipes = recipeArray;
             localStorage.setItem("user", JSON.stringify(user));
@@ -90,11 +89,46 @@ export const postRecipe = (recipeArray: Recipe[], user: UserInfo["userInfo"], to
     };
 };
 
-export const addRecipe = (recipeArray: Recipe[]) => {
+export const deleteRecipe = (recipeArray: Recipe[], user: UserInfo["userInfo"], navigate: void) => {
+    return async (dispatch: any) => {
+        try {
+            const response = await fetch(API_URL + `users/${user.user.id}`, {
+                method: "PUT",
+                headers: { "Content-type": "application/json" },
+                body: JSON.stringify({
+                    email: user.user.email,
+                    password: localStorage.getItem("pw"),
+                    firstName: user.user.firstName,
+                    lastName: user.user.lastName,
+                    recipes: recipeArray
+                })
+            });
+            if (!response.ok) {
+                const message = `An error has occured: ${response.status}`;
+                throw new Error(message);
+            }
+
+            dispatch(updateRecipes(recipeArray)).then(() => {
+                alert("Recipe deleted successfully!");
+                user.user.recipes = recipeArray;
+                localStorage.setItem("user", JSON.stringify(user));
+            });
+        } catch (error) {
+            alert("Network call failed, request unsuccessful");
+            console.log(error);
+        }
+    };
+};
+
+const updateRecipes = (recipeArray: Recipe[]) => {
     return (dispatch: Dispatch) => {
-        dispatch({
-            type: ActionType.ADD_RECIPE,
-            payload: recipeArray
+        return new Promise<void>((resolve, reject) => {
+            dispatch({
+                type: ActionType.ADD_RECIPE,
+                payload: recipeArray
+            });
+
+            resolve();
         });
     };
 };

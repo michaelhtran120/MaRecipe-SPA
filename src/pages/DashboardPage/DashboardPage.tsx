@@ -6,7 +6,7 @@ import { Routes, Route } from "react-router-dom";
 import AddRecipeForm from "../../components/AddRecipeForm/AddRecipeForm";
 import DashboardNavbar from "../../components/DashboardNavbar/DashboardNavbar";
 import DashboardHomePage from "../DashboardHomePage/DashboardHomePage";
-import ViewRecipe from "../../components/ViewRecipe/ViewRecipe";
+import ViewRecipe from "../ViewRecipePage/ViewRecipe";
 
 const DashboardPage = () => {
     const [isAddRecipeModalOpen, setIsAddRecipeModalOpen] = useState<boolean>(false);

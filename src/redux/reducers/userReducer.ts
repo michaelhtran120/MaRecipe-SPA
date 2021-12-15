@@ -50,6 +50,17 @@ const userReducer = (
                     }
                 }
             };
+        case ActionType.DELETE_RECIPE:
+            return {
+                ...state,
+                userInfo: {
+                    ...state.userInfo,
+                    user: {
+                        ...state.userInfo.user,
+                        recipes: action.payload
+                    }
+                }
+            };
         default:
             return state;
     }

@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, useEffect, useState } from "react";
+import React, { SyntheticEvent, useState } from "react";
 import { Button, Col, Form, FormGroup, FormText, Input, Label, Row } from "reactstrap";
 import Image from "react-bootstrap/Image";
 import { v4 as uuidv4 } from "uuid";
@@ -6,20 +6,6 @@ import { actionCreators, State } from "../../redux/index";
 import { bindActionCreators } from "redux";
 import { useSelector, useDispatch } from "react-redux";
 import { Ingredients, Instructions } from "../../redux/actions/index";
-
-// interface Ingredient {
-//     id: string;
-//     name: string;
-//     quantity: string;
-//     proteins: string;
-//     carbs: string;
-//     fats: string;
-// }
-
-// interface Instruction {
-//     id: string;
-//     instruction: string;
-// }
 
 type Props = {
     toggleAddRecipeModal: () => void;
@@ -145,10 +131,6 @@ const AddRecipeForm = ({ toggleAddRecipeModal }: Props) => {
         const newUserRecipeArray = [...user.userInfo.user.recipes, newRecipe];
         postRecipe(newUserRecipeArray, user.userInfo, toggleAddRecipeModal);
     };
-
-    useEffect(() => {
-        console.log(user);
-    }, [user]);
 
     return (
         <div>
