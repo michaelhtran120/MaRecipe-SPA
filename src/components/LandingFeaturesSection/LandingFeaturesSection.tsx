@@ -13,6 +13,12 @@ const LandingFeaturesSection: React.FC = (): JSX.Element => {
                         <p className='lead'>With MaRecipe, keep all your favorite recipes in one place</p>
                     </Col>
                 </Row>
+                <Row className='p-5 d-flex justify-content-center'>
+                    <Col className='text-center'>
+                        <h2>Easily track your macros</h2>
+                        <p className='lead'>MaRecipe does the macro calculations for you.</p>
+                    </Col>
+                </Row>
             </Container>
         </div>
     );

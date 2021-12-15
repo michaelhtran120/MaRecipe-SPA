@@ -8,6 +8,7 @@ import { Recipe } from "../../redux/actions/index";
 
 const DashboardHomePage = () => {
     const { user } = useSelector((state: State) => state);
+    // Check if user has any recipes that are favorites and conditionally render the recipes or a statement showing that there are no favorites.
     const favoriteRecipe = user.userInfo.user.recipes.filter((aRecipe: Recipe) => aRecipe.favorite);
     return (
         <Container className='pt-3'>
