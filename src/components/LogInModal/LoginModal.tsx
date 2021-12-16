@@ -1,18 +1,19 @@
 import React, { SyntheticEvent, useState, useRef, useEffect } from "react";
+import "./LoginModal.module.css";
 import { Button, Modal, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actionCreators, State } from "../../redux/index";
 import { useNavigate } from "react-router-dom";
 
-interface Credentials {
+type Credentials = {
     userCredentials: {
         email: string;
         password: string;
     };
 }
 
-interface Props {
+type Props = {
     open: boolean;
     toggleLoginModal: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
@@ -75,9 +76,6 @@ const LoginModal = ({ open, toggleLoginModal }: Props): JSX.Element => {
                                 onChange={handleLogInInput}
                                 required
                             />
-                        </Form.Group>
-                        <Form.Group className='mb-3' controlId='formCheckbox'>
-                            <Form.Check type='checkbox' label='Remember Me' />
                         </Form.Group>
                     </Modal.Body>
                     <Modal.Footer>

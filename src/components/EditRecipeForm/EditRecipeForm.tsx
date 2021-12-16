@@ -1,5 +1,5 @@
 import React, { SyntheticEvent, useState } from "react";
-import "./EditRecipeForm.css";
+import "./EditRecipeForm.module.css";
 import infoIcon from "../../assets/images/info-circle.svg";
 import { Button, Col, Form, FormGroup, FormText, Input, Label, Row } from "reactstrap";
 import { Image, OverlayTrigger, Tooltip } from "react-bootstrap";
@@ -16,10 +16,17 @@ type Props = {
 };
 
 const EditRecipeForm = ({ toggleEditRecipeModal, recipe }: Props) => {
+    // Grab state from redux store
     const { user } = useSelector((state: State) => state);
+
+    // Combine dispatch and action creators to have redux methods look like functions.
     const dispatch = useDispatch();
-    const navigate = useNavigate();
     const { postRecipe } = bindActionCreators(actionCreators, dispatch);
+
+    // React Router to navigate to a different page.
+    const navigate = useNavigate();
+
+    // Local state management
     const [recipeName, setRecipeName] = useState<string>(recipe.name);
     const [description, setDescription] = useState<string>(recipe.description);
     const [imageLink, setImageLink] = useState<string>(recipe.imageUrl);
@@ -27,6 +34,8 @@ const EditRecipeForm = ({ toggleEditRecipeModal, recipe }: Props) => {
     const [instructions, setInstructions] = useState<Instructions[]>(recipe.instructions);
     const [servings, setServings] = useState<string>(recipe.servings);
     const [favorite, setFavorite] = useState<boolean>(recipe.favorite);
+
+    // Methods to add ingredient/instructions inputs
     const handleAddIngredient = () => {
         setIngredientList([
             ...ingredientList,
@@ -49,12 +58,16 @@ const EditRecipeForm = ({ toggleEditRecipeModal, recipe }: Props) => {
             }
         ]);
     };
+
+    // Methods to handle delete ingredient/instructions inputs
     const handleDeleteIngredient = (ingredientId: string) => {
         setIngredientList(ingredientList.filter((aIngredient) => aIngredient.id !== ingredientId));
     };
     const handleDeleteInstruction = (stepId: string) => {
         setInstructions(instructions.filter((aInstruction) => aInstruction.id !== stepId));
     };
+
+    // Method to handle input change for all inputs
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         switch (e.target.name) {
             case "recipeName":
@@ -107,6 +120,7 @@ const EditRecipeForm = ({ toggleEditRecipeModal, recipe }: Props) => {
         }
     };
 
+    // Method to handle form submit
     const handleSubmit = (e: SyntheticEvent) => {
         e.preventDefault();
         recipe.name = recipeName;
@@ -120,7 +134,9 @@ const EditRecipeForm = ({ toggleEditRecipeModal, recipe }: Props) => {
         let newUserRecipeArray = user.userInfo.user.recipes.filter((aRecipe: Recipe) => aRecipe.id !== recipe.id);
         newUserRecipeArray = [recipe, ...newUserRecipeArray];
         console.log(newUserRecipeArray);
+        // Call redux method/action to send HTTP request and update redux store.
         postRecipe(newUserRecipeArray, user.userInfo, toggleEditRecipeModal);
+        // Call navigate here to redirect back to the recipe page to refresh recipe data after update.
         navigate(`/dashboard/${recipe.id}`);
     };
     return (
@@ -321,7 +337,18 @@ const EditRecipeForm = ({ toggleEditRecipeModal, recipe }: Props) => {
                 <hr />
                 <FormGroup>
                     <Col xs={12} md={6} lg={4}>
-                        <Label for='servings'>Serving Quantity</Label>
+                        <Label for='servings'>
+                            Serving Quantity
+                            <OverlayTrigger
+                                key='right'
+                                placement='right'
+                                overlay={
+                                    <Tooltip id='recipe-name-tooltip'>Servings the recipe makes for accurate macros and calorie calculation</Tooltip>
+                                }
+                            >
+                                <Image className='info-icon' src={infoIcon} />
+                            </OverlayTrigger>
+                        </Label>
                         <Input
                             id='servings'
                             value={servings}

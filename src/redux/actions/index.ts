@@ -1,4 +1,4 @@
-export interface CurrentUser {
+export type CurrentUser = {
     accessToken: string;
     email: string;
     password: string;
@@ -8,7 +8,7 @@ export interface CurrentUser {
     recipes: Recipe[];
 }
 
-export interface Recipe {
+export type Recipe = {
     id: string;
     name: string;
     imageUrl: string;
@@ -43,7 +43,7 @@ export type UserAction = {
     payload: any;
 };
 
-export interface UserInfo {
+export type UserInfo = {
     userInfo: {
         accessToken: string;
         user: CurrentUser;

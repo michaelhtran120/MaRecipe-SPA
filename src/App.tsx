@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Route, Routes, Link } from "react-router-dom";
 import "./App.css";
+import { Route, Routes, Link } from "react-router-dom";
 import DashboardPage from "./pages/DashboardPage/DashboardPage";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import { useSelector, useDispatch } from "react-redux";
@@ -23,7 +23,7 @@ function App() {
 
     useEffect(() => {
         if (isUserLoggedIn) {
-            // Argument of type 'string | null' is not assignable to parameter of type 'string'. 
+            // Argument of type 'string | null' is not assignable to parameter of type 'string'.
             const localStorageUser = JSON.parse(localStorage.getItem("user") || "{}");
             dispatch(actionCreators.logInSuccess(localStorageUser));
         }

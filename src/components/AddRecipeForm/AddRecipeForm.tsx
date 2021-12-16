@@ -1,6 +1,7 @@
 import React, { SyntheticEvent, useState } from "react";
+import infoIcon from "../../assets/images/info-circle.svg";
 import { Button, Col, Form, FormGroup, FormText, Input, Label, Row } from "reactstrap";
-import Image from "react-bootstrap/Image";
+import { Image, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { v4 as uuidv4 } from "uuid";
 import { actionCreators, State } from "../../redux/index";
 import { bindActionCreators } from "redux";
@@ -12,12 +13,18 @@ type Props = {
 };
 
 const AddRecipeForm = ({ toggleAddRecipeModal }: Props) => {
+    // Grab state from redux store
     const { user } = useSelector((state: State) => state);
+    // Combine dispatch and action creators to have redux methods look like functions.
     const dispatch = useDispatch();
     const { postRecipe } = bindActionCreators(actionCreators, dispatch);
+
+    // Local state management
     const [recipeName, setRecipeName] = useState<string>("");
     const [description, setDescription] = useState<string>("");
     const [imageLink, setImageLink] = useState<string>("");
+
+    //// Initialize first ingredient input field
     const [ingredientList, setIngredientList] = useState<Ingredients[]>([
         {
             id: uuidv4(),
@@ -28,6 +35,8 @@ const AddRecipeForm = ({ toggleAddRecipeModal }: Props) => {
             fats: ""
         }
     ]);
+
+    //// Initialize first instructions input field
     const [instructions, setInstructions] = useState<Instructions[]>([
         {
             id: uuidv4(),
@@ -36,6 +45,8 @@ const AddRecipeForm = ({ toggleAddRecipeModal }: Props) => {
     ]);
     const [servings, setServings] = useState<string>("1");
     const [favorite, setFavorite] = useState<boolean>(false);
+
+    // Methods to add ingredient/instructions inputs
     const handleAddIngredient = () => {
         setIngredientList([
             ...ingredientList,
@@ -58,12 +69,16 @@ const AddRecipeForm = ({ toggleAddRecipeModal }: Props) => {
             }
         ]);
     };
+
+    // Methods to handle delete ingredient/instructions inputs
     const handleDeleteIngredient = (ingredientId: string) => {
         setIngredientList(ingredientList.filter((aIngredient) => aIngredient.id !== ingredientId));
     };
     const handleDeleteInstruction = (stepId: string) => {
         setInstructions(instructions.filter((aInstruction) => aInstruction.id !== stepId));
     };
+
+    // Method to handle input change for all inputs
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         switch (e.target.name) {
             case "recipeName":
@@ -116,6 +131,7 @@ const AddRecipeForm = ({ toggleAddRecipeModal }: Props) => {
         }
     };
 
+    // Method to handle form submit
     const handleSubmit = (e: SyntheticEvent) => {
         e.preventDefault();
         const newRecipe = {
@@ -129,6 +145,7 @@ const AddRecipeForm = ({ toggleAddRecipeModal }: Props) => {
             favorite: favorite
         };
         const newUserRecipeArray = [...user.userInfo.user.recipes, newRecipe];
+        // Call redux method/action to send HTTP request and update redux store.
         postRecipe(newUserRecipeArray, user.userInfo, toggleAddRecipeModal);
     };
 
@@ -138,7 +155,12 @@ const AddRecipeForm = ({ toggleAddRecipeModal }: Props) => {
                 <Row className='justify-content-start'>
                     <Col md={6}>
                         <FormGroup>
-                            <Label for='recipeName'>Recipe Name</Label>
+                            <Label for='recipeName' className='mt-3 align-items-center d-flex'>
+                                Recipe Name
+                                <OverlayTrigger key='right' placement='right' overlay={<Tooltip id='recipe-name-tooltip'>Max 50 characters</Tooltip>}>
+                                    <Image className='info-icon' src={infoIcon} />
+                                </OverlayTrigger>
+                            </Label>
                             <Input
                                 id='recipeName'
                                 value={recipeName}
@@ -167,8 +189,15 @@ const AddRecipeForm = ({ toggleAddRecipeModal }: Props) => {
                             <FormText>Provide a link to a cover photo for your recipe!</FormText>
                         </FormGroup>
                         <FormGroup>
-                            <Label for='description' className='mt-3'>
-                                Description (Max 200 characters)
+                            <Label for='description' className='mt-3 align-items-center d-flex'>
+                                Description
+                                <OverlayTrigger
+                                    key='right'
+                                    placement='right'
+                                    overlay={<Tooltip id='description-tooltip'>Max 200 characters</Tooltip>}
+                                >
+                                    <Image className='info-icon' src={infoIcon} />
+                                </OverlayTrigger>
                             </Label>
                             <Input
                                 id='description'
@@ -316,8 +345,19 @@ const AddRecipeForm = ({ toggleAddRecipeModal }: Props) => {
                 </Button>
                 <hr />
                 <FormGroup>
-                    <Col xs={12} md={6} lg={4}>
-                        <Label for='servings'>Serving Quantity</Label>
+                    <Col xs={4} md={3} lg={2}>
+                        <Label for='servings'>
+                            Serving Quantity
+                            <OverlayTrigger
+                                key='right'
+                                placement='right'
+                                overlay={
+                                    <Tooltip id='recipe-name-tooltip'>Servings the recipe makes for accurate macros and calorie calculation</Tooltip>
+                                }
+                            >
+                                <Image className='info-icon' src={infoIcon} />
+                            </OverlayTrigger>
+                        </Label>
                         <Input
                             id='servings'
                             value={servings}
