@@ -17,7 +17,7 @@ const DashboardPage = () => {
 
     return (
         <div>
-            <DashboardNavbar />
+            <DashboardNavbar page='dashboard'/>
             <Routes>
                 <Route
                     path='/'

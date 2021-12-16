@@ -6,10 +6,8 @@ import { actionCreators, State } from "../../redux/index";
 import { useNavigate } from "react-router-dom";
 
 type Credentials = {
-    userCredentials: {
-        email: string;
-        password: string;
-    };
+    email: string;
+    password: string;
 };
 
 type Props = {
@@ -29,7 +27,7 @@ const LoginModal = ({ open, toggleLoginModal }: Props): JSX.Element => {
     const navigate = useNavigate();
 
     // Local state
-    const [credentials, setCredentials] = useState<Credentials["userCredentials"]>({
+    const [credentials, setCredentials] = useState<Credentials>({
         email: "",
         password: ""
     });

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import LandingNavbar from "../../components/LandingNavbar/LandingNavbar";
 import LandingHero from "../../components/LandingHero/LandingHero";
 import LandingFeaturesSection from "../../components/LandingFeaturesSection/LandingFeaturesSection";
 import LoginModal from "../../components/LogInModal/LoginModal";
 import SignUpModal from "../../components/SignUpModal/SignUpModal";
+import DashboardNavbar from "../../components/DashboardNavbar/DashboardNavbar";
 
 const LandingPage = (): JSX.Element => {
     const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false);
@@ -21,7 +21,7 @@ const LandingPage = (): JSX.Element => {
 
     return (
         <div>
-            <LandingNavbar toggleLoginModal={toggleLoginModal} toggleSignUpModal={toggleSignUpModal} />
+            <DashboardNavbar page='landing' toggleLoginModal={toggleLoginModal} toggleSignUpModal={toggleSignUpModal} />
             <LandingHero />
             <LandingFeaturesSection />
             <LoginModal open={isLoginModalOpen} toggleLoginModal={toggleLoginModal} />

@@ -6,17 +6,14 @@ import { State } from "../../redux";
 import { Recipe } from "../../redux/actions";
 import { useNavigate } from "react-router";
 
-const RecipeCard = ({
-    title,
-    url,
-    description,
-    data
-}: {
-    title: Recipe["name"];
-    url: Recipe["imageUrl"];
-    description: Recipe["description"];
+type Prop = {
+    title: string;
+    url: string;
+    description: string;
     data: Recipe;
-}): JSX.Element => {
+};
+
+const RecipeCard = ({ title, url, description, data }: Prop): JSX.Element => {
     const navigate = useNavigate();
     const handleClick = (data: Recipe) => {
         navigate(`/dashboard/${data.id}`, { state: data });
