@@ -2,7 +2,7 @@
   "users": [
     {
       "email": "admin@admin.com",
-      "password": "$2a$10$8S0CjOCbxbWPgLUzbYL9TO5LEXmS4g7KpC7n/nIlwM1XJj9saLAKu",
+      "password": "$2a$10$hA8BBzKKiLshF4hx2oNB9.Id/fbbHG.7nmuVX5FZP1vgef.JgtNVi",
       "firstName": "Michael",
       "lastName": "Tran",
       "recipes": [
@@ -77,58 +77,6 @@
             }
           ],
           "favorite": false
-        },
-        {
-          "id": "169d6e79-64aa-40da-bc34-5326122cfcf9",
-          "name": "Uncle Roger's Fried Rice",
-          "imageUrl": "https://images.unsplash.com/photo-1578160112054-954a67602b88?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8ZnJpZWQlMjByaWNlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
-          "description": "Uncle Roger's famous fried rice. Done right!",
-          "ingredients": [
-            {
-              "id": "cf211d2b-8a15-4260-9a78-f167136373fb",
-              "name": "Rice (18-24 hours old)",
-              "quantity": "250",
-              "proteins": "3",
-              "carbs": "250",
-              "fats": "5"
-            },
-            {
-              "id": "cb9b3408-e78c-43d3-b640-5b0ad8e99717",
-              "name": "Eggs",
-              "quantity": "150",
-              "proteins": "18",
-              "carbs": "0",
-              "fats": "15"
-            },
-            {
-              "id": "1ac3a64f-e8a1-4e6f-9e49-fd6869f56bbc",
-              "name": "Mixed Frozen Veggies",
-              "quantity": "100",
-              "proteins": "6",
-              "carbs": "15",
-              "fats": "1"
-            }
-          ],
-          "servings": "4",
-          "instructions": [
-            {
-              "id": "d6ad6d7a-d2c7-436d-a7b0-498b2b95f028",
-              "instruction": "Add oil to a wok and heat up. Once wok is coated, pour out the oil and add new oil."
-            },
-            {
-              "id": "5b4b9074-8080-4dde-994e-c84f89b7736d",
-              "instruction": "Add rice in and stir vigorously to break the rice apart."
-            },
-            {
-              "id": "6f01683c-aa18-410e-8bb8-1a48fc575db5",
-              "instruction": "Add in mixed frozen veggies and continue to stir"
-            },
-            {
-              "id": "e390cc9f-270d-48ca-9cbc-0017223f8b05",
-              "instruction": "Beat the 3 eggs together until emulsified then pour over eggs and veggies. Continue to stir."
-            }
-          ],
-          "favorite": true
         }
       ],
       "id": "1"

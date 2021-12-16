@@ -148,6 +148,7 @@ const AddRecipeForm = ({ toggleAddRecipeModal }: Props) => {
                                 onChange={(event) => {
                                     handleInputChange(event);
                                 }}
+                                required
                             />
                         </FormGroup>
                         <FormGroup>
@@ -179,6 +180,7 @@ const AddRecipeForm = ({ toggleAddRecipeModal }: Props) => {
                                 }}
                                 style={{ height: "200px" }}
                                 maxLength={200}
+                                required
                             />
                         </FormGroup>
                     </Col>
@@ -226,6 +228,7 @@ const AddRecipeForm = ({ toggleAddRecipeModal }: Props) => {
                                     name='name'
                                     data-id={ingredient.id}
                                     onChange={(event) => handleInputChange(event)}
+                                    required
                                 />
                             </Col>
                             <Col sm={2}>
@@ -236,6 +239,7 @@ const AddRecipeForm = ({ toggleAddRecipeModal }: Props) => {
                                     name='quantity'
                                     data-id={ingredient.id}
                                     onChange={(event) => handleInputChange(event)}
+                                    required
                                 />
                             </Col>
                             <Col sm={2}>
@@ -246,6 +250,7 @@ const AddRecipeForm = ({ toggleAddRecipeModal }: Props) => {
                                     name='proteins'
                                     data-id={ingredient.id}
                                     onChange={(event) => handleInputChange(event)}
+                                    required
                                 />
                             </Col>
                             <Col sm={2}>
@@ -256,6 +261,7 @@ const AddRecipeForm = ({ toggleAddRecipeModal }: Props) => {
                                     name='carbs'
                                     data-id={ingredient.id}
                                     onChange={(event) => handleInputChange(event)}
+                                    required
                                 />
                             </Col>
                             <Col sm={2}>
@@ -266,6 +272,7 @@ const AddRecipeForm = ({ toggleAddRecipeModal }: Props) => {
                                     name='fats'
                                     data-id={ingredient.id}
                                     onChange={(event) => handleInputChange(event)}
+                                    required
                                 />
                             </Col>
                             <Col sm={1}>
@@ -293,6 +300,7 @@ const AddRecipeForm = ({ toggleAddRecipeModal }: Props) => {
                                     name='instruction'
                                     onChange={(event) => handleInputChange(event)}
                                     data-id={aInstruction.id}
+                                    required
                                 />
                             </Col>
                             <Col sm={1}>
@@ -319,6 +327,7 @@ const AddRecipeForm = ({ toggleAddRecipeModal }: Props) => {
                             onChange={(event) => {
                                 handleInputChange(event);
                             }}
+                            required
                         />
                     </Col>
                 </FormGroup>

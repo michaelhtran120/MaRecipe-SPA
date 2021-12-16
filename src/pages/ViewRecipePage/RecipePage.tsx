@@ -18,9 +18,13 @@ const DisplayRecipe = ({ recipeData }: { recipeData: Recipe }) => {
     const dispatch = useDispatch();
     const { deleteRecipe } = bindActionCreators(actionCreators, dispatch);
     const [isEditRecipeModalOpen, setIsEditRecipeModalOpen] = useState<boolean>(false);
+    const [isConfirmDeleteModalOpen, setIsConfirmDeleteModalOpen] = useState<boolean>(false);
 
     const toggleEditRecipeModal = () => {
         setIsEditRecipeModalOpen(!isEditRecipeModalOpen);
+    };
+    const toggleConfirmDeleteModal = () => {
+        setIsConfirmDeleteModalOpen(!isConfirmDeleteModalOpen);
     };
 
     // Return carbs, proteins, fats from each ingredient in the recipe.
@@ -47,9 +51,11 @@ const DisplayRecipe = ({ recipeData }: { recipeData: Recipe }) => {
                 <Row className='justify-content-end '>
                     <Col md={6}>
                         <Image style={{ width: "100%" }} src={recipeData.imageUrl} />
-                        <p className='mt-2 lead'>
-                            Recipe makes {recipeData.servings} {parseInt(recipeData.servings) > 1 ? "servings" : "serving"}.
+                        <p className='mt-3'>
+                            Recipe makes {recipeData.servings} {parseInt(recipeData.servings) > 1 ? "servings" : "serving"}. | Total Calories:{" "}
+                            {calorieCalc(recipeMacros.totalCarbs, recipeMacros.totalProteins, recipeMacros.totalFats)}
                         </p>
+
                         <p className='mt-4 mb-0 lead'>Per Serving</p>
                         <p className='m-0'>
                             Calories:{" "}
@@ -76,7 +82,7 @@ const DisplayRecipe = ({ recipeData }: { recipeData: Recipe }) => {
                     <hr className='d-md-none' />
                 </Row>
                 <hr className='d-none d-md-block' />
-                <h2>Recipe Instructions</h2>
+                <h2>Cooking Instructions</h2>
                 <ol>
                     {recipeData.instructions.map((aInstruction: Instructions) => (
                         <li className='text-start' key={aInstruction.id}>
@@ -87,12 +93,10 @@ const DisplayRecipe = ({ recipeData }: { recipeData: Recipe }) => {
                 <hr />
                 <Row className='justify-content-between'>
                     <Col xs={4}>
-                        <Button className='edit-btn' onClick={toggleEditRecipeModal}>
+                        <Button className='edit-btn me-2' onClick={toggleEditRecipeModal}>
                             Edit Recipe
                         </Button>
-                    </Col>
-                    <Col xs={4}>
-                        <Button variant='danger' onClick={() => handleDelete()} className='delete-btn'>
+                        <Button variant='danger' onClick={() => toggleConfirmDeleteModal()} className='delete-btn'>
                             Delete Recipe
                         </Button>
                     </Col>
@@ -107,6 +111,24 @@ const DisplayRecipe = ({ recipeData }: { recipeData: Recipe }) => {
                     <EditRecipeForm toggleEditRecipeModal={toggleEditRecipeModal} recipe={recipeData} />
                 </Modal.Body>
             </Modal>
+
+            <Modal show={isConfirmDeleteModalOpen} onHide={toggleConfirmDeleteModal}>
+                <Modal.Body>
+                    <p>Confirm recipe delete?</p>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant='secondary' onClick={() => toggleConfirmDeleteModal()}>
+                        Cancel
+                    </Button>
+                    <Button
+                        onClick={() => {
+                            handleDelete();
+                        }}
+                    >
+                        Confirm
+                    </Button>
+                </Modal.Footer>
+            </Modal>
         </>
     );
 };
@@ -116,7 +138,7 @@ const RecipePage = () => {
     const user = useSelector((state: State) => state.user);
     // const [recipeData, setRecipeData] = useState<Recipe>(user.userInfo.user.recipes.filter((aRecipe: Recipe) => aRecipe.id === recipeId)[0]);
 
-    const recipeData = user.userInfo.user.recipes.filter((aRecipe: Recipe) => aRecipe.id === recipeId)[0]
+    const recipeData = user.userInfo.user.recipes.filter((aRecipe: Recipe) => aRecipe.id === recipeId)[0];
 
     return <>{recipeData ? <DisplayRecipe recipeData={recipeData} /> : <h1>No Recipe</h1>}</>;
 };

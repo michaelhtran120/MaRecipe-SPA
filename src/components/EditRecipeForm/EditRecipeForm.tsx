@@ -1,6 +1,8 @@
 import React, { SyntheticEvent, useState } from "react";
+import "./EditRecipeForm.css";
+import infoIcon from "../../assets/images/info-circle.svg";
 import { Button, Col, Form, FormGroup, FormText, Input, Label, Row } from "reactstrap";
-import Image from "react-bootstrap/Image";
+import { Image, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { v4 as uuidv4 } from "uuid";
 import { actionCreators, State } from "../../redux/index";
 import { bindActionCreators } from "redux";
@@ -127,7 +129,12 @@ const EditRecipeForm = ({ toggleEditRecipeModal, recipe }: Props) => {
                 <Row className='justify-content-start'>
                     <Col md={6}>
                         <FormGroup>
-                            <Label for='recipeName'>Recipe Name</Label>
+                            <Label for='recipeName'>
+                                Recipe Name
+                                <OverlayTrigger key='right' placement='right' overlay={<Tooltip id='recipe-name-tooltip'>Max 50 characters</Tooltip>}>
+                                    <Image className='info-icon' src={infoIcon} />
+                                </OverlayTrigger>
+                            </Label>
                             <Input
                                 id='recipeName'
                                 value={recipeName}
@@ -137,6 +144,8 @@ const EditRecipeForm = ({ toggleEditRecipeModal, recipe }: Props) => {
                                 onChange={(event) => {
                                     handleInputChange(event);
                                 }}
+                                maxLength={50}
+                                required
                             />
                         </FormGroup>
                         <FormGroup>
@@ -155,8 +164,15 @@ const EditRecipeForm = ({ toggleEditRecipeModal, recipe }: Props) => {
                             <FormText>Provide a link to a cover photo for your recipe!</FormText>
                         </FormGroup>
                         <FormGroup>
-                            <Label for='description' className='mt-3'>
-                                Description (Max 200 characters)
+                            <Label for='description' className='mt-3 align-items-center d-flex'>
+                                Description
+                                <OverlayTrigger
+                                    key='right'
+                                    placement='right'
+                                    overlay={<Tooltip id='description-tooltip'>Max 200 characters</Tooltip>}
+                                >
+                                    <Image className='info-icon' src={infoIcon} />
+                                </OverlayTrigger>
                             </Label>
                             <Input
                                 id='description'
@@ -168,6 +184,7 @@ const EditRecipeForm = ({ toggleEditRecipeModal, recipe }: Props) => {
                                 }}
                                 style={{ height: "200px" }}
                                 maxLength={200}
+                                required
                             />
                         </FormGroup>
                     </Col>
@@ -215,6 +232,7 @@ const EditRecipeForm = ({ toggleEditRecipeModal, recipe }: Props) => {
                                     name='name'
                                     data-id={ingredient.id}
                                     onChange={(event) => handleInputChange(event)}
+                                    required
                                 />
                             </Col>
                             <Col sm={2}>
@@ -225,6 +243,7 @@ const EditRecipeForm = ({ toggleEditRecipeModal, recipe }: Props) => {
                                     name='quantity'
                                     data-id={ingredient.id}
                                     onChange={(event) => handleInputChange(event)}
+                                    required
                                 />
                             </Col>
                             <Col sm={2}>
@@ -235,6 +254,7 @@ const EditRecipeForm = ({ toggleEditRecipeModal, recipe }: Props) => {
                                     name='proteins'
                                     data-id={ingredient.id}
                                     onChange={(event) => handleInputChange(event)}
+                                    required
                                 />
                             </Col>
                             <Col sm={2}>
@@ -245,6 +265,7 @@ const EditRecipeForm = ({ toggleEditRecipeModal, recipe }: Props) => {
                                     name='carbs'
                                     data-id={ingredient.id}
                                     onChange={(event) => handleInputChange(event)}
+                                    required
                                 />
                             </Col>
                             <Col sm={2}>
@@ -255,6 +276,7 @@ const EditRecipeForm = ({ toggleEditRecipeModal, recipe }: Props) => {
                                     name='fats'
                                     data-id={ingredient.id}
                                     onChange={(event) => handleInputChange(event)}
+                                    required
                                 />
                             </Col>
                             <Col sm={1}>
@@ -282,6 +304,7 @@ const EditRecipeForm = ({ toggleEditRecipeModal, recipe }: Props) => {
                                     name='instruction'
                                     onChange={(event) => handleInputChange(event)}
                                     data-id={aInstruction.id}
+                                    required
                                 />
                             </Col>
                             <Col sm={1}>
