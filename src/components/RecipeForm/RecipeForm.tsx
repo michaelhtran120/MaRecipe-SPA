@@ -1,6 +1,6 @@
-import React, { SyntheticEvent, useState } from "react";
+import React, { SyntheticEvent, useEffect, useState } from "react";
 import infoIcon from "../../assets/images/info-circle.svg";
-import styles from "./EditRecipeForm.module.css";
+import styles from "./RecipeForm.module.css";
 import { Button, Col, Form, FormGroup, FormText, Input, Label, Row, Collapse } from "reactstrap";
 import { Image, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { v4 as uuidv4 } from "uuid";
@@ -11,11 +11,11 @@ import { Recipe, Ingredients, Instructions } from "../../redux/actions/index";
 import { useNavigate } from "react-router";
 
 type Props = {
-    toggleEditRecipeModal: () => void;
-    recipe: Recipe;
+    toggleFormModal: () => void;
+    recipe?: Recipe | undefined;
 };
 
-const EditRecipeForm = ({ toggleEditRecipeModal, recipe }: Props) => {
+const RecipeForm = ({ toggleFormModal, recipe }: Props): JSX.Element => {
     // Grab state from redux store
     const { user } = useSelector((state: State) => state);
 
@@ -27,15 +27,70 @@ const EditRecipeForm = ({ toggleEditRecipeModal, recipe }: Props) => {
     const navigate = useNavigate();
 
     // Local state management
-    const [isIngredientOpen, setIsIngredientOpen] = useState<boolean>(false);
-    const [isInstructionOpen, setIsInstructionOpen] = useState<boolean>(false);
-    const [recipeName, setRecipeName] = useState<string>(recipe.name);
-    const [description, setDescription] = useState<string>(recipe.description);
-    const [imageLink, setImageLink] = useState<string>(recipe.imageUrl);
-    const [ingredientList, setIngredientList] = useState<Ingredients[]>(recipe.ingredients);
-    const [instructions, setInstructions] = useState<Instructions[]>(recipe.instructions);
-    const [servings, setServings] = useState<string>(recipe.servings);
-    const [favorite, setFavorite] = useState<boolean>(recipe.favorite);
+    const [isIngredientOpen, setIsIngredientOpen] = useState<boolean>(recipe ? false : true);
+    const [isInstructionOpen, setIsInstructionOpen] = useState<boolean>(recipe ? false : true);
+
+    //// Disable collapse btn state if any respective input fields are empty.
+    const [disableIngredientBtn, setDisableIngredientBtn] = useState<boolean>(recipe ? false : true);
+    const [disableInstructionBtn, setDisableInstructionBtn] = useState<boolean>(recipe ? false : true);
+
+    const [recipeName, setRecipeName] = useState<string>(recipe ? recipe.name : "");
+    const [description, setDescription] = useState<string>(recipe ? recipe.description : "");
+    const [imageLink, setImageLink] = useState<string>(recipe ? recipe.imageUrl : "");
+    const [ingredientList, setIngredientList] = useState<Ingredients[]>(
+        recipe
+            ? recipe.ingredients
+            : [
+                  {
+                      id: uuidv4(),
+                      name: "",
+                      quantity: "",
+                      proteins: "",
+                      carbs: "",
+                      fats: ""
+                  }
+              ]
+    );
+    const [instructions, setInstructions] = useState<Instructions[]>(
+        recipe
+            ? recipe.instructions
+            : [
+                  {
+                      id: uuidv4(),
+                      instruction: ""
+                  }
+              ]
+    );
+    const [servings, setServings] = useState<string>(recipe ? recipe.servings : "1");
+    const [favorite, setFavorite] = useState<boolean>(recipe ? recipe.favorite : false);
+
+    // Check if any inputs are empty for ingredient list, if so, prevent user from collapsing the ingredient list.
+    // Prevents invalid form control not focusable issue.
+    useEffect(() => {
+        ingredientList.forEach((ingredient) => {
+            if (
+                ingredient.name === "" ||
+                ingredient.quantity === "" ||
+                ingredient.proteins === "" ||
+                ingredient.carbs === "" ||
+                ingredient.fats === ""
+            ) {
+                setDisableIngredientBtn(true);
+            } else {
+                setDisableIngredientBtn(false);
+            }
+        });
+    }, [ingredientList]);
+
+    useEffect(() => {
+        instructions.forEach((instruction) => {
+            if (instruction.instruction === "") {
+                setDisableInstructionBtn(true);
+            } else {
+                setDisableInstructionBtn(false);
+            }
+        });
+    }, [instructions]);
 
     const toggleIngredientOpen = () => {
         setIsIngredientOpen(!isIngredientOpen);
@@ -132,21 +187,36 @@ const EditRecipeForm = ({ toggleEditRecipeModal, recipe }: Props) => {
     // Method to handle form submit
     const handleSubmit = (e: SyntheticEvent) => {
         e.preventDefault();
-        recipe.name = recipeName;
-        recipe.imageUrl = imageLink;
-        recipe.description = description;
-        recipe.ingredients = ingredientList;
-        recipe.instructions = instructions;
-        recipe.servings = servings;
-        recipe.favorite = favorite;
+        if (recipe) {
+            recipe.name = recipeName;
+            recipe.imageUrl = imageLink;
+            recipe.description = description;
+            recipe.ingredients = ingredientList;
+            recipe.instructions = instructions;
+            recipe.servings = servings;
+            recipe.favorite = favorite;
 
-        let newUserRecipeArray = user.userInfo.user.recipes.filter((aRecipe: Recipe) => aRecipe.id !== recipe.id);
-        newUserRecipeArray = [recipe, ...newUserRecipeArray];
-        console.log(newUserRecipeArray);
-        // Call redux method/action to send HTTP request and update redux store.
-        postRecipe(newUserRecipeArray, user.userInfo, toggleEditRecipeModal);
-        // Call navigate here to redirect back to the recipe page to refresh recipe data after update.
-        navigate(`/dashboard/${recipe.id}`);
+            let newUserRecipeArray = user.userInfo.user.recipes.filter((aRecipe: Recipe) => aRecipe.id !== recipe.id);
+            newUserRecipeArray = [recipe, ...newUserRecipeArray];
+            // Call redux method/action to send HTTP request and update redux store.
+            postRecipe(newUserRecipeArray, user.userInfo, toggleFormModal);
+            // Call navigate here to redirect back to the recipe page to refresh recipe data after update.
+            navigate(`/dashboard/${recipe.id}`);
+        } else {
+            const newRecipe = {
+                id: uuidv4(),
+                name: recipeName,
+                imageUrl: imageLink,
+                description: description,
+                ingredients: ingredientList,
+                servings: servings,
+                instructions: instructions,
+                favorite: favorite
+            };
+            const newUserRecipeArray = [...user.userInfo.user.recipes, newRecipe];
+            // Call redux method/action to send HTTP request and update redux store.
+            postRecipe(newUserRecipeArray, user.userInfo, toggleFormModal);
+        }
     };
     return (
         <div>
@@ -154,12 +224,6 @@ const EditRecipeForm = ({ toggleEditRecipeModal, recipe }: Props) => {
                 <Row className='justify-content-start'>
                     <Col md={6}>
                         <FormGroup>
-                            <Label className={`${styles.formLabel}`} for='recipeName'>
-                                Recipe Name
-                                <OverlayTrigger key='right' placement='right' overlay={<Tooltip id='recipe-name-tooltip'>Max 50 characters</Tooltip>}>
-                                    <Image className='ms-2 info-icon' src={infoIcon} />
-                                </OverlayTrigger>
-                            </Label>
                             <Input
                                 id='recipeName'
                                 value={recipeName}
@@ -174,9 +238,6 @@ const EditRecipeForm = ({ toggleEditRecipeModal, recipe }: Props) => {
                             />
                         </FormGroup>
                         <FormGroup>
-                            <Label for='imageLink' className={`${styles.formLabel}`}>
-                                Image Link
-                            </Label>
                             <Input
                                 id='imageLink'
                                 name='imageLink'
@@ -237,7 +298,7 @@ const EditRecipeForm = ({ toggleEditRecipeModal, recipe }: Props) => {
                             <Image className='ms-2 info-icon' src={infoIcon} />
                         </OverlayTrigger>
                     </Label>
-                    <Button size='sm' className='col-3' onClick={toggleIngredientOpen}>
+                    <Button size='sm' className='col-3' onClick={toggleIngredientOpen} disabled={disableIngredientBtn ? true : false}>
                         {isIngredientOpen ? "Collapse" : "Expand"}
                     </Button>
                 </Row>
@@ -357,7 +418,7 @@ const EditRecipeForm = ({ toggleEditRecipeModal, recipe }: Props) => {
                 <hr />
                 <Row className='flex-row pb-3 px-2 justify-content-between'>
                     <Label className={`${styles.formLabel} col-5`}>Instructions</Label>
-                    <Button size='sm' className='col-3' onClick={toggleInstructionOpen}>
+                    <Button size='sm' className='col-3' onClick={toggleInstructionOpen} disabled={disableInstructionBtn ? true : false}>
                         {isInstructionOpen ? "Collapse" : "Expand"}
                     </Button>
                 </Row>
@@ -429,10 +490,10 @@ const EditRecipeForm = ({ toggleEditRecipeModal, recipe }: Props) => {
                 </FormGroup>
                 <hr />
                 <Button type='submit' color='primary' className={styles.saveBtn}>
-                    Save Changes
+                    {recipe ? "Save Changes" : "Add Recipe"}
                 </Button>
             </Form>
         </div>
     );
 };
-export default EditRecipeForm;
+export default RecipeForm;

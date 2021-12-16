@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { actionCreators, State } from "../../redux";
 import { bindActionCreators } from "redux";
 import { Recipe, Ingredients, Instructions } from "../../redux/actions";
-import EditRecipeForm from "../../components/EditRecipeForm/EditRecipeForm";
+import RecipeForm from "../../components/RecipeForm/RecipeForm";
 import macroCalc from "../../helper/macroCalc";
 import calorieCalc from "../../helper/calorieCalc";
 
@@ -108,7 +108,7 @@ const DisplayRecipe = ({ recipeData }: { recipeData: Recipe }) => {
                     <Modal.Title className='ps-5'>Edit Recipe</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <EditRecipeForm toggleEditRecipeModal={toggleEditRecipeModal} recipe={recipeData} />
+                    <RecipeForm toggleFormModal={toggleEditRecipeModal} recipe={recipeData} />
                 </Modal.Body>
             </Modal>
 
