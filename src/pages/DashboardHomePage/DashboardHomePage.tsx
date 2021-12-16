@@ -6,10 +6,14 @@ import UserRecipes from "../../components/UserRecipes/UserRecipes";
 import { State } from "../../redux";
 import { Recipe } from "../../redux/actions/index";
 
-const DashboardHomePage = () => {
+const DashboardHomePage = (): JSX.Element => {
+    // Pull state from redux store
     const { user } = useSelector((state: State) => state);
     // Check if user has any recipes that are favorites and conditionally render the recipes or a statement showing that there are no favorites.
-    const favoriteRecipe = user.userInfo.user.recipes.filter((aRecipe: Recipe) => aRecipe.favorite);
+
+    // Filter through users recipes and retrieve all that are marked favorite.
+    const favoriteRecipe: Recipe[] = user.userInfo.user.recipes.filter((aRecipe: Recipe) => aRecipe.favorite);
+
     return (
         <Container className='pt-3'>
             <Row className='mt-5'>

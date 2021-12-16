@@ -1,1 +1,21 @@
-/* No CSS */
+.previewImage {
+  width: 100%;
+  max-height: 500px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.formLabel {
+  color: #79b473;
+  font-size: 1.15rem;
+}
+
+.deleteBtn {
+  width: 100%;
+}
+
+.saveBtn:hover {
+  color: #79b473;
+  background-color: white !important;
+  border: 1px solid #79b473 !important;
+}

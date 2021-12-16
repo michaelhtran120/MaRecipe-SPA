@@ -1,7 +1,7 @@
 import React, { SyntheticEvent, useState } from "react";
-import "./EditRecipeForm.module.css";
 import infoIcon from "../../assets/images/info-circle.svg";
-import { Button, Col, Form, FormGroup, FormText, Input, Label, Row } from "reactstrap";
+import styles from "./EditRecipeForm.module.css";
+import { Button, Col, Form, FormGroup, FormText, Input, Label, Row, Collapse } from "reactstrap";
 import { Image, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { v4 as uuidv4 } from "uuid";
 import { actionCreators, State } from "../../redux/index";
@@ -27,6 +27,8 @@ const EditRecipeForm = ({ toggleEditRecipeModal, recipe }: Props) => {
     const navigate = useNavigate();
 
     // Local state management
+    const [isIngredientOpen, setIsIngredientOpen] = useState<boolean>(false);
+    const [isInstructionOpen, setIsInstructionOpen] = useState<boolean>(false);
     const [recipeName, setRecipeName] = useState<string>(recipe.name);
     const [description, setDescription] = useState<string>(recipe.description);
     const [imageLink, setImageLink] = useState<string>(recipe.imageUrl);
@@ -34,6 +36,13 @@ const EditRecipeForm = ({ toggleEditRecipeModal, recipe }: Props) => {
     const [instructions, setInstructions] = useState<Instructions[]>(recipe.instructions);
     const [servings, setServings] = useState<string>(recipe.servings);
     const [favorite, setFavorite] = useState<boolean>(recipe.favorite);
+
+    const toggleIngredientOpen = () => {
+        setIsIngredientOpen(!isIngredientOpen);
+    };
+    const toggleInstructionOpen = () => {
+        setIsInstructionOpen(!isInstructionOpen);
+    };
 
     // Methods to add ingredient/instructions inputs
     const handleAddIngredient = () => {
@@ -141,14 +150,14 @@ const EditRecipeForm = ({ toggleEditRecipeModal, recipe }: Props) => {
     };
     return (
         <div>
-            <Form onSubmit={handleSubmit} className='p-5 pt-0'>
+            <Form onSubmit={handleSubmit} className='p-md-5 pt-0'>
                 <Row className='justify-content-start'>
                     <Col md={6}>
                         <FormGroup>
-                            <Label for='recipeName'>
+                            <Label className={`${styles.formLabel}`} for='recipeName'>
                                 Recipe Name
                                 <OverlayTrigger key='right' placement='right' overlay={<Tooltip id='recipe-name-tooltip'>Max 50 characters</Tooltip>}>
-                                    <Image className='info-icon' src={infoIcon} />
+                                    <Image className='ms-2 info-icon' src={infoIcon} />
                                 </OverlayTrigger>
                             </Label>
                             <Input
@@ -165,7 +174,7 @@ const EditRecipeForm = ({ toggleEditRecipeModal, recipe }: Props) => {
                             />
                         </FormGroup>
                         <FormGroup>
-                            <Label for='imageLink' className='mt-3'>
+                            <Label for='imageLink' className={`${styles.formLabel}`}>
                                 Image Link
                             </Label>
                             <Input
@@ -180,14 +189,14 @@ const EditRecipeForm = ({ toggleEditRecipeModal, recipe }: Props) => {
                             <FormText>Provide a link to a cover photo for your recipe!</FormText>
                         </FormGroup>
                         <FormGroup>
-                            <Label for='description' className='mt-3 align-items-center d-flex'>
+                            <Label for='description' className={`${styles.formLabel} align-items-center d-flex`}>
                                 Description
                                 <OverlayTrigger
                                     key='right'
                                     placement='right'
                                     overlay={<Tooltip id='description-tooltip'>Max 200 characters</Tooltip>}
                                 >
-                                    <Image className='info-icon' src={infoIcon} />
+                                    <Image className='ms-2 info-icon' src={infoIcon} />
                                 </OverlayTrigger>
                             </Label>
                             <Input
@@ -205,11 +214,11 @@ const EditRecipeForm = ({ toggleEditRecipeModal, recipe }: Props) => {
                         </FormGroup>
                     </Col>
                     <Col sm={6}>
-                        <Label>Image Preview</Label>
+                        <Label className={`${styles.formLabel}`}>Image Preview</Label>
                         <hr />
                         {imageLink ? (
                             <>
-                                <Image src={imageLink} id='image-preview' alt='recipe preview' style={{ maxWidth: "300px" }} />
+                                <Image src={imageLink} id='image-preview' alt='recipe preview' className={styles.previewImage} />
                             </>
                         ) : (
                             <div></div>
@@ -217,123 +226,174 @@ const EditRecipeForm = ({ toggleEditRecipeModal, recipe }: Props) => {
                     </Col>
                 </Row>
                 <hr />
-                <h4>Ingredients</h4>
-                <Row className='d-none d-md-flex'>
-                    <Col sm={3}>
-                        <Label>Ingredient name</Label>
-                    </Col>
-                    <Col sm={2}>
-                        <Label>Quantity in grams</Label>
-                    </Col>
-                    <Col sm={2}>
-                        <Label>Protein in grams</Label>
-                    </Col>
-                    <Col sm={2}>
-                        <Label>Carbs in grams</Label>
-                    </Col>
-                    <Col sm={2}>
-                        <Label>Fats in grams</Label>
-                    </Col>
+                <Row className='flex-row pb-3 px-2 justify-content-between'>
+                    <Label className={`${styles.formLabel} col-5`}>
+                        Ingredients
+                        <OverlayTrigger
+                            key='right'
+                            placement='right'
+                            overlay={<Tooltip id='recipe-name-tooltip'>Measurements are in grams for accuracy</Tooltip>}
+                        >
+                            <Image className='ms-2 info-icon' src={infoIcon} />
+                        </OverlayTrigger>
+                    </Label>
+                    <Button size='sm' className='col-3' onClick={toggleIngredientOpen}>
+                        {isIngredientOpen ? "Collapse" : "Expand"}
+                    </Button>
                 </Row>
+                <Collapse isOpen={isIngredientOpen}>
+                    <Row className='d-none d-md-flex'>
+                        <Col sm={3}>
+                            <Label>Name</Label>
+                        </Col>
+                        <Col sm={2}>
+                            <Label>Quantity</Label>
+                        </Col>
+                        <Col sm={2}>
+                            <Label>Protein</Label>
+                        </Col>
+                        <Col sm={2}>
+                            <Label>Carbs</Label>
+                        </Col>
+                        <Col sm={2}>
+                            <Label>Fats</Label>
+                        </Col>
+                    </Row>
+                    {ingredientList.map((ingredient) => {
+                        return (
+                            <FormGroup row key={ingredient.id} className='align-items-center'>
+                                <Col xs={2} className='d-sm-none'>
+                                    <Label>Name</Label>
+                                </Col>
+                                <Col xs={10} sm={3}>
+                                    <Input
+                                        type='text'
+                                        placeholder='Name'
+                                        value={ingredient.name}
+                                        id={`${ingredient.id}-name`}
+                                        name='name'
+                                        data-id={ingredient.id}
+                                        onChange={(event) => handleInputChange(event)}
+                                        required
+                                    />
+                                </Col>
+                                <Col xs={2} className='d-sm-none'>
+                                    <Label>Quantity</Label>
+                                </Col>
+                                <Col xs={10} sm={2}>
+                                    <Input
+                                        type='number'
+                                        placeholder='Qty in grams'
+                                        value={ingredient.quantity}
+                                        name='quantity'
+                                        data-id={ingredient.id}
+                                        onChange={(event) => handleInputChange(event)}
+                                        min='0'
+                                        required
+                                    />
+                                </Col>
+                                <Col xs={2} className='d-sm-none'>
+                                    <Label>Proteins</Label>
+                                </Col>
+                                <Col xs={10} sm={2}>
+                                    <Input
+                                        type='number'
+                                        placeholder='Protein in grams'
+                                        value={ingredient.proteins}
+                                        name='proteins'
+                                        data-id={ingredient.id}
+                                        onChange={(event) => handleInputChange(event)}
+                                        min='0'
+                                        required
+                                    />
+                                </Col>
+                                <Col xs={2} className='d-sm-none'>
+                                    <Label>Carbs</Label>
+                                </Col>
+                                <Col xs={10} sm={2}>
+                                    <Input
+                                        type='number'
+                                        placeholder='Carbs in grams'
+                                        value={ingredient.carbs}
+                                        name='carbs'
+                                        data-id={ingredient.id}
+                                        onChange={(event) => handleInputChange(event)}
+                                        min='0'
+                                        required
+                                    />
+                                </Col>
+                                <Col xs={2} className='d-sm-none'>
+                                    <Label>Fats</Label>
+                                </Col>
+                                <Col xs={10} sm={2}>
+                                    <Input
+                                        type='number'
+                                        placeholder='Fats in grams'
+                                        value={ingredient.fats}
+                                        name='fats'
+                                        data-id={ingredient.id}
+                                        onChange={(event) => handleInputChange(event)}
+                                        min='0'
+                                        required
+                                    />
+                                </Col>
+                                <Col sm={1} className='ps-sm-0'>
+                                    <Button
+                                        className={`${styles.deleteBtn} mt-3 mt-sm-0`}
+                                        color='danger'
+                                        outline
+                                        onClick={() => handleDeleteIngredient(ingredient.id)}
+                                    >
+                                        X
+                                    </Button>
+                                </Col>
+                            </FormGroup>
+                        );
+                    })}
+                    <Button color='secondary' onClick={handleAddIngredient}>
+                        Add Ingredient
+                    </Button>
+                </Collapse>
                 <hr />
-                {ingredientList.map((ingredient) => {
-                    return (
-                        <FormGroup row key={ingredient.id}>
-                            <Col sm={3}>
-                                <Input
-                                    type='text'
-                                    placeholder='Name'
-                                    value={ingredient.name}
-                                    id={`${ingredient.id}-name`}
-                                    name='name'
-                                    data-id={ingredient.id}
-                                    onChange={(event) => handleInputChange(event)}
-                                    required
-                                />
-                            </Col>
-                            <Col sm={2}>
-                                <Input
-                                    type='number'
-                                    placeholder='Qty in grams'
-                                    value={ingredient.quantity}
-                                    name='quantity'
-                                    data-id={ingredient.id}
-                                    onChange={(event) => handleInputChange(event)}
-                                    required
-                                />
-                            </Col>
-                            <Col sm={2}>
-                                <Input
-                                    type='number'
-                                    placeholder='Protein in grams'
-                                    value={ingredient.proteins}
-                                    name='proteins'
-                                    data-id={ingredient.id}
-                                    onChange={(event) => handleInputChange(event)}
-                                    required
-                                />
-                            </Col>
-                            <Col sm={2}>
-                                <Input
-                                    type='number'
-                                    placeholder='Carbs in grams'
-                                    value={ingredient.carbs}
-                                    name='carbs'
-                                    data-id={ingredient.id}
-                                    onChange={(event) => handleInputChange(event)}
-                                    required
-                                />
-                            </Col>
-                            <Col sm={2}>
-                                <Input
-                                    type='number'
-                                    placeholder='Fats in grams'
-                                    value={ingredient.fats}
-                                    name='fats'
-                                    data-id={ingredient.id}
-                                    onChange={(event) => handleInputChange(event)}
-                                    required
-                                />
-                            </Col>
-                            <Col sm={1}>
-                                <Button color='danger' outline onClick={() => handleDeleteIngredient(ingredient.id)}>
-                                    X
-                                </Button>
-                            </Col>
-                        </FormGroup>
-                    );
-                })}
-                <Button color='primary' outline onClick={handleAddIngredient}>
-                    Add Ingredient
-                </Button>
-                <hr />
-                <h4>Cooking Instructions</h4>
-                {instructions.map((aInstruction) => {
-                    return (
-                        <FormGroup row key={aInstruction.id}>
-                            <Col sm={11}>
-                                <Input
-                                    type='text'
-                                    placeholder='Add instruction details....'
-                                    value={aInstruction.instruction}
-                                    id={`${aInstruction.id}-text`}
-                                    name='instruction'
-                                    onChange={(event) => handleInputChange(event)}
-                                    data-id={aInstruction.id}
-                                    required
-                                />
-                            </Col>
-                            <Col sm={1}>
-                                <Button color='danger' outline onClick={() => handleDeleteInstruction(aInstruction.id)}>
-                                    X
-                                </Button>
-                            </Col>
-                        </FormGroup>
-                    );
-                })}
-                <Button color='primary' onClick={handleAddInstruction} outline>
-                    Add Instruction
-                </Button>
+                <Row className='flex-row pb-3 px-2 justify-content-between'>
+                    <Label className={`${styles.formLabel} col-5`}>Instructions</Label>
+                    <Button size='sm' className='col-3' onClick={toggleInstructionOpen}>
+                        {isInstructionOpen ? "Collapse" : "Expand"}
+                    </Button>
+                </Row>
+                <Collapse isOpen={isInstructionOpen}>
+                    {instructions.map((aInstruction) => {
+                        return (
+                            <FormGroup row key={aInstruction.id}>
+                                <Col xs={10} sm={11}>
+                                    <Input
+                                        type='text'
+                                        placeholder='Add instruction details....'
+                                        value={aInstruction.instruction}
+                                        id={`${aInstruction.id}-text`}
+                                        name='instruction'
+                                        onChange={(event) => handleInputChange(event)}
+                                        data-id={aInstruction.id}
+                                        required
+                                    />
+                                </Col>
+                                <Col xs={2} sm={1}>
+                                    <Button
+                                        className={`${styles.deleteBtn}`}
+                                        color='danger'
+                                        outline
+                                        onClick={() => handleDeleteInstruction(aInstruction.id)}
+                                    >
+                                        X
+                                    </Button>
+                                </Col>
+                            </FormGroup>
+                        );
+                    })}
+                    <Button color='secondary' onClick={handleAddInstruction}>
+                        Add Instruction
+                    </Button>
+                </Collapse>
                 <hr />
                 <FormGroup>
                     <Col xs={12} md={6} lg={4}>
@@ -346,7 +406,7 @@ const EditRecipeForm = ({ toggleEditRecipeModal, recipe }: Props) => {
                                     <Tooltip id='recipe-name-tooltip'>Servings the recipe makes for accurate macros and calorie calculation</Tooltip>
                                 }
                             >
-                                <Image className='info-icon' src={infoIcon} />
+                                <Image className='ms-2 info-icon' src={infoIcon} />
                             </OverlayTrigger>
                         </Label>
                         <Input
@@ -368,7 +428,7 @@ const EditRecipeForm = ({ toggleEditRecipeModal, recipe }: Props) => {
                     </Label>
                 </FormGroup>
                 <hr />
-                <Button type='submit' color='primary'>
+                <Button type='submit' color='primary' className={styles.saveBtn}>
                     Save Changes
                 </Button>
             </Form>

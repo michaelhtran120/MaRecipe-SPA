@@ -5,12 +5,15 @@ import { Button, Navbar, Container, Nav } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { State } from "../../redux";
+
 interface Props {
     toggleLoginModal: (event: React.MouseEvent<HTMLButtonElement>) => void;
     toggleSignUpModal: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-const LandingNavbar: React.FC<Props> = ({ toggleSignUpModal, toggleLoginModal }): JSX.Element => {
+const LandingNavbar = ({ toggleSignUpModal, toggleLoginModal}: Props): JSX.Element => {
+    // Grab state from redux store
+    // Conditionally render navbar depending on if there is a user in store.
     const user = useSelector((state: State) => state.user);
 
     return (

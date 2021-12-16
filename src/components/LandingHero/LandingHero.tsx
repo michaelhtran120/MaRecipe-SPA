@@ -5,7 +5,7 @@ import logoWhite from "../../assets/images/Logo-white.svg";
 import videoMp4 from "../../assets/videos/recipe-video.mp4";
 import videoOgv from "../../assets/videos/recipe-video.ogv";
 
-const LandingHero: React.FC = (): JSX.Element => {
+const LandingHero = (): JSX.Element => {
     return (
         <>
             <Container id='hero' fluid>

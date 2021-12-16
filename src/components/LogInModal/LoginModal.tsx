@@ -1,5 +1,4 @@
 import React, { SyntheticEvent, useState, useRef, useEffect } from "react";
-import "./LoginModal.module.css";
 import { Button, Modal, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -11,19 +10,25 @@ type Credentials = {
         email: string;
         password: string;
     };
-}
+};
 
 type Props = {
     open: boolean;
     toggleLoginModal: (event: React.MouseEvent<HTMLButtonElement>) => void;
-}
+};
 
 const LoginModal = ({ open, toggleLoginModal }: Props): JSX.Element => {
+    // Get state from redux store
+    const user = useSelector((state: State) => state.user);
+
+    // Combine dispatch and action creators to have redux methods look like functions.
     const dispatch = useDispatch();
     const { logIn } = bindActionCreators(actionCreators, dispatch);
-    const user = useSelector((state: State) => state.user);
+
+    // React Router to navigate to a different page.
     const navigate = useNavigate();
 
+    // Local state
     const [credentials, setCredentials] = useState<Credentials["userCredentials"]>({
         email: "",
         password: ""
@@ -34,11 +39,8 @@ const LoginModal = ({ open, toggleLoginModal }: Props): JSX.Element => {
     const handleLogInInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
         setCredentials({ ...credentials, [e.target.name]: e.target.value });
     };
-    const handleLogInSubmit = (event: SyntheticEvent) => {
-        event.preventDefault();
-        logIn(credentials);
-    };
 
+    // redirect the user to the dashboard after log in is successful.
     useEffect(() => {
         if (!isComponentMounted.current) {
             isComponentMounted.current = true;
@@ -46,6 +48,13 @@ const LoginModal = ({ open, toggleLoginModal }: Props): JSX.Element => {
             navigate("dashboard");
         }
     }, [user, navigate]);
+
+    // Method to handle user log in.
+    const handleLogInSubmit = (event: SyntheticEvent) => {
+        event.preventDefault();
+        // fire redux action
+        logIn(credentials);
+    };
 
     return (
         <>

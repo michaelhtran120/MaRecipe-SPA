@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./DashboardNavbar.css";
 import logo from "../../assets/images/logo.svg";
 import userIcon from "../../assets/images/user-icon.svg";
@@ -9,14 +9,20 @@ import { bindActionCreators } from "redux";
 import { actionCreators, State } from "../../redux/index";
 
 const DashboardNavbar = (): JSX.Element => {
-    const dispatch = useDispatch();
-    const { logOut } = bindActionCreators(actionCreators, dispatch);
+    // grab state from redux store
     const { user } = useSelector((state: State) => state);
 
-    const [isWindowSmall, setIsWindowSmall] = useState<boolean>(false);
+    // Combine dispatch and action creators to have redux methods look like functions.
+    const dispatch = useDispatch();
+    const { logOut } = bindActionCreators(actionCreators, dispatch);
 
     const navigate = useNavigate();
 
+    // Local state
+    //// Conditionally render navbar UI.
+    const [isWindowSmall, setIsWindowSmall] = useState<boolean>(false);
+
+    // Resize event listener to help conditionally render navbar UI
     window.addEventListener("resize", () => {
         if (window.innerWidth < 768) {
             setIsWindowSmall(true);
@@ -25,17 +31,13 @@ const DashboardNavbar = (): JSX.Element => {
         }
     });
 
-    useEffect(() => {
-        if (window.innerWidth < 768) {
-            setIsWindowSmall(true);
-        } else {
-            setIsWindowSmall(false);
-        }
-    }, []);
-
+    // Method to handle log out
     const handleLogOut = () => {
+        // redirect user back to landing page
         navigate("/");
+        // call redux action method
         logOut();
+        // remove user data from localstorage
         localStorage.clear();
     };
 

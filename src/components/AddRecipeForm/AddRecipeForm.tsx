@@ -12,7 +12,7 @@ type Props = {
     toggleAddRecipeModal: () => void;
 };
 
-const AddRecipeForm = ({ toggleAddRecipeModal }: Props) => {
+const AddRecipeForm = ({ toggleAddRecipeModal }: Props): JSX.Element => {
     // Grab state from redux store
     const { user } = useSelector((state: State) => state);
     // Combine dispatch and action creators to have redux methods look like functions.
@@ -56,7 +56,7 @@ const AddRecipeForm = ({ toggleAddRecipeModal }: Props) => {
                 quantity: "",
                 proteins: "",
                 carbs: "",
-                fats: ""
+                fats: "",
             }
         ]);
     };
@@ -65,21 +65,21 @@ const AddRecipeForm = ({ toggleAddRecipeModal }: Props) => {
             ...instructions,
             {
                 id: uuidv4(),
-                instruction: ""
+                instruction: "",
             }
         ]);
     };
 
     // Methods to handle delete ingredient/instructions inputs
-    const handleDeleteIngredient = (ingredientId: string) => {
+    const handleDeleteIngredient = (ingredientId: string): void => {
         setIngredientList(ingredientList.filter((aIngredient) => aIngredient.id !== ingredientId));
     };
-    const handleDeleteInstruction = (stepId: string) => {
+    const handleDeleteInstruction = (stepId: string): void => {
         setInstructions(instructions.filter((aInstruction) => aInstruction.id !== stepId));
     };
 
     // Method to handle input change for all inputs
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
         switch (e.target.name) {
             case "recipeName":
                 setRecipeName(e.target.value);
@@ -132,7 +132,7 @@ const AddRecipeForm = ({ toggleAddRecipeModal }: Props) => {
     };
 
     // Method to handle form submit
-    const handleSubmit = (e: SyntheticEvent) => {
+    const handleSubmit = (e: SyntheticEvent): void => {
         e.preventDefault();
         const newRecipe = {
             id: uuidv4(),
