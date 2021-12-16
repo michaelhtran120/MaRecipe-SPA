@@ -22,7 +22,7 @@ const RecipeCard = ({
         navigate(`/dashboard/${data.id}`, { state: data });
     };
     return (
-        <Card className='recipe-card'>
+        <Card className='recipe-card p-0'>
             <Image className='recipe-image' src={url} fluid />
 
             <Card.Body>

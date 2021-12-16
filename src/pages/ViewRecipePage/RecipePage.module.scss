@@ -10,6 +10,12 @@ $primary: #79b473;
     }
 }
 
+.previewImage {
+    width: 100%;
+    max-height: 600px;
+    object-fit: cover;
+}
+
 .editBtn {
     width: 100%;
     &:hover {

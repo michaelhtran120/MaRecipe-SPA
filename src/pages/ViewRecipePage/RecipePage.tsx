@@ -50,7 +50,7 @@ const DisplayRecipe = ({ recipeData }: { recipeData: Recipe }) => {
                 <hr />
                 <Row className='justify-content-end '>
                     <Col md={6}>
-                        <Image style={{ width: "100%" }} src={recipeData.imageUrl} />
+                        <Image src={recipeData.imageUrl} className={styles.previewImage} />
                         <p className='mt-3'>
                             Recipe makes {recipeData.servings} {parseInt(recipeData.servings) > 1 ? "servings" : "serving"}. | Total Calories:{" "}
                             {calorieCalc(recipeMacros.totalCarbs, recipeMacros.totalProteins, recipeMacros.totalFats)}
@@ -73,7 +73,7 @@ const DisplayRecipe = ({ recipeData }: { recipeData: Recipe }) => {
                         <h2>Recipe Ingredients</h2>
                         <ul>
                             {recipeData.ingredients.map((aIngredient: Ingredients) => (
-                                <li key={aIngredient.id} className='text-start'>
+                                <li key={aIngredient.id} className='text-start mb-3'>
                                     {aIngredient.name} - {`${aIngredient.quantity} grams`}
                                 </li>
                             ))}
@@ -85,7 +85,7 @@ const DisplayRecipe = ({ recipeData }: { recipeData: Recipe }) => {
                 <h2>Cooking Instructions</h2>
                 <ol>
                     {recipeData.instructions.map((aInstruction: Instructions) => (
-                        <li className='text-start' key={aInstruction.id}>
+                        <li className='text-start mb-4' key={aInstruction.id}>
                             {aInstruction.instruction}
                         </li>
                     ))}

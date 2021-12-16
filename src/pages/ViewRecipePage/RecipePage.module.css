@@ -11,6 +11,13 @@
   transition: all 450ms ease-in-out;
 }
 
+.previewImage {
+  width: 100%;
+  max-height: 600px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .editBtn {
   width: 100%;
 }

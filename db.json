@@ -2,10 +2,138 @@
   "users": [
     {
       "email": "admin@admin.com",
-      "password": "$2a$10$feFkuLNKaOx9eGcy0hbX3ehrBLXnunGlkYwTJVymoGUJvg7veHMH2",
+      "password": "$2a$10$LXNY9hRw9Qdzomo4oAyZNeIi/EtWVmQTHCgoU5A.aRmS4wUSTxzDq",
       "firstName": "Michael",
       "lastName": "Tran",
       "recipes": [
+        {
+          "id": "20186289-dbc0-48d1-be30-d60108875623",
+          "name": "Simply Carne Asada",
+          "imageUrl": "https://www.simplyrecipes.com/thmb/EEy4KWPP3LZ2K0mLdWQhKfhXJpU=/648x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__simply_recipes__uploads__2007__05__carne-asada-vertical-a-1400-bea3184c8a4d4d3386384874bc2fbaf6.jpg",
+          "description": "Marinate and grill beef, sliced thinly. Great for carne asada tacos!",
+          "ingredients": [
+            {
+              "id": "4570ff7c-666c-44be-8f0e-97d905fff791",
+              "name": "Extra virgin olive oil",
+              "quantity": "50",
+              "proteins": "0",
+              "carbs": "0",
+              "fats": "50"
+            },
+            {
+              "id": "e7dc7331-dbe6-4daa-8ad2-c84fe7c358a3",
+              "name": "Soy Sauce",
+              "quantity": "75",
+              "proteins": "2",
+              "carbs": "10",
+              "fats": "2"
+            },
+            {
+              "id": "152c2530-55dc-4c80-bb7d-464c2ac5f83e",
+              "name": "Lime Juice",
+              "quantity": "5",
+              "proteins": "1",
+              "carbs": "4",
+              "fats": "0"
+            },
+            {
+              "id": "b759b339-32b8-4c1b-8ac7-c0f9ee9cc2cb",
+              "name": "Cider Vinegar",
+              "quantity": "5",
+              "proteins": "1",
+              "carbs": "1",
+              "fats": "0"
+            },
+            {
+              "id": "e9529507-3ef6-4c8e-9b8f-a0de26c6b006",
+              "name": "Black Pepper",
+              "quantity": "10",
+              "proteins": "0",
+              "carbs": "0",
+              "fats": "0"
+            },
+            {
+              "id": "68ef5c19-2607-4d24-9552-fa6570152880",
+              "name": "Sugar",
+              "quantity": "50",
+              "proteins": "0",
+              "carbs": "50",
+              "fats": "0"
+            },
+            {
+              "id": "9c3d3a40-018f-455e-8d64-7c4a6b5221a7",
+              "name": "Ground Cumin",
+              "quantity": "25",
+              "proteins": "0",
+              "carbs": "0",
+              "fats": "0"
+            },
+            {
+              "id": "ab0c8d29-bdca-4554-acb6-f48d33d9ee45",
+              "name": "Chopped / Minced Garlic",
+              "quantity": "35",
+              "proteins": "2",
+              "carbs": "5",
+              "fats": "0"
+            },
+            {
+              "id": "6722278d-f661-4e8b-9c99-990d12aa943e",
+              "name": "Jalapenos (diced)",
+              "quantity": "20",
+              "proteins": "1",
+              "carbs": "5",
+              "fats": "0"
+            },
+            {
+              "id": "1bbfef3d-7bdd-46c7-a1cf-6263f8d2478c",
+              "name": "Cilantro",
+              "quantity": "25",
+              "proteins": "1",
+              "carbs": "5",
+              "fats": "0"
+            },
+            {
+              "id": "547c1d63-0e4c-45ff-9c16-bcf8dec98b24",
+              "name": "Flank Steak / Skirt Steak",
+              "quantity": "300",
+              "proteins": "160",
+              "carbs": "0",
+              "fats": "40"
+            }
+          ],
+          "servings": "4",
+          "instructions": [
+            {
+              "id": "0974a680-f231-4d7a-9d3b-130bc599206e",
+              "instruction": "Marinate the steak: Whisk to combine the olive oil, soy sauce, lime juice, vinegar, sugar, black pepper, and cumin in a large, non-reactive bowl or baking dish. Stir in the minced garlic, jalapeño, and cilantro."
+            },
+            {
+              "id": "0b710b73-c3b1-4339-aefb-abbf4693d3cd",
+              "instruction": "Place the steak in the marinade and turn over a couple of times to coat thoroughly.  Cover in plastic wrap and refrigerate for 1 to 4 hours or overnight (if using flank steak marinate at least 3 hours)."
+            },
+            {
+              "id": "f6e2e44d-15ea-4503-8f60-f4daeacc9148",
+              "instruction": "reheat your grill for high direct heat, with part of the grill reserved with fewer coals (or gas flame) for low, indirect heat. You'll know the grill is hot enough when you can hold your hand above the grill grates for no more than one second. (You can also use a cast iron grill pan on high heat if cooking on the stovetop.)"
+            },
+            {
+              "id": "1242b456-4cb1-41e3-a7ea-6ed76c78e884",
+              "instruction": "Remove the steak from the marinade. Lightly brush off most of the bits of cilantro and garlic (do not brush off the oil)."
+            },
+            {
+              "id": "53062e2b-8a67-4343-91fd-92f854e6b5db",
+              "instruction": "Place on the hot side of the grill. Grill the steak for a few minutes only, until well seared on one side (the browning and the searing makes for great flavor), then turn the steak over and sear on the other side."
+            },
+            {
+              "id": "dfebc067-8b6d-42d8-9e4c-00684f49ad32",
+              "instruction": "Place the steak on a cutting board, tent with foil, and let rest for 10 minutes."
+            },
+            {
+              "id": "88199e09-7c34-4fd1-b944-9fb0153f63ab",
+              "instruction": "Slice the steak across the grain: Use a sharp, long bladed knife (a bread knife works great for slicing meat) to cut the meat. Notice the direction of the grain of the meat and cut perpendicular to the grain. Angle your knife so that your slices are wide and thin."
+            }
+          ],
+          "favorite": true
+        },
         {
           "id": "e7f13bc5-1d7d-425d-b0f1-8ad75e6926e4",
           "name": "Ramen",
