@@ -1,9 +1,9 @@
-.dashboard-btn {
+.dashboardBtn {
   display: inline-block;
   cursor: pointer;
 }
 
-.dashboard-btn:hover {
+.dashboardBtn:hover {
   color: #79b473;
   -webkit-transform: translateX(10%);
           transform: translateX(10%);
@@ -11,13 +11,21 @@
   transition: all 450ms ease-in-out;
 }
 
-.edit-btn:hover {
+.editBtn {
+  width: 100%;
+}
+
+.editBtn:hover {
   color: #79b473;
   background-color: white !important;
   border: 1px solid #79b473 !important;
 }
 
-.btn-danger:hover {
+.btnDanger {
+  width: 100%;
+}
+
+.btnDanger:hover {
   background-color: white;
   color: #dc3545;
   border: 1px solid #dc3545;

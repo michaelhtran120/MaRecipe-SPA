@@ -1,18 +1,17 @@
 $primary: #79b473;
 
-.dashboard-btn {
+.dashboardBtn {
     display: inline-block;
     cursor: pointer;
+    &:hover {
+        color: $primary;
+        transform: translateX(10%);
+        transition: all 450ms ease-in-out;
+    }
 }
 
-.dashboard-btn:hover {
-    color: $primary;
-
-    transform: translateX(10%);
-    transition: all 450ms ease-in-out;
-}
-
-.edit-btn {
+.editBtn {
+    width: 100%;
     &:hover {
         color: $primary;
         background-color: white !important;
@@ -20,7 +19,8 @@ $primary: #79b473;
     }
 }
 
-.btn-danger {
+.btnDanger {
+    width: 100%;
     &:hover {
         background-color: white;
         color: #dc3545;

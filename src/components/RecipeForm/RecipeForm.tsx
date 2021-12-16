@@ -224,6 +224,7 @@ const RecipeForm = ({ toggleFormModal, recipe }: Props): JSX.Element => {
                 <Row className='justify-content-start'>
                     <Col md={6}>
                         <FormGroup>
+                            <Label className={styles.formLabel}>Recipe Name</Label>
                             <Input
                                 id='recipeName'
                                 value={recipeName}
@@ -238,11 +239,13 @@ const RecipeForm = ({ toggleFormModal, recipe }: Props): JSX.Element => {
                             />
                         </FormGroup>
                         <FormGroup>
+                            <Label className={styles.formLabel}>Image Link</Label>
                             <Input
                                 id='imageLink'
                                 name='imageLink'
                                 type='text'
                                 value={imageLink}
+                                placeholder='https://....'
                                 onChange={(event) => {
                                     handleInputChange(event);
                                 }}
@@ -268,6 +271,7 @@ const RecipeForm = ({ toggleFormModal, recipe }: Props): JSX.Element => {
                                 onChange={(event) => {
                                     handleInputChange(event);
                                 }}
+                                placeholder='Describe your recipe...'
                                 style={{ height: "200px" }}
                                 maxLength={200}
                                 required

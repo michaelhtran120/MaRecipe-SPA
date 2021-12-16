@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./RecipePage.css";
+import styles from "./RecipePage.module.css";
 import { Button, Container, Image, Row, Modal, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
@@ -42,7 +42,7 @@ const DisplayRecipe = ({ recipeData }: { recipeData: Recipe }) => {
     return (
         <>
             <Container className='p-3 p-md-5 pt-md-2 recipe-view'>
-                <span className='dashboard-btn mt-3' onClick={() => navigate("/dashboard")}>
+                <span className={`${styles.dashboardBtn} mt-3`} onClick={() => navigate("/dashboard")}>
                     &larr; Back To Dashboard
                 </span>
                 <h1 className='mt-4'>{recipeData.name}</h1>
@@ -92,11 +92,13 @@ const DisplayRecipe = ({ recipeData }: { recipeData: Recipe }) => {
                 </ol>
                 <hr />
                 <Row className='justify-content-between'>
-                    <Col xs={4}>
-                        <Button className='edit-btn me-2' onClick={toggleEditRecipeModal}>
+                    <Col xs={6} sm={4} md={3}>
+                        <Button className={`${styles.editBtn} me-2`} onClick={toggleEditRecipeModal}>
                             Edit Recipe
                         </Button>
-                        <Button variant='danger' onClick={() => toggleConfirmDeleteModal()} className='delete-btn'>
+                    </Col>
+                    <Col xs={6} sm={4} md={3}>
+                        <Button variant='danger' onClick={() => toggleConfirmDeleteModal()} className={styles.btnDanger}>
                             Delete Recipe
                         </Button>
                     </Col>
