@@ -6,7 +6,7 @@ export type CurrentUser = {
     lastName: string;
     id: string;
     recipes: Recipe[];
-}
+};
 
 export type Recipe = {
     id: string;
@@ -17,7 +17,7 @@ export type Recipe = {
     instructions: Instructions[];
     servings: string;
     favorite: boolean;
-}
+};
 
 export type Ingredients = {
     id: string;
@@ -33,14 +33,9 @@ export type Instructions = {
     instruction: string;
 };
 
-export type AddRecipeAction = {
-    type: string;
-    payload: Recipe[];
-};
-
 export type UserAction = {
     type: string;
-    payload: any;
+    payload?: any;
 };
 
 export type UserInfo = {
@@ -48,4 +43,4 @@ export type UserInfo = {
         accessToken: string;
         user: CurrentUser;
     };
-}
+};

@@ -50,9 +50,9 @@ interface Props {
 
 const SignUpModal = ({ open, toggleSignUpModal }: Props): JSX.Element => {
     const dispatch = useDispatch();
-    const navigate = useNavigate();
-    // Using logInSuccess action creator to update user state with user sign up data.
+
     const { logIn } = bindActionCreators(actionCreators, dispatch);
+    const navigate = useNavigate();
 
     const [signUpCredentials, setSignUpCredentials] = useState({
         id: "",
@@ -62,6 +62,7 @@ const SignUpModal = ({ open, toggleSignUpModal }: Props): JSX.Element => {
         lastName: ""
     });
 
+    // Form control method
     const handleSignUpInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
         setSignUpCredentials({ ...signUpCredentials, [e.target.name]: e.target.value });
     };
@@ -85,16 +86,16 @@ const SignUpModal = ({ open, toggleSignUpModal }: Props): JSX.Element => {
                 const message = `An error has occured: ${response.status}`;
                 throw new Error(message);
             }
-            const user = await response.json();
-            console.log(user);
+            // const user = await response.json();
             const logInCredentials = {
                 email: signUpCredentials.email,
                 password: signUpCredentials.password
             };
+            // Using logIn action creator to update user state with user sign up data.
             logIn(logInCredentials);
             localStorage.setItem("pw", signUpCredentials.password);
             toggleSignUpModal();
-            navigate('/dashboard');
+            navigate("/dashboard");
         } catch (error) {
             console.log(error);
         }

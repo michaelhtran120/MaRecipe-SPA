@@ -2,14 +2,14 @@ import { Dispatch } from "redux";
 import { CurrentUser, Recipe, UserInfo } from "../actions";
 import { ActionType } from "../actionTypes";
 
-//LOGIN ACTION CREATORS
 const API_URL = "http://localhost:3004/";
+//LOGIN ACTION CREATORS
 
 export const logIn = (credentials: { email: string; password: string }) => {
     return async (dispatch: Dispatch) => {
         dispatch(logInRequest());
         try {
-            const response =  await fetch(API_URL + "login", {
+            const response = await fetch(API_URL + "login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -25,9 +25,11 @@ export const logIn = (credentials: { email: string; password: string }) => {
             dispatch(logInSuccess(user));
             localStorage.setItem("user", JSON.stringify(user));
             localStorage.setItem("pw", credentials.password);
+            return user;
         } catch (error) {
             console.log(error);
             dispatch(logInFail(error));
+            return error;
         }
     };
 };

@@ -1,393 +1,258 @@
 {
-  "users": [
-    {
-      "email": "admin@admin.com",
-      "password": "$2a$10$LXNY9hRw9Qdzomo4oAyZNeIi/EtWVmQTHCgoU5A.aRmS4wUSTxzDq",
-      "firstName": "Michael",
-      "lastName": "Tran",
-      "recipes": [
+    "users": [
         {
-          "id": "20186289-dbc0-48d1-be30-d60108875623",
-          "name": "Simply Carne Asada",
-          "imageUrl": "https://www.simplyrecipes.com/thmb/EEy4KWPP3LZ2K0mLdWQhKfhXJpU=/648x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__simply_recipes__uploads__2007__05__carne-asada-vertical-a-1400-bea3184c8a4d4d3386384874bc2fbaf6.jpg",
-          "description": "Marinate and grill beef, sliced thinly. Great for carne asada tacos!",
-          "ingredients": [
-            {
-              "id": "4570ff7c-666c-44be-8f0e-97d905fff791",
-              "name": "Extra virgin olive oil",
-              "quantity": "50",
-              "proteins": "0",
-              "carbs": "0",
-              "fats": "50"
-            },
-            {
-              "id": "e7dc7331-dbe6-4daa-8ad2-c84fe7c358a3",
-              "name": "Soy Sauce",
-              "quantity": "75",
-              "proteins": "2",
-              "carbs": "10",
-              "fats": "2"
-            },
-            {
-              "id": "152c2530-55dc-4c80-bb7d-464c2ac5f83e",
-              "name": "Lime Juice",
-              "quantity": "5",
-              "proteins": "1",
-              "carbs": "4",
-              "fats": "0"
-            },
-            {
-              "id": "b759b339-32b8-4c1b-8ac7-c0f9ee9cc2cb",
-              "name": "Cider Vinegar",
-              "quantity": "5",
-              "proteins": "1",
-              "carbs": "1",
-              "fats": "0"
-            },
-            {
-              "id": "e9529507-3ef6-4c8e-9b8f-a0de26c6b006",
-              "name": "Black Pepper",
-              "quantity": "10",
-              "proteins": "0",
-              "carbs": "0",
-              "fats": "0"
-            },
-            {
-              "id": "68ef5c19-2607-4d24-9552-fa6570152880",
-              "name": "Sugar",
-              "quantity": "50",
-              "proteins": "0",
-              "carbs": "50",
-              "fats": "0"
-            },
-            {
-              "id": "9c3d3a40-018f-455e-8d64-7c4a6b5221a7",
-              "name": "Ground Cumin",
-              "quantity": "25",
-              "proteins": "0",
-              "carbs": "0",
-              "fats": "0"
-            },
-            {
-              "id": "ab0c8d29-bdca-4554-acb6-f48d33d9ee45",
-              "name": "Chopped / Minced Garlic",
-              "quantity": "35",
-              "proteins": "2",
-              "carbs": "5",
-              "fats": "0"
-            },
-            {
-              "id": "6722278d-f661-4e8b-9c99-990d12aa943e",
-              "name": "Jalapenos (diced)",
-              "quantity": "20",
-              "proteins": "1",
-              "carbs": "5",
-              "fats": "0"
-            },
-            {
-              "id": "1bbfef3d-7bdd-46c7-a1cf-6263f8d2478c",
-              "name": "Cilantro",
-              "quantity": "25",
-              "proteins": "1",
-              "carbs": "5",
-              "fats": "0"
-            },
-            {
-              "id": "547c1d63-0e4c-45ff-9c16-bcf8dec98b24",
-              "name": "Flank Steak / Skirt Steak",
-              "quantity": "300",
-              "proteins": "160",
-              "carbs": "0",
-              "fats": "40"
-            }
-          ],
-          "servings": "4",
-          "instructions": [
-            {
-              "id": "0974a680-f231-4d7a-9d3b-130bc599206e",
-              "instruction": "Marinate the steak: Whisk to combine the olive oil, soy sauce, lime juice, vinegar, sugar, black pepper, and cumin in a large, non-reactive bowl or baking dish. Stir in the minced garlic, jalapeño, and cilantro."
-            },
-            {
-              "id": "0b710b73-c3b1-4339-aefb-abbf4693d3cd",
-              "instruction": "Place the steak in the marinade and turn over a couple of times to coat thoroughly.  Cover in plastic wrap and refrigerate for 1 to 4 hours or overnight (if using flank steak marinate at least 3 hours)."
-            },
-            {
-              "id": "f6e2e44d-15ea-4503-8f60-f4daeacc9148",
-              "instruction": "reheat your grill for high direct heat, with part of the grill reserved with fewer coals (or gas flame) for low, indirect heat. You'll know the grill is hot enough when you can hold your hand above the grill grates for no more than one second. (You can also use a cast iron grill pan on high heat if cooking on the stovetop.)"
-            },
-            {
-              "id": "1242b456-4cb1-41e3-a7ea-6ed76c78e884",
-              "instruction": "Remove the steak from the marinade. Lightly brush off most of the bits of cilantro and garlic (do not brush off the oil)."
-            },
-            {
-              "id": "53062e2b-8a67-4343-91fd-92f854e6b5db",
-              "instruction": "Place on the hot side of the grill. Grill the steak for a few minutes only, until well seared on one side (the browning and the searing makes for great flavor), then turn the steak over and sear on the other side."
-            },
-            {
-              "id": "dfebc067-8b6d-42d8-9e4c-00684f49ad32",
-              "instruction": "Place the steak on a cutting board, tent with foil, and let rest for 10 minutes."
-            },
-            {
-              "id": "88199e09-7c34-4fd1-b944-9fb0153f63ab",
-              "instruction": "Slice the steak across the grain: Use a sharp, long bladed knife (a bread knife works great for slicing meat) to cut the meat. Notice the direction of the grain of the meat and cut perpendicular to the grain. Angle your knife so that your slices are wide and thin."
-            }
-          ],
-          "favorite": true
+            "email": "admin@admin.com",
+            "password": "$2a$10$LXNY9hRw9Qdzomo4oAyZNeIi/EtWVmQTHCgoU5A.aRmS4wUSTxzDq",
+            "firstName": "Michael",
+            "lastName": "Tran",
+            "recipes": [
+                {
+                    "id": "20186289-dbc0-48d1-be30-d60108875623",
+                    "name": "Simply Carne Asada",
+                    "imageUrl": "https://www.simplyrecipes.com/thmb/EEy4KWPP3LZ2K0mLdWQhKfhXJpU=/648x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/__opt__aboutcom__coeus__resources__content_migration__simply_recipes__uploads__2007__05__carne-asada-vertical-a-1400-bea3184c8a4d4d3386384874bc2fbaf6.jpg",
+                    "description": "Marinate and grill beef, sliced thinly. Great for carne asada tacos!",
+                    "ingredients": [
+                        {
+                            "id": "4570ff7c-666c-44be-8f0e-97d905fff791",
+                            "name": "Extra virgin olive oil",
+                            "quantity": "50",
+                            "proteins": "0",
+                            "carbs": "0",
+                            "fats": "50"
+                        },
+                        {
+                            "id": "e7dc7331-dbe6-4daa-8ad2-c84fe7c358a3",
+                            "name": "Soy Sauce",
+                            "quantity": "75",
+                            "proteins": "2",
+                            "carbs": "10",
+                            "fats": "2"
+                        },
+                        {
+                            "id": "152c2530-55dc-4c80-bb7d-464c2ac5f83e",
+                            "name": "Lime Juice",
+                            "quantity": "5",
+                            "proteins": "1",
+                            "carbs": "4",
+                            "fats": "0"
+                        },
+                        {
+                            "id": "b759b339-32b8-4c1b-8ac7-c0f9ee9cc2cb",
+                            "name": "Cider Vinegar",
+                            "quantity": "5",
+                            "proteins": "1",
+                            "carbs": "1",
+                            "fats": "0"
+                        },
+                        {
+                            "id": "e9529507-3ef6-4c8e-9b8f-a0de26c6b006",
+                            "name": "Black Pepper",
+                            "quantity": "10",
+                            "proteins": "0",
+                            "carbs": "0",
+                            "fats": "0"
+                        },
+                        {
+                            "id": "68ef5c19-2607-4d24-9552-fa6570152880",
+                            "name": "Sugar",
+                            "quantity": "50",
+                            "proteins": "0",
+                            "carbs": "50",
+                            "fats": "0"
+                        },
+                        {
+                            "id": "9c3d3a40-018f-455e-8d64-7c4a6b5221a7",
+                            "name": "Ground Cumin",
+                            "quantity": "25",
+                            "proteins": "0",
+                            "carbs": "0",
+                            "fats": "0"
+                        },
+                        {
+                            "id": "ab0c8d29-bdca-4554-acb6-f48d33d9ee45",
+                            "name": "Chopped / Minced Garlic",
+                            "quantity": "35",
+                            "proteins": "2",
+                            "carbs": "5",
+                            "fats": "0"
+                        },
+                        {
+                            "id": "6722278d-f661-4e8b-9c99-990d12aa943e",
+                            "name": "Jalapenos (diced)",
+                            "quantity": "20",
+                            "proteins": "1",
+                            "carbs": "5",
+                            "fats": "0"
+                        },
+                        {
+                            "id": "1bbfef3d-7bdd-46c7-a1cf-6263f8d2478c",
+                            "name": "Cilantro",
+                            "quantity": "25",
+                            "proteins": "1",
+                            "carbs": "5",
+                            "fats": "0"
+                        },
+                        {
+                            "id": "547c1d63-0e4c-45ff-9c16-bcf8dec98b24",
+                            "name": "Flank Steak / Skirt Steak",
+                            "quantity": "300",
+                            "proteins": "160",
+                            "carbs": "0",
+                            "fats": "40"
+                        }
+                    ],
+                    "servings": "4",
+                    "instructions": [
+                        {
+                            "id": "0974a680-f231-4d7a-9d3b-130bc599206e",
+                            "instruction": "Marinate the steak: Whisk to combine the olive oil, soy sauce, lime juice, vinegar, sugar, black pepper, and cumin in a large, non-reactive bowl or baking dish. Stir in the minced garlic, jalapeño, and cilantro."
+                        },
+                        {
+                            "id": "0b710b73-c3b1-4339-aefb-abbf4693d3cd",
+                            "instruction": "Place the steak in the marinade and turn over a couple of times to coat thoroughly.  Cover in plastic wrap and refrigerate for 1 to 4 hours or overnight (if using flank steak marinate at least 3 hours)."
+                        },
+                        {
+                            "id": "f6e2e44d-15ea-4503-8f60-f4daeacc9148",
+                            "instruction": "reheat your grill for high direct heat, with part of the grill reserved with fewer coals (or gas flame) for low, indirect heat. You'll know the grill is hot enough when you can hold your hand above the grill grates for no more than one second. (You can also use a cast iron grill pan on high heat if cooking on the stovetop.)"
+                        },
+                        {
+                            "id": "1242b456-4cb1-41e3-a7ea-6ed76c78e884",
+                            "instruction": "Remove the steak from the marinade. Lightly brush off most of the bits of cilantro and garlic (do not brush off the oil)."
+                        },
+                        {
+                            "id": "53062e2b-8a67-4343-91fd-92f854e6b5db",
+                            "instruction": "Place on the hot side of the grill. Grill the steak for a few minutes only, until well seared on one side (the browning and the searing makes for great flavor), then turn the steak over and sear on the other side."
+                        },
+                        {
+                            "id": "dfebc067-8b6d-42d8-9e4c-00684f49ad32",
+                            "instruction": "Place the steak on a cutting board, tent with foil, and let rest for 10 minutes."
+                        },
+                        {
+                            "id": "88199e09-7c34-4fd1-b944-9fb0153f63ab",
+                            "instruction": "Slice the steak across the grain: Use a sharp, long bladed knife (a bread knife works great for slicing meat) to cut the meat. Notice the direction of the grain of the meat and cut perpendicular to the grain. Angle your knife so that your slices are wide and thin."
+                        }
+                    ],
+                    "favorite": true
+                },
+                {
+                    "id": "e7f13bc5-1d7d-425d-b0f1-8ad75e6926e4",
+                    "name": "Ramen",
+                    "imageUrl": "https://images.unsplash.com/photo-1600326145359-3a44909d1a39?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8cmFtZW58ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60",
+                    "description": "Noodles in broth with egg and scallions. MHMMMM",
+                    "ingredients": [
+                        {
+                            "id": "bde9556b-30cb-4aa8-877e-aa58770fa769",
+                            "name": "Egg Noodles",
+                            "quantity": "200",
+                            "proteins": "25",
+                            "carbs": "150",
+                            "fats": "10"
+                        },
+                        {
+                            "id": "a49915ba-4369-45a3-9ea7-f4da89c29bd6",
+                            "name": "Eggs",
+                            "quantity": "100",
+                            "proteins": "12",
+                            "carbs": "0",
+                            "fats": "10"
+                        }
+                    ],
+                    "servings": "2",
+                    "instructions": [
+                        {
+                            "id": "76b52d4e-45d4-4eb1-8567-5ffa65ccc5e4",
+                            "instruction": "Boil noodles for 30 seconds to a minute"
+                        },
+                        {
+                            "id": "c1dbef67-d837-4484-9b15-d6d8ee035f15",
+                            "instruction": "Soft boil egg, add egg into cold water and bring up to a boil. Let it sit in boil for 1-2 minutes then take out immediately and put into an ice bath."
+                        }
+                    ],
+                    "favorite": false
+                },
+                {
+                    "id": "b139d7a9-3589-4606-9d39-bac226b4b58a",
+                    "name": "Update Recipe TEST DELAY ETC",
+                    "imageUrl": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8Zm9vZHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
+                    "description": "update test",
+                    "ingredients": [
+                        {
+                            "id": "513576b6-1f40-4952-b071-9217fb1ed826",
+                            "name": "Ingredient 1",
+                            "quantity": "10",
+                            "proteins": "10",
+                            "carbs": "20",
+                            "fats": "30"
+                        },
+                        {
+                            "id": "c3cabafb-469b-4cb9-b4a7-dd0b91214848",
+                            "name": "Ingredient 2",
+                            "quantity": "10",
+                            "proteins": "1",
+                            "carbs": "2",
+                            "fats": "3"
+                        }
+                    ],
+                    "servings": "4",
+                    "instructions": [
+                        {
+                            "id": "62115b15-f9bc-4f95-802e-6a6d7210cc12",
+                            "instruction": "TEST"
+                        },
+                        {
+                            "id": "7c27ffc6-2ab6-4098-8cdb-6ed455ed2126",
+                            "instruction": "TEST2"
+                        }
+                    ],
+                    "favorite": true
+                }
+            ],
+            "id": "1"
         },
         {
-          "id": "e7f13bc5-1d7d-425d-b0f1-8ad75e6926e4",
-          "name": "Ramen",
-          "imageUrl": "https://images.unsplash.com/photo-1600326145359-3a44909d1a39?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8cmFtZW58ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60",
-          "description": "Noodles in broth with egg and scallions. MHMMMM",
-          "ingredients": [
-            {
-              "id": "bde9556b-30cb-4aa8-877e-aa58770fa769",
-              "name": "Egg Noodles",
-              "quantity": "200",
-              "proteins": "25",
-              "carbs": "150",
-              "fats": "10"
-            },
-            {
-              "id": "a49915ba-4369-45a3-9ea7-f4da89c29bd6",
-              "name": "Eggs",
-              "quantity": "100",
-              "proteins": "12",
-              "carbs": "0",
-              "fats": "10"
-            }
-          ],
-          "servings": "2",
-          "instructions": [
-            {
-              "id": "76b52d4e-45d4-4eb1-8567-5ffa65ccc5e4",
-              "instruction": "Boil noodles for 30 seconds to a minute"
-            },
-            {
-              "id": "c1dbef67-d837-4484-9b15-d6d8ee035f15",
-              "instruction": "Soft boil egg, add egg into cold water and bring up to a boil. Let it sit in boil for 1-2 minutes then take out immediately and put into an ice bath."
-            }
-          ],
-          "favorite": false
-        },
-        {
-          "id": "b139d7a9-3589-4606-9d39-bac226b4b58a",
-          "name": "Update Recipe TEST DELAY ETC",
-          "imageUrl": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8Zm9vZHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
-          "description": "update test",
-          "ingredients": [
-            {
-              "id": "513576b6-1f40-4952-b071-9217fb1ed826",
-              "name": "Ingredient 1",
-              "quantity": "10",
-              "proteins": "10",
-              "carbs": "20",
-              "fats": "30"
-            },
-            {
-              "id": "c3cabafb-469b-4cb9-b4a7-dd0b91214848",
-              "name": "Ingredient 2",
-              "quantity": "10",
-              "proteins": "1",
-              "carbs": "2",
-              "fats": "3"
-            }
-          ],
-          "servings": "4",
-          "instructions": [
-            {
-              "id": "62115b15-f9bc-4f95-802e-6a6d7210cc12",
-              "instruction": "TEST"
-            },
-            {
-              "id": "7c27ffc6-2ab6-4098-8cdb-6ed455ed2126",
-              "instruction": "TEST2"
-            }
-          ],
-          "favorite": true
+            "email": "admin2@admin.com",
+            "password": "$2a$10$WLMLoapr1i9TMQ1dW5tE2uDzgpZ03skuFPYeNcMMtsDtYvV4gyAgi",
+            "firstName": "admin",
+            "lastName": "test2",
+            "recipes": [
+                {
+                    "id": "2c7bd673-9a2a-4cfe-bb83-e1bf295486dc",
+                    "name": "SAMPLE RECIPE Update Test",
+                    "imageUrl": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8Zm9vZHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
+                    "description": "This is a sample recipe TESTE",
+                    "ingredients": [
+                        {
+                            "id": "ing1",
+                            "name": "SAMPLE INGREDIENT 1",
+                            "quantity": "10",
+                            "proteins": "10",
+                            "carbs": "10",
+                            "fats": "10"
+                        },
+                        {
+                            "id": "ing2",
+                            "name": "SAMPLE INGREDIENT 2",
+                            "quantity": "10",
+                            "proteins": "10",
+                            "carbs": "10",
+                            "fats": "10"
+                        }
+                    ],
+                    "servings": "1",
+                    "instructions": [
+                        {
+                            "id": "62115b15-f9bc-4f95-802e-6a6d7210cc12",
+                            "instruction": "SAMPLE INSTRUCTION 1"
+                        },
+                        {
+                            "id": "7c27ffc6-2ab6-4098-8cdb-6ed455ed2126",
+                            "instruction": "SAMPLE INSTRUCTION 2"
+                        }
+                    ],
+                    "favorite": true
+                }
+            ],
+            "id": "IAwJO0q"
         }
-      ],
-      "id": "1"
-    },
-    {
-      "email": "admin2@admin.com",
-      "password": "$2a$10$WLMLoapr1i9TMQ1dW5tE2uDzgpZ03skuFPYeNcMMtsDtYvV4gyAgi",
-      "firstName": "admin",
-      "lastName": "test2",
-      "recipes": [
-        {
-          "id": "2c7bd673-9a2a-4cfe-bb83-e1bf295486dc",
-          "name": "SAMPLE RECIPE Update Test",
-          "imageUrl": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8Zm9vZHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
-          "description": "This is a sample recipe TESTE",
-          "ingredients": [
-            {
-              "id": "ing1",
-              "name": "SAMPLE INGREDIENT 1",
-              "quantity": "10",
-              "proteins": "10",
-              "carbs": "10",
-              "fats": "10"
-            },
-            {
-              "id": "ing2",
-              "name": "SAMPLE INGREDIENT 2",
-              "quantity": "10",
-              "proteins": "10",
-              "carbs": "10",
-              "fats": "10"
-            }
-          ],
-          "servings": "1",
-          "instructions": [
-            {
-              "id": "62115b15-f9bc-4f95-802e-6a6d7210cc12",
-              "instruction": "SAMPLE INSTRUCTION 1"
-            },
-            {
-              "id": "7c27ffc6-2ab6-4098-8cdb-6ed455ed2126",
-              "instruction": "SAMPLE INSTRUCTION 2"
-            }
-          ],
-          "favorite": true
-        }
-      ],
-      "id": "IAwJO0q"
-    },
-    {
-      "email": "admin3@admin.com",
-      "password": "$2a$10$hAVtvMCZCPYHVn3LR/cyBO85F1KdThVjv0t5Ux99DjxnuA/lVJ5PW",
-      "firstName": "admin",
-      "lastName": "test",
-      "recipes": [
-        {
-          "id": "2c7bd673-9a2a-4cfe-bb83-e1bf295486dc",
-          "name": "SAMPLE RECIPE",
-          "imageUrl": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8Zm9vZHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
-          "description": "This is a sample recipe",
-          "ingredients": [
-            {
-              "id": "ing1",
-              "name": "SAMPLE INGREDIENT 1",
-              "quantity": "10",
-              "proteins": "10",
-              "carbs": "10",
-              "fats": "10"
-            },
-            {
-              "id": "ing2",
-              "name": "SAMPLE INGREDIENT 2",
-              "quantity": "10",
-              "proteins": "10",
-              "carbs": "10",
-              "fats": "10"
-            }
-          ],
-          "servings": "1",
-          "instructions": [
-            {
-              "id": "62115b15-f9bc-4f95-802e-6a6d7210cc12",
-              "instruction": "SAMPLE INSTRUCTION 1"
-            },
-            {
-              "id": "7c27ffc6-2ab6-4098-8cdb-6ed455ed2126",
-              "instruction": "SAMPLE INSTRUCTION 2"
-            }
-          ],
-          "favorite": true
-        }
-      ],
-      "id": "8WSKcQI"
-    },
-    {
-      "email": "test@test.com",
-      "password": "$2a$10$E.vm9qFFlv6jGbgQoa871e6ZeJ8.5kYyJSoRWJKs5jSS0niGzuSJi",
-      "firstName": "M",
-      "lastName": "T",
-      "recipes": [
-        {
-          "id": "2c7bd673-9a2a-4cfe-bb83-e1bf295486dc",
-          "name": "SAMPLE RECIPE",
-          "imageUrl": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8Zm9vZHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
-          "description": "This is a sample recipe",
-          "ingredients": [
-            {
-              "id": "ing1",
-              "name": "SAMPLE INGREDIENT 1",
-              "quantity": "10",
-              "proteins": "10",
-              "carbs": "10",
-              "fats": "10"
-            },
-            {
-              "id": "ing2",
-              "name": "SAMPLE INGREDIENT 2",
-              "quantity": "10",
-              "proteins": "10",
-              "carbs": "10",
-              "fats": "10"
-            }
-          ],
-          "servings": "1",
-          "instructions": [
-            {
-              "id": "62115b15-f9bc-4f95-802e-6a6d7210cc12",
-              "instruction": "SAMPLE INSTRUCTION 1"
-            },
-            {
-              "id": "7c27ffc6-2ab6-4098-8cdb-6ed455ed2126",
-              "instruction": "SAMPLE INSTRUCTION 2"
-            }
-          ],
-          "favorite": true
-        }
-      ],
-      "id": "urG_adV"
-    },
-    {
-      "email": "test1@test.com",
-      "password": "$2a$10$d4EdHUdq64WVXt/iO8ykIuN/jvLoyL1huZArrM63GSSfuoqGB./UK",
-      "firstName": "test",
-      "lastName": "test",
-      "recipes": [
-        {
-          "id": "2c7bd673-9a2a-4cfe-bb83-e1bf295486dc",
-          "name": "SAMPLE RECIPE",
-          "imageUrl": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8Zm9vZHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
-          "description": "This is a sample recipe",
-          "ingredients": [
-            {
-              "id": "ing1",
-              "name": "SAMPLE INGREDIENT 1",
-              "quantity": "10",
-              "proteins": "10",
-              "carbs": "10",
-              "fats": "10"
-            },
-            {
-              "id": "ing2",
-              "name": "SAMPLE INGREDIENT 2",
-              "quantity": "10",
-              "proteins": "10",
-              "carbs": "10",
-              "fats": "10"
-            }
-          ],
-          "servings": "1",
-          "instructions": [
-            {
-              "id": "62115b15-f9bc-4f95-802e-6a6d7210cc12",
-              "instruction": "SAMPLE INSTRUCTION 1"
-            },
-            {
-              "id": "7c27ffc6-2ab6-4098-8cdb-6ed455ed2126",
-              "instruction": "SAMPLE INSTRUCTION 2"
-            }
-          ],
-          "favorite": true
-        }
-      ],
-      "id": "fRqqPQ-"
-    }
-  ]
+    ]
 }

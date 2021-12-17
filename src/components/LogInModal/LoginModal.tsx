@@ -1,8 +1,7 @@
-import React, { SyntheticEvent, useState, useRef, useEffect } from "react";
+import React, { SyntheticEvent, useState } from "react";
 import { Button, Modal, Form } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
-import { bindActionCreators } from "redux";
-import { actionCreators, State } from "../../redux/index";
+import { useAppDispatch } from "../../redux/store";
+import { actionCreators } from "../../redux/index";
 import { useNavigate } from "react-router-dom";
 
 type Credentials = {
@@ -16,12 +15,7 @@ type Props = {
 };
 
 const LoginModal = ({ open, toggleLoginModal }: Props): JSX.Element => {
-    // Get state from redux store
-    const user = useSelector((state: State) => state.user);
-
-    // Combine dispatch and action creators to have redux methods look like functions.
-    const dispatch = useDispatch();
-    const { logIn } = bindActionCreators(actionCreators, dispatch);
+    const dispatch = useAppDispatch();
 
     // React Router to navigate to a different page.
     const navigate = useNavigate();
@@ -32,19 +26,22 @@ const LoginModal = ({ open, toggleLoginModal }: Props): JSX.Element => {
         password: ""
     });
 
-
     const handleLogInInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
         setCredentials({ ...credentials, [e.target.name]: e.target.value });
     };
-
 
     // Method to handle user log in.
     const handleLogInSubmit = (event: SyntheticEvent) => {
         event.preventDefault();
         // fire redux action
-        logIn(credentials);
-        toggleLoginModal();
-        navigate('/dashboard');
+
+        (async () => {
+            const response = await dispatch(actionCreators.logIn(credentials) as any);
+            if (response.accessToken) {
+                toggleLoginModal();
+                navigate("/dashboard");
+            }
+        })();
     };
 
     return (
