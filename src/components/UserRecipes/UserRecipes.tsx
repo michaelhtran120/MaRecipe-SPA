@@ -22,14 +22,15 @@ const UserRecipes = ({ recipes }: ComponentProp) => {
     );
 };
 
-type Prop = {
+type RecipeProp = {
     title: string;
     url: string;
     description: string;
     data: Recipe;
 };
 
-const RecipeCard = ({ title, url, description, data }: Prop): JSX.Element => {
+// Card Component to be rendered in UserRecipes component
+const RecipeCard = ({ title, url, description, data }: RecipeProp): JSX.Element => {
     const navigate = useNavigate();
     const handleClick = (data: Recipe) => {
         navigate(`/dashboard/${data.id}`, { state: data });

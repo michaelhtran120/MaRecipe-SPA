@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import logo from "../../assets/images/logo.svg";
 import styles from "./NavbarComponent.module.css";
 import userIcon from "../../assets/images/user-icon.svg";
@@ -25,21 +25,19 @@ const NavbarComponent = ({ page, toggleLoginModal, toggleSignUpModal }: Props): 
     const navigate = useNavigate();
 
     // Local state
-    //// Conditionally render navbar UI. 
+    //// Conditionally render navbar UI.
     //// Check if user on mobile.
     const mobileScreen = window.innerWidth < 768;
     const [isWindowSmall, setIsWindowSmall] = useState<boolean>(mobileScreen);
 
     // Resize event listener to help conditionally render navbar UI
 
-    useEffect(() => {
-        window.addEventListener("resize", () => {
-            if (window.innerWidth < 768) {
-                setIsWindowSmall(true);
-            } else {
-                setIsWindowSmall(false);
-            }
-        });
+    window.addEventListener("resize", () => {
+        if (window.innerWidth < 768) {
+            setIsWindowSmall(true);
+        } else {
+            setIsWindowSmall(false);
+        }
     });
 
     // Method to handle log out
