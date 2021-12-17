@@ -298,6 +298,96 @@
         }
       ],
       "id": "8WSKcQI"
+    },
+    {
+      "email": "test@test.com",
+      "password": "$2a$10$E.vm9qFFlv6jGbgQoa871e6ZeJ8.5kYyJSoRWJKs5jSS0niGzuSJi",
+      "firstName": "M",
+      "lastName": "T",
+      "recipes": [
+        {
+          "id": "2c7bd673-9a2a-4cfe-bb83-e1bf295486dc",
+          "name": "SAMPLE RECIPE",
+          "imageUrl": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8Zm9vZHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
+          "description": "This is a sample recipe",
+          "ingredients": [
+            {
+              "id": "ing1",
+              "name": "SAMPLE INGREDIENT 1",
+              "quantity": "10",
+              "proteins": "10",
+              "carbs": "10",
+              "fats": "10"
+            },
+            {
+              "id": "ing2",
+              "name": "SAMPLE INGREDIENT 2",
+              "quantity": "10",
+              "proteins": "10",
+              "carbs": "10",
+              "fats": "10"
+            }
+          ],
+          "servings": "1",
+          "instructions": [
+            {
+              "id": "62115b15-f9bc-4f95-802e-6a6d7210cc12",
+              "instruction": "SAMPLE INSTRUCTION 1"
+            },
+            {
+              "id": "7c27ffc6-2ab6-4098-8cdb-6ed455ed2126",
+              "instruction": "SAMPLE INSTRUCTION 2"
+            }
+          ],
+          "favorite": true
+        }
+      ],
+      "id": "urG_adV"
+    },
+    {
+      "email": "test1@test.com",
+      "password": "$2a$10$d4EdHUdq64WVXt/iO8ykIuN/jvLoyL1huZArrM63GSSfuoqGB./UK",
+      "firstName": "test",
+      "lastName": "test",
+      "recipes": [
+        {
+          "id": "2c7bd673-9a2a-4cfe-bb83-e1bf295486dc",
+          "name": "SAMPLE RECIPE",
+          "imageUrl": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8Zm9vZHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
+          "description": "This is a sample recipe",
+          "ingredients": [
+            {
+              "id": "ing1",
+              "name": "SAMPLE INGREDIENT 1",
+              "quantity": "10",
+              "proteins": "10",
+              "carbs": "10",
+              "fats": "10"
+            },
+            {
+              "id": "ing2",
+              "name": "SAMPLE INGREDIENT 2",
+              "quantity": "10",
+              "proteins": "10",
+              "carbs": "10",
+              "fats": "10"
+            }
+          ],
+          "servings": "1",
+          "instructions": [
+            {
+              "id": "62115b15-f9bc-4f95-802e-6a6d7210cc12",
+              "instruction": "SAMPLE INSTRUCTION 1"
+            },
+            {
+              "id": "7c27ffc6-2ab6-4098-8cdb-6ed455ed2126",
+              "instruction": "SAMPLE INSTRUCTION 2"
+            }
+          ],
+          "favorite": true
+        }
+      ],
+      "id": "fRqqPQ-"
     }
   ]
 }

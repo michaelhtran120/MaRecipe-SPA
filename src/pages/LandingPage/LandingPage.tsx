@@ -3,7 +3,7 @@ import LandingHero from "../../components/LandingHero/LandingHero";
 import LandingFeaturesSection from "../../components/LandingFeaturesSection/LandingFeaturesSection";
 import LoginModal from "../../components/LogInModal/LoginModal";
 import SignUpModal from "../../components/SignUpModal/SignUpModal";
-import DashboardNavbar from "../../components/DashboardNavbar/DashboardNavbar";
+import DashboardNavbar from "../../components/NavbarComponent/NavbarComponent";
 
 const LandingPage = (): JSX.Element => {
     const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false);

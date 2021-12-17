@@ -1,6 +1,7 @@
 import React, { SyntheticEvent, useState } from "react";
 import { Button, Modal, Form, Row, Col } from "react-bootstrap";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router";
 import { bindActionCreators } from "redux";
 import { actionCreators } from "../../redux/index";
 
@@ -44,11 +45,12 @@ const sampleRecipe = {
 
 interface Props {
     open: boolean;
-    toggleSignUpModal: (event: React.MouseEvent<HTMLButtonElement>) => void;
+    toggleSignUpModal: () => void;
 }
 
 const SignUpModal = ({ open, toggleSignUpModal }: Props): JSX.Element => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     // Using logInSuccess action creator to update user state with user sign up data.
     const { logIn } = bindActionCreators(actionCreators, dispatch);
 
@@ -91,6 +93,8 @@ const SignUpModal = ({ open, toggleSignUpModal }: Props): JSX.Element => {
             };
             logIn(logInCredentials);
             localStorage.setItem("pw", signUpCredentials.password);
+            toggleSignUpModal();
+            navigate('/dashboard');
         } catch (error) {
             console.log(error);
         }

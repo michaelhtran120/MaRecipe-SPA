@@ -12,7 +12,7 @@ type Credentials = {
 
 type Props = {
     open: boolean;
-    toggleLoginModal: (event: React.MouseEvent<HTMLButtonElement>) => void;
+    toggleLoginModal: () => void;
 };
 
 const LoginModal = ({ open, toggleLoginModal }: Props): JSX.Element => {
@@ -32,26 +32,19 @@ const LoginModal = ({ open, toggleLoginModal }: Props): JSX.Element => {
         password: ""
     });
 
-    const isComponentMounted = useRef(false);
 
     const handleLogInInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
         setCredentials({ ...credentials, [e.target.name]: e.target.value });
     };
 
-    // redirect the user to the dashboard after log in is successful.
-    useEffect(() => {
-        if (!isComponentMounted.current) {
-            isComponentMounted.current = true;
-        } else if (user.userInfo) {
-            navigate("dashboard");
-        }
-    }, [user, navigate]);
 
     // Method to handle user log in.
     const handleLogInSubmit = (event: SyntheticEvent) => {
         event.preventDefault();
         // fire redux action
         logIn(credentials);
+        toggleLoginModal();
+        navigate('/dashboard');
     };
 
     return (

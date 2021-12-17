@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import "./DashboardNavbar.css";
 import logo from "../../assets/images/logo.svg";
+import styles from "./NavbarComponent.module.css";
 import userIcon from "../../assets/images/user-icon.svg";
 import { Navbar, Container, Nav, NavDropdown, Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
@@ -14,7 +14,7 @@ type Props = {
     page: string;
 };
 
-const DashboardNavbar = ({ page, toggleLoginModal, toggleSignUpModal }: Props): JSX.Element => {
+const NavbarComponent = ({ page, toggleLoginModal, toggleSignUpModal }: Props): JSX.Element => {
     // grab state from redux store
     const { user } = useSelector((state: State) => state);
 
@@ -39,12 +39,12 @@ const DashboardNavbar = ({ page, toggleLoginModal, toggleSignUpModal }: Props): 
 
     // Method to handle log out
     const handleLogOut = () => {
-        // redirect user back to landing page
-        navigate("/");
         // call redux action method
         logOut();
         // remove user data from localstorage
         localStorage.clear();
+        // redirect user back to landing page
+        navigate("/");
     };
 
     const navigateToDashboard = (): void => {
@@ -53,14 +53,23 @@ const DashboardNavbar = ({ page, toggleLoginModal, toggleSignUpModal }: Props): 
     };
 
     return (
-        <Navbar sticky='top' bg='light' variant='light' expand='md' className={page === "landing" && !user.userInfo ? "py-3" : "py-2"}>
+        <Navbar
+            sticky='top'
+            bg='light'
+            variant='light'
+            expand='md'
+            className={`${page === "landing" && !user.userInfo ? "py-3" : "py-2"} ${styles.nav}`}
+        >
             <Container fluid>
                 <Link to='/'>
-                    <Navbar.Brand className='ps-3'>
-                        <img src={logo} alt='MaRecipe Logo' />
+                    <Navbar.Brand className={"ps-3"}>
+                        <img className={styles.navbarBrandImg} src={logo} alt='MaRecipe Logo' />
                     </Navbar.Brand>
                 </Link>
                 <Navbar.Toggle aria-controls='navbar-nav' />
+
+                {/* Conditionally render navbar ui depending if redux store has a user logged in */}
+
                 {!user.userInfo ? (
                     <Nav className='justify-content-end align-items-end'>
                         <Button variant='outline-primary' className=' mt-sm-0 ms-3 me-sm-2 my-2 my-sm-0' onClick={toggleSignUpModal}>
@@ -73,8 +82,10 @@ const DashboardNavbar = ({ page, toggleLoginModal, toggleSignUpModal }: Props): 
                 ) : (
                     <Navbar.Collapse className='ps-3 ps-md-0' id='navbar-nav'>
                         <Nav className='ms-auto'>
+                            {/* Conditionally render a different UI when screen goes to xs / mobile size */}
                             {isWindowSmall ? (
                                 <>
+                                    {/* Conditionally render depending if navbar is residing on dashboard or landing page */}
                                     {page === "dashboard" ? (
                                         <Nav.Link onClick={handleLogOut}>Log Out</Nav.Link>
                                     ) : (
@@ -89,17 +100,20 @@ const DashboardNavbar = ({ page, toggleLoginModal, toggleSignUpModal }: Props): 
                                     title={
                                         <>
                                             {user.userInfo.user.firstName} {user.userInfo.user.lastName}
-                                            <img className='ms-2' src={userIcon} alt='user profile' />
+                                            <img className={`${styles.navbarDropImg} ms-2`} src={userIcon} alt='user profile' />
                                         </>
                                     }
                                     id='dashboard-nav-dropdown'
                                 >
+                                    {/* Conditionally render depending if navbar is residing on dashboard or landing page */}
                                     {page === "dashboard" ? (
-                                        <NavDropdown.Item onClick={handleLogOut}>Log Out</NavDropdown.Item>
+                                        <NavDropdown.Item className={`${styles.dropDownItem}`} onClick={handleLogOut}>Log Out</NavDropdown.Item>
                                     ) : (
                                         <>
-                                            <NavDropdown.Item onClick={navigateToDashboard}>Dashboard</NavDropdown.Item>
-                                            <NavDropdown.Item onClick={handleLogOut}>Log Out</NavDropdown.Item>
+                                            <NavDropdown.Item className={`${styles.dropDownItem}`}  onClick={navigateToDashboard}>Dashboard</NavDropdown.Item>
+                                            <NavDropdown.Item className={`${styles.dropDownItem} mt-3`}  onClick={handleLogOut}>
+                                                Log Out
+                                            </NavDropdown.Item>
                                         </>
                                     )}
                                 </NavDropdown>
@@ -112,4 +126,4 @@ const DashboardNavbar = ({ page, toggleLoginModal, toggleSignUpModal }: Props): 
     );
 };
 
-export default DashboardNavbar;
+export default NavbarComponent;

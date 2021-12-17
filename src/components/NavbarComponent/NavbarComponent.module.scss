@@ -1,0 +1,23 @@
+$primary: #79b473;
+$primary-shadow: #7ab4736b;
+
+.nav {
+    border-bottom: 2px solid $primary;
+
+    .navbarBrandImg {
+        width: 150px;
+    }
+
+    .navbarDropImg {
+        width: 35px;
+    }
+
+    .dropDownItem {
+        &:hover {
+            background-color: $primary-shadow;
+        }
+        &:active {
+            background-color: $primary;
+        }
+    }
+}

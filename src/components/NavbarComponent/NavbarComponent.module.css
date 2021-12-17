@@ -1,0 +1,19 @@
+.nav {
+  border-bottom: 2px solid #79b473;
+}
+
+.nav .navbarBrandImg {
+  width: 150px;
+}
+
+.nav .navbarDropImg {
+  width: 35px;
+}
+
+.nav .dropDownItem:hover {
+  background-color: #7ab4736b;
+}
+
+.nav .dropDownItem:active {
+  background-color: #79b473;
+}
