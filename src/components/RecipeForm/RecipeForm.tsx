@@ -301,12 +301,22 @@ const RecipeForm = ({ toggleFormModal, recipe }: Props): JSX.Element => {
                             <Image className='ms-2 info-icon' src={infoIcon} />
                         </OverlayTrigger>
                     </Label>
-                    <Button size='sm' className='col-3' onClick={toggleIngredientOpen} disabled={disableIngredientBtn ? true : false}>
-                        {isIngredientOpen ? "Collapse" : "Expand"}
-                    </Button>
+                    <Col xs={6}>
+                        <div className='float-end'>
+                            <OverlayTrigger
+                                placement='left'
+                                overlay={<Tooltip id='description-tooltip'>Button disabled if there are empty fields</Tooltip>}
+                            >
+                                <Image className='me-2 info-icon' src={infoIcon} />
+                            </OverlayTrigger>
+                            <Button onClick={toggleIngredientOpen} disabled={disableIngredientBtn ? true : false}>
+                                {isIngredientOpen ? "Collapse" : "Expand"}
+                            </Button>
+                        </div>
+                    </Col>
                 </Row>
                 <Collapse isOpen={isIngredientOpen}>
-                    <Row className='d-none d-md-flex'>
+                    <Row className='d-none d-sm-flex'>
                         <Col sm={3}>
                             <Label>Name</Label>
                         </Col>
@@ -421,9 +431,19 @@ const RecipeForm = ({ toggleFormModal, recipe }: Props): JSX.Element => {
                 <hr />
                 <Row className='flex-row pb-3 px-2 justify-content-between'>
                     <Label className={`${styles.formLabel} col-5`}>Instructions</Label>
-                    <Button size='sm' className='col-3' onClick={toggleInstructionOpen} disabled={disableInstructionBtn ? true : false}>
-                        {isInstructionOpen ? "Collapse" : "Expand"}
-                    </Button>
+                    <Col xs={6}>
+                        <div className='float-end'>
+                            <OverlayTrigger
+                                placement='left'
+                                overlay={<Tooltip id='description-tooltip'>Button disabled if there are empty fields</Tooltip>}
+                            >
+                                <Image className='me-2 info-icon' src={infoIcon} />
+                            </OverlayTrigger>
+                            <Button onClick={toggleInstructionOpen} disabled={disableInstructionBtn ? true : false}>
+                                {isInstructionOpen ? "Collapse" : "Expand"}
+                            </Button>
+                        </div>
+                    </Col>
                 </Row>
                 <Collapse isOpen={isInstructionOpen}>
                     {instructions.map((aInstruction) => {
