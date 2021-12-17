@@ -11,15 +11,23 @@ import RecipeForm from "../../components/RecipeForm/RecipeForm";
 import macroCalc from "../../helper/macroCalc";
 import calorieCalc from "../../helper/calorieCalc";
 
+// Component that displays recipe.
 const DisplayRecipe = ({ recipeData }: { recipeData: Recipe }) => {
+    // react router params variables & navigate(redirect)
     const { recipeId } = useParams();
-    const user = useSelector((state: State) => state.user);
     const navigate = useNavigate();
+
+    // grab state from redux store
+    const user = useSelector((state: State) => state.user);
+    // redux action bind with dispatch
     const dispatch = useDispatch();
     const { deleteRecipe } = bindActionCreators(actionCreators, dispatch);
+
+    // Local state for modals
     const [isEditRecipeModalOpen, setIsEditRecipeModalOpen] = useState<boolean>(false);
     const [isConfirmDeleteModalOpen, setIsConfirmDeleteModalOpen] = useState<boolean>(false);
 
+    //Modal toggle methods
     const toggleEditRecipeModal = () => {
         setIsEditRecipeModalOpen(!isEditRecipeModalOpen);
     };

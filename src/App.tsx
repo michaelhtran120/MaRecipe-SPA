@@ -20,7 +20,7 @@ function App() {
             setIsUserLoggedIn(false);
         }
     }, [user]);
-
+    // If there is user data in local storage, grab that data and dispatch action creator to store the local storage data into redux store.
     useEffect(() => {
         if (isUserLoggedIn) {
             // Argument of type 'string | null' is not assignable to parameter of type 'string'.
