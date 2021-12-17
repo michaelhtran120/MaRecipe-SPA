@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../../assets/images/logo.svg";
 import styles from "./NavbarComponent.module.css";
 import userIcon from "../../assets/images/user-icon.svg";
@@ -25,16 +25,21 @@ const NavbarComponent = ({ page, toggleLoginModal, toggleSignUpModal }: Props): 
     const navigate = useNavigate();
 
     // Local state
-    //// Conditionally render navbar UI.
-    const [isWindowSmall, setIsWindowSmall] = useState<boolean>(false);
+    //// Conditionally render navbar UI. 
+    //// Check if user on mobile.
+    const mobileScreen = window.innerWidth < 768;
+    const [isWindowSmall, setIsWindowSmall] = useState<boolean>(mobileScreen);
 
     // Resize event listener to help conditionally render navbar UI
-    window.addEventListener("resize", () => {
-        if (window.innerWidth < 768) {
-            setIsWindowSmall(true);
-        } else {
-            setIsWindowSmall(false);
-        }
+
+    useEffect(() => {
+        window.addEventListener("resize", () => {
+            if (window.innerWidth < 768) {
+                setIsWindowSmall(true);
+            } else {
+                setIsWindowSmall(false);
+            }
+        });
     });
 
     // Method to handle log out
@@ -71,27 +76,35 @@ const NavbarComponent = ({ page, toggleLoginModal, toggleSignUpModal }: Props): 
                 {/* Conditionally render navbar ui depending if redux store has a user logged in */}
 
                 {!user.userInfo ? (
-                    <Nav className='justify-content-end align-items-end'>
-                        <Button variant='outline-primary' className=' mt-sm-0 ms-3 me-sm-2 my-2 my-sm-0' onClick={toggleSignUpModal}>
-                            Sign Up
-                        </Button>
-                        <Button variant='outline-primary' className=' mt-sm-0' onClick={toggleLoginModal}>
-                            Log In
-                        </Button>
-                    </Nav>
+                    <Navbar.Collapse className='ps-3 ps-md-0 justify-content-end' id='navbar-nav'>
+                        <Nav className=' justify-content-center align-items-center align-items-md-end'>
+                            <Button variant='outline-primary' className='mt-3 mt-md-0 me-md-3 mb-3 mb-md-0' onClick={toggleSignUpModal}>
+                                Sign Up
+                            </Button>
+                            <Button variant='outline-primary' className=' mt-md-0' onClick={toggleLoginModal}>
+                                Log In
+                            </Button>
+                        </Nav>
+                    </Navbar.Collapse>
                 ) : (
                     <Navbar.Collapse className='ps-3 ps-md-0' id='navbar-nav'>
-                        <Nav className='ms-auto'>
+                        <Nav className='ms-auto align-items-center'>
                             {/* Conditionally render a different UI when screen goes to xs / mobile size */}
                             {isWindowSmall ? (
                                 <>
                                     {/* Conditionally render depending if navbar is residing on dashboard or landing page */}
                                     {page === "dashboard" ? (
-                                        <Nav.Link onClick={handleLogOut}>Log Out</Nav.Link>
+                                        <Nav.Link className={`${styles.dropDownItem}`} onClick={handleLogOut}>
+                                            Log Out
+                                        </Nav.Link>
                                     ) : (
                                         <>
-                                            <Nav.Link onClick={navigateToDashboard}>Dashboard</Nav.Link>
-                                            <Nav.Link onClick={handleLogOut}>Log Out</Nav.Link>
+                                            <Nav.Link className={`${styles.dropDownItem}`} onClick={navigateToDashboard}>
+                                                Dashboard
+                                            </Nav.Link>
+                                            <Nav.Link className={`${styles.dropDownItem}`} onClick={handleLogOut}>
+                                                Log Out
+                                            </Nav.Link>
                                         </>
                                     )}
                                 </>
@@ -107,11 +120,15 @@ const NavbarComponent = ({ page, toggleLoginModal, toggleSignUpModal }: Props): 
                                 >
                                     {/* Conditionally render depending if navbar is residing on dashboard or landing page */}
                                     {page === "dashboard" ? (
-                                        <NavDropdown.Item className={`${styles.dropDownItem}`} onClick={handleLogOut}>Log Out</NavDropdown.Item>
+                                        <NavDropdown.Item className={`${styles.dropDownItem}`} onClick={handleLogOut}>
+                                            Log Out
+                                        </NavDropdown.Item>
                                     ) : (
                                         <>
-                                            <NavDropdown.Item className={`${styles.dropDownItem}`}  onClick={navigateToDashboard}>Dashboard</NavDropdown.Item>
-                                            <NavDropdown.Item className={`${styles.dropDownItem} mt-3`}  onClick={handleLogOut}>
+                                            <NavDropdown.Item className={`${styles.dropDownItem}`} onClick={navigateToDashboard}>
+                                                Dashboard
+                                            </NavDropdown.Item>
+                                            <NavDropdown.Item className={`${styles.dropDownItem} mt-3`} onClick={handleLogOut}>
                                                 Log Out
                                             </NavDropdown.Item>
                                         </>

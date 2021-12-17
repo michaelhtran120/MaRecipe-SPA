@@ -292,7 +292,7 @@ const RecipeForm = ({ toggleFormModal, recipe }: Props): JSX.Element => {
                 </Row>
                 <hr />
                 <Row className='flex-row pb-3 px-2 justify-content-between'>
-                    <Label className={`${styles.formLabel} col-5`}>
+                    <Label className={`${styles.formLabel} col-6`}>
                         Ingredients
                         <OverlayTrigger
                             key='right'
