@@ -12,8 +12,10 @@ interface Props {
 const SignUpModal = ({ open, toggleSignUpModal }: Props): JSX.Element => {
     const dispatch = useAppDispatch();
 
+    // React Router to navigate to a different page.
     const navigate = useNavigate();
 
+    // Local state management for input fields
     const [signUpCredentials, setSignUpCredentials] = useState({
         id: "",
         email: "",
@@ -29,12 +31,13 @@ const SignUpModal = ({ open, toggleSignUpModal }: Props): JSX.Element => {
 
     const handleSignUpSubmit = async (event: SyntheticEvent) => {
         event.preventDefault();
-        // Redux think action returns promise, if response contains accesstoken, close modal and navigate user to dashboard
+        // Redux think action returns promise, if response contains accesstoken, close modal and navigate user to dashboard.
+        //Prior to this, the dashboard page would render before redux store received a valid user, which would render "forbidden page" for a split second then properly render the dashboard to user.
         (async () => {
             const response = await dispatch(actionCreators.signUp(signUpCredentials) as any);
             if (response.accessToken) {
                 toggleSignUpModal();
-                alert('Account successfully created')
+                alert("Account successfully created");
                 navigate("/dashboard");
             } else {
                 alert(response);

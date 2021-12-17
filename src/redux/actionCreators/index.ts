@@ -89,7 +89,6 @@ export const logIn = (credentials: { email: string; password: string }) => {
                     password: credentials.password
                 })
             });
-            console.log(response);
             if (response.status === 400) {
                 const body = await response.json();
                 if (body === "Incorrect password" || body === "Cannot find user") {

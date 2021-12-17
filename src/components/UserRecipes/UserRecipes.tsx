@@ -1,10 +1,26 @@
 import React from "react";
 import "./UserRecipes.css";
 import { Button, Card, Container, Row, Image } from "react-bootstrap";
-import { useSelector } from "react-redux";
-import { State } from "../../redux";
 import { Recipe } from "../../redux/actions";
 import { useNavigate } from "react-router";
+
+type ComponentProp = {
+    recipes: Recipe[];
+};
+
+const UserRecipes = ({ recipes }: ComponentProp) => {
+    return (
+        <div>
+            <Container className='fluid'>
+                <Row className='featured-row'>
+                    {recipes.map((aRecipe: Recipe) => (
+                        <RecipeCard title={aRecipe.name} url={aRecipe.imageUrl} description={aRecipe.description} key={aRecipe.id} data={aRecipe} />
+                    ))}
+                </Row>
+            </Container>
+        </div>
+    );
+};
 
 type Prop = {
     title: string;
@@ -35,22 +51,6 @@ const RecipeCard = ({ title, url, description, data }: Prop): JSX.Element => {
                 </Button>
             </Card.Body>
         </Card>
-    );
-};
-
-const UserRecipes = () => {
-    const { user } = useSelector((state: State) => state);
-    const userRecipes = user.userInfo.user.recipes;
-    return (
-        <div>
-            <Container className='fluid'>
-                <Row className='featured-row'>
-                    {userRecipes.map((aRecipe: Recipe) => (
-                        <RecipeCard title={aRecipe.name} url={aRecipe.imageUrl} description={aRecipe.description} key={aRecipe.id} data={aRecipe} />
-                    ))}
-                </Row>
-            </Container>
-        </div>
     );
 };
 

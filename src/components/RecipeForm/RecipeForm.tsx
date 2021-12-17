@@ -290,7 +290,7 @@ const RecipeForm = ({ toggleFormModal, recipe }: Props): JSX.Element => {
                     </Col>
                 </Row>
                 <hr />
-                <Row className='flex-row pb-3 px-2 justify-content-between'>
+                <Row className='flex-row pb-3 justify-content-between'>
                     <Label className={`${styles.formLabel} col-6`}>
                         Ingredients
                         <OverlayTrigger
@@ -336,10 +336,10 @@ const RecipeForm = ({ toggleFormModal, recipe }: Props): JSX.Element => {
                     {ingredientList.map((ingredient) => {
                         return (
                             <FormGroup row key={ingredient.id} className='align-items-center'>
-                                <Col xs={2} className='d-sm-none'>
+                                <Col xs={3} className='d-sm-none'>
                                     <Label>Name</Label>
                                 </Col>
-                                <Col xs={10} sm={3}>
+                                <Col xs={9} sm={3}>
                                     <Input
                                         type='text'
                                         placeholder='Name'
@@ -351,10 +351,10 @@ const RecipeForm = ({ toggleFormModal, recipe }: Props): JSX.Element => {
                                         required
                                     />
                                 </Col>
-                                <Col xs={2} className='d-sm-none'>
+                                <Col xs={3} className='d-sm-none'>
                                     <Label>Quantity</Label>
                                 </Col>
-                                <Col xs={10} sm={2}>
+                                <Col xs={9} sm={2}>
                                     <Input
                                         type='number'
                                         placeholder='Qty in grams'
@@ -366,10 +366,10 @@ const RecipeForm = ({ toggleFormModal, recipe }: Props): JSX.Element => {
                                         required
                                     />
                                 </Col>
-                                <Col xs={2} className='d-sm-none'>
+                                <Col xs={3} className='d-sm-none'>
                                     <Label>Proteins</Label>
                                 </Col>
-                                <Col xs={10} sm={2}>
+                                <Col xs={9} sm={2}>
                                     <Input
                                         type='number'
                                         placeholder='Protein in grams'
@@ -381,10 +381,10 @@ const RecipeForm = ({ toggleFormModal, recipe }: Props): JSX.Element => {
                                         required
                                     />
                                 </Col>
-                                <Col xs={2} className='d-sm-none'>
+                                <Col xs={3} className='d-sm-none'>
                                     <Label>Carbs</Label>
                                 </Col>
-                                <Col xs={10} sm={2}>
+                                <Col xs={9} sm={2}>
                                     <Input
                                         type='number'
                                         placeholder='Carbs in grams'
@@ -396,10 +396,10 @@ const RecipeForm = ({ toggleFormModal, recipe }: Props): JSX.Element => {
                                         required
                                     />
                                 </Col>
-                                <Col xs={2} className='d-sm-none'>
+                                <Col xs={3} className='d-sm-none'>
                                     <Label>Fats</Label>
                                 </Col>
-                                <Col xs={10} sm={2}>
+                                <Col xs={9} sm={2}>
                                     <Input
                                         type='number'
                                         placeholder='Fats in grams'
@@ -429,7 +429,7 @@ const RecipeForm = ({ toggleFormModal, recipe }: Props): JSX.Element => {
                     </Button>
                 </Collapse>
                 <hr />
-                <Row className='flex-row pb-3 px-2 justify-content-between'>
+                <Row className='flex-row pb-3 justify-content-between'>
                     <Label className={`${styles.formLabel} col-5`}>Instructions</Label>
                     <Col xs={6}>
                         <div className='float-end'>
@@ -448,8 +448,8 @@ const RecipeForm = ({ toggleFormModal, recipe }: Props): JSX.Element => {
                 <Collapse isOpen={isInstructionOpen}>
                     {instructions.map((aInstruction) => {
                         return (
-                            <FormGroup row key={aInstruction.id}>
-                                <Col xs={10} sm={11}>
+                            <FormGroup row key={aInstruction.id} className='align-items-center'>
+                                <Col xs={10} md={11}>
                                     <Input
                                         type='text'
                                         placeholder='Add instruction details....'
@@ -461,7 +461,7 @@ const RecipeForm = ({ toggleFormModal, recipe }: Props): JSX.Element => {
                                         required
                                     />
                                 </Col>
-                                <Col xs={2} sm={1}>
+                                <Col xs={2} md={1}>
                                     <Button
                                         className={`${styles.deleteBtn}`}
                                         color='danger'
