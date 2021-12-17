@@ -4,7 +4,7 @@ import { Modal } from "react-bootstrap";
 import { Button } from "reactstrap";
 import { Routes, Route } from "react-router-dom";
 import DashboardNavbar from "../../components/NavbarComponent/NavbarComponent";
-import Dashboard from "../Dashboard/Dashboard";
+import Dashboard from "../../components/Dashboard/Dashboard";
 import RecipePage from "../ViewRecipePage/RecipePage";
 import RecipeForm from "../../components/RecipeForm/RecipeForm";
 
