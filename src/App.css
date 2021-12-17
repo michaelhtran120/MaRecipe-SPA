@@ -13,8 +13,14 @@ html {
 }
 
 .btn-primary {
-  background-color: #79b473 !important;
-  border: none !important;
+  background-color: #79b473;
+  border: 1px solid #79b473;
+}
+
+.btn-primary:hover {
+  color: #79b473;
+  background-color: white;
+  border: 1px solid #79b473;
 }
 
 .btn-outline-primary {
@@ -25,6 +31,11 @@ html {
 .btn-outline-primary:hover {
   color: white !important;
   background-color: #79b473 !important;
+}
+
+.btn-secondary:hover {
+  color: #6c757d;
+  background-color: white;
 }
 
 .form-control:focus {

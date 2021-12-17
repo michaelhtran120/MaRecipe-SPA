@@ -12,7 +12,7 @@ import { useNavigate } from "react-router";
 
 type Props = {
     toggleFormModal: () => void;
-    recipe?: Recipe | undefined;
+    recipe?: Recipe;
 };
 
 const RecipeForm = ({ toggleFormModal, recipe }: Props): JSX.Element => {
@@ -29,7 +29,6 @@ const RecipeForm = ({ toggleFormModal, recipe }: Props): JSX.Element => {
     // Local state management
     const [isIngredientOpen, setIsIngredientOpen] = useState<boolean>(recipe ? false : true);
     const [isInstructionOpen, setIsInstructionOpen] = useState<boolean>(recipe ? false : true);
-
     //// Disable collapse btn state if any respective input fields are empty.
     const [disableIngredientBtn, setDisableIngredientBtn] = useState<boolean>(recipe ? false : true);
     const [disableInstructionBtn, setDisableInstructionBtn] = useState<boolean>(recipe ? false : true);

@@ -17,8 +17,13 @@ html {
 }
 
 .btn-primary {
-    background-color: $primary !important;
-    border: none !important;
+    background-color: $primary;
+    border: 1px solid $primary;
+    &:hover {
+        color: $primary;
+        background-color: white;
+        border: 1px solid $primary;
+    }
 }
 
 .btn-outline-primary {
@@ -27,6 +32,13 @@ html {
     &:hover {
         color: white !important;
         background-color: $primary !important;
+    }
+}
+
+.btn-secondary {
+    &:hover {
+        color: #6c757d;
+        background-color: white;
     }
 }
 
