@@ -33,13 +33,14 @@ const LoginModal = ({ open, toggleLoginModal }: Props): JSX.Element => {
     // Method to handle user log in.
     const handleLogInSubmit = (event: SyntheticEvent) => {
         event.preventDefault();
-        // fire redux action
-
+        // Redux think action returns promise, if response contains accesstoken, close modal and navigate user to dashboard
         (async () => {
             const response = await dispatch(actionCreators.logIn(credentials) as any);
             if (response.accessToken) {
                 toggleLoginModal();
                 navigate("/dashboard");
+            } else {
+                alert(response);
             }
         })();
     };

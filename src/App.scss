@@ -24,6 +24,11 @@ html {
         background-color: white;
         border: 1px solid $primary;
     }
+    &:active, &:focus {
+        color: $primary;
+        background-color: $primary-shadow;
+        border: 1px solid $primary;
+    }
 }
 
 .btn-outline-primary {

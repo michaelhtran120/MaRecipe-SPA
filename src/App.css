@@ -23,6 +23,12 @@ html {
   border: 1px solid #79b473;
 }
 
+.btn-primary:active, .btn-primary:focus {
+  color: #79b473;
+  background-color: #7ab4736b;
+  border: 1px solid #79b473;
+}
+
 .btn-outline-primary {
   color: #79b473 !important;
   border-color: #79b473 !important;
