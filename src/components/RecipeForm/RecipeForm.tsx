@@ -1,9 +1,9 @@
 import React, { SyntheticEvent, useEffect, useState } from "react";
 import infoIcon from "../../assets/images/info-circle.svg";
 import styles from "./RecipeForm.module.css";
+import { v4 as uuidv4 } from "uuid";
 import { Button, Col, Form, FormGroup, FormText, Input, Label, Row, Collapse } from "reactstrap";
 import { Image, OverlayTrigger, Tooltip } from "react-bootstrap";
-import { v4 as uuidv4 } from "uuid";
 import { actionCreators, State } from "../../redux/index";
 import { bindActionCreators } from "redux";
 import { useSelector, useDispatch } from "react-redux";

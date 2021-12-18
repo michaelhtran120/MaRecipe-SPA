@@ -4,8 +4,7 @@ import { Route, Routes, Link } from "react-router-dom";
 import DashboardPage from "./pages/DashboardPage/DashboardPage";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import { useSelector, useDispatch } from "react-redux";
-import { actionCreators } from "./redux";
-import { State } from "./redux";
+import { actionCreators, State } from "./redux";
 
 function App() {
     const user = useSelector((state: State) => state.user);

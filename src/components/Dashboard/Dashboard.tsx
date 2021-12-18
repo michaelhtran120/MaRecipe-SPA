@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Container, Row, Modal, Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import UserRecipes from "../UserRecipes/UserRecipes";
 import { State } from "../../redux";
 import { Recipe } from "../../redux/actions/index";
+import UserRecipes from "../UserRecipes/UserRecipes";
 import RecipeForm from "../../components/RecipeForm/RecipeForm";
 
 const Dashboard = (): JSX.Element => {

@@ -1,8 +1,7 @@
 import React, { SyntheticEvent, useState } from "react";
 import { Button, Modal, Form, Row, Col } from "react-bootstrap";
-import { useAppDispatch } from "../../redux/store";
 import { useNavigate } from "react-router";
-import { actionCreators } from "../../redux/index";
+import { actionCreators, useAppDispatch } from "../../redux/index";
 
 interface Props {
     open: boolean;

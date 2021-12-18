@@ -41,7 +41,6 @@ const sampleRecipe = {
 };
 
 const API_URL = "http://localhost:3004/";
-//LOGIN ACTION CREATORS
 
 export const signUp = (credentials: { firstName: string; lastName: string; email: string; password: string }) => {
     return async (dispatch: Dispatch<any>) => {
@@ -63,7 +62,6 @@ export const signUp = (credentials: { firstName: string; lastName: string; email
                 console.log(body);
                 throw new Error(body);
             }
-            // const user = await response.json();
             const logInCredentials = {
                 email: credentials.email,
                 password: credentials.password

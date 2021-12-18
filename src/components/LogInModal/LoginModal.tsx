@@ -1,7 +1,6 @@
 import React, { SyntheticEvent, useState } from "react";
 import { Button, Modal, Form } from "react-bootstrap";
-import { useAppDispatch } from "../../redux/store";
-import { actionCreators } from "../../redux/index";
+import { actionCreators, useAppDispatch } from "../../redux/index";
 import { useNavigate } from "react-router-dom";
 
 type Credentials = {
