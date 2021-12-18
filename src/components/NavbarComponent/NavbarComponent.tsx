@@ -76,12 +76,25 @@ const NavbarComponent = ({ page, toggleLoginModal, toggleSignUpModal }: Props): 
                 {!user.userInfo ? (
                     <Navbar.Collapse className='ps-3 ps-md-0 justify-content-end' id='navbar-nav'>
                         <Nav className=' justify-content-center align-items-center align-items-md-end'>
-                            <Button variant='outline-primary' className='mt-3 mt-md-0 me-md-3 mb-3 mb-md-0' onClick={toggleSignUpModal}>
-                                Sign Up
-                            </Button>
-                            <Button variant='outline-primary' className=' mt-md-0' onClick={toggleLoginModal}>
-                                Log In
-                            </Button>
+                            {!isWindowSmall ? (
+                                <>
+                                    <Button variant='outline-primary' className='mt-3 mt-md-0 me-md-3 mb-3 mb-md-0' onClick={toggleSignUpModal}>
+                                        Sign Up
+                                    </Button>
+                                    <Button variant='outline-primary' className=' mt-md-0' onClick={toggleLoginModal}>
+                                        Log In
+                                    </Button>
+                                </>
+                            ) : (
+                                <>
+                                    <span className= {`${styles.dropDownItem} lead my-3`} onClick={toggleSignUpModal}>
+                                        Sign up
+                                    </span>
+                                    <span className= {`${styles.dropDownItem} lead`}  onClick={toggleLoginModal}>
+                                        Log In
+                                    </span>
+                                </>
+                            )}
                         </Nav>
                     </Navbar.Collapse>
                 ) : (

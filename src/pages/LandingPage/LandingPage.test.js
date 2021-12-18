@@ -25,4 +25,11 @@ describe("LandingPage functionality", () => {
         const loginModal = screen.getByTestId("loginModal");
         expect(loginModal).toBeInTheDocument();
     });
+    test("Landing Page sign up button triggers signup modal", () => {
+        render(<MockLandingPage />);
+        const signupBtn = screen.getByRole('button', { name: /sign up/i });
+        fireEvent.click(signupBtn);
+        const loginModal = screen.getByTestId("loginModal");
+        expect(loginModal).toBeInTheDocument();
+    });
 });
