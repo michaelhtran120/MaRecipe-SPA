@@ -46,7 +46,7 @@ const SignUpModal = ({ open, toggleSignUpModal }: Props): JSX.Element => {
 
     return (
         <>
-            <Modal show={open} onHide={toggleSignUpModal} backdrop='static' keyboard={false}>
+            <Modal data-testid='signUpModal' show={open} onHide={toggleSignUpModal} backdrop='static' keyboard={false}>
                 <Modal.Header closeButton>
                     <Modal.Title>Sign Up</Modal.Title>
                 </Modal.Header>

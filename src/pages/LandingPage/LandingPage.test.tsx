@@ -53,7 +53,7 @@ describe("Landing Page functionality", () => {
     test("Landing Page sign up button triggers signup modal", () => {
         const signupBtn = screen.getByRole("button", { name: /sign up/i });
         fireEvent.click(signupBtn);
-        const signUpModal = screen.getByLabelText(/first name/i);
+        const signUpModal = screen.getByTestId("signUpModal");
         expect(signUpModal).toBeInTheDocument();
     });
 });

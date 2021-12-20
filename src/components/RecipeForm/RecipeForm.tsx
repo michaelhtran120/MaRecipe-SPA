@@ -225,6 +225,7 @@ const RecipeForm = ({ toggleFormModal, recipe }: Props): JSX.Element => {
                         <FormGroup>
                             <Label className={styles.formLabel}>Recipe Name</Label>
                             <Input
+                                data-testid='input'
                                 id='recipeName'
                                 value={recipeName}
                                 name='recipeName'
@@ -240,6 +241,7 @@ const RecipeForm = ({ toggleFormModal, recipe }: Props): JSX.Element => {
                         <FormGroup>
                             <Label className={styles.formLabel}>Image Link</Label>
                             <Input
+                                data-testid='input'
                                 id='imageLink'
                                 name='imageLink'
                                 type='text'
@@ -263,6 +265,7 @@ const RecipeForm = ({ toggleFormModal, recipe }: Props): JSX.Element => {
                                 </OverlayTrigger>
                             </Label>
                             <Input
+                                data-testid='input'
                                 id='description'
                                 name='description'
                                 type='textarea'
@@ -341,6 +344,7 @@ const RecipeForm = ({ toggleFormModal, recipe }: Props): JSX.Element => {
                                 </Col>
                                 <Col xs={9} sm={3}>
                                     <Input
+                                        data-testid='input'
                                         type='text'
                                         placeholder='Name'
                                         value={ingredient.name}
@@ -356,6 +360,7 @@ const RecipeForm = ({ toggleFormModal, recipe }: Props): JSX.Element => {
                                 </Col>
                                 <Col xs={9} sm={2}>
                                     <Input
+                                        data-testid='input'
                                         type='number'
                                         placeholder='Qty in grams'
                                         value={ingredient.quantity}
@@ -371,6 +376,7 @@ const RecipeForm = ({ toggleFormModal, recipe }: Props): JSX.Element => {
                                 </Col>
                                 <Col xs={9} sm={2}>
                                     <Input
+                                        data-testid='input'
                                         type='number'
                                         placeholder='Protein in grams'
                                         value={ingredient.proteins}
@@ -386,6 +392,7 @@ const RecipeForm = ({ toggleFormModal, recipe }: Props): JSX.Element => {
                                 </Col>
                                 <Col xs={9} sm={2}>
                                     <Input
+                                        data-testid='input'
                                         type='number'
                                         placeholder='Carbs in grams'
                                         value={ingredient.carbs}
@@ -401,6 +408,7 @@ const RecipeForm = ({ toggleFormModal, recipe }: Props): JSX.Element => {
                                 </Col>
                                 <Col xs={9} sm={2}>
                                     <Input
+                                        data-testid='input'
                                         type='number'
                                         placeholder='Fats in grams'
                                         value={ingredient.fats}
@@ -424,7 +432,7 @@ const RecipeForm = ({ toggleFormModal, recipe }: Props): JSX.Element => {
                             </FormGroup>
                         );
                     })}
-                    <Button color='secondary' onClick={handleAddIngredient}>
+                    <Button data-testid='addIngBtn' color='secondary' onClick={handleAddIngredient}>
                         Add Ingredient
                     </Button>
                 </Collapse>
@@ -451,6 +459,7 @@ const RecipeForm = ({ toggleFormModal, recipe }: Props): JSX.Element => {
                             <FormGroup row key={aInstruction.id} className='align-items-center'>
                                 <Col xs={10} md={11}>
                                     <Input
+                                        data-testid='input'
                                         type='text'
                                         placeholder='Add instruction details....'
                                         value={aInstruction.instruction}
@@ -508,7 +517,13 @@ const RecipeForm = ({ toggleFormModal, recipe }: Props): JSX.Element => {
                 <FormGroup check>
                     <Label check>
                         Favorite?
-                        <Input type='checkbox' name='favorite' defaultChecked={favorite} onChange={(event) => handleInputChange(event)} />
+                        <Input
+                            data-testid='input'
+                            type='checkbox'
+                            name='favorite'
+                            defaultChecked={favorite}
+                            onChange={(event) => handleInputChange(event)}
+                        />
                     </Label>
                 </FormGroup>
                 <hr />
