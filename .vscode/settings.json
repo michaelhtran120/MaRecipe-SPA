@@ -7,7 +7,7 @@
         }
     ],
     "liveSassCompile.settings.generateMap": false,
-    "files.autoSave": "afterDelay",
+    "files.autoSave": "off",
     "editor.multiCursorModifier": "ctrlCmd",
     "editor.wordWrap": "on",
     "editor.formatOnSave": true,

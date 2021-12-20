@@ -56,6 +56,7 @@ const SignUpModal = ({ open, toggleSignUpModal }: Props): JSX.Element => {
                             <Form.Group as={Col} sm={6} controlId='firstName' className='mb-3'>
                                 <Form.Label>First Name</Form.Label>
                                 <Form.Control
+                                    data-testid='input'
                                     type='text'
                                     name='firstName'
                                     value={signUpCredentials.firstName}
@@ -67,6 +68,7 @@ const SignUpModal = ({ open, toggleSignUpModal }: Props): JSX.Element => {
                             <Form.Group controlId='lastName' className='mb-3' as={Col} sm={6}>
                                 <Form.Label>Last Name</Form.Label>
                                 <Form.Control
+                                    data-testid='input'
                                     type='text'
                                     name='lastName'
                                     value={signUpCredentials.lastName}
@@ -79,6 +81,7 @@ const SignUpModal = ({ open, toggleSignUpModal }: Props): JSX.Element => {
                         <Form.Group controlId='email' className='mb-3'>
                             <Form.Label>Email address</Form.Label>
                             <Form.Control
+                                data-testid='input'
                                 type='email'
                                 name='email'
                                 value={signUpCredentials.email}
@@ -90,6 +93,7 @@ const SignUpModal = ({ open, toggleSignUpModal }: Props): JSX.Element => {
                         <Form.Group controlId='password' className='mb-3'>
                             <Form.Label>Password</Form.Label>
                             <Form.Control
+                                data-testid='input'
                                 type='password'
                                 name='password'
                                 value={signUpCredentials.password}
@@ -100,12 +104,8 @@ const SignUpModal = ({ open, toggleSignUpModal }: Props): JSX.Element => {
                         </Form.Group>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant='secondary' onClick={toggleSignUpModal}>
-                            Close
-                        </Button>
-                        <Button data-testid='modalLoginBtn' type='submit' variant='primary'>
-                            Sign Up
-                        </Button>
+                        <Button as='input' variant='secondary' type='button' onClick={toggleSignUpModal} value='Close' />
+                        <Button as='input' type='submit' variant='primary' value='Sign Up' />
                     </Modal.Footer>
                 </Form>
             </Modal>

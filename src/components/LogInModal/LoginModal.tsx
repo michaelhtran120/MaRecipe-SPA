@@ -55,6 +55,7 @@ const LoginModal = ({ open, toggleLoginModal }: Props): JSX.Element => {
                         <Form.Group controlId='email' className='mb-3'>
                             <Form.Label>Email address</Form.Label>
                             <Form.Control
+                                data-testid='input'
                                 type='email'
                                 name='email'
                                 value={credentials.email}
@@ -66,6 +67,7 @@ const LoginModal = ({ open, toggleLoginModal }: Props): JSX.Element => {
                         <Form.Group controlId='password' className='mb-3'>
                             <Form.Label>Password</Form.Label>
                             <Form.Control
+                                data-testid='input'
                                 type='password'
                                 name='password'
                                 value={credentials.password}
