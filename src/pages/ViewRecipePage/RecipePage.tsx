@@ -148,9 +148,22 @@ const RecipePage = () => {
     const user = useSelector((state: State) => state.user);
     // const [recipeData, setRecipeData] = useState<Recipe>(user.userInfo.user.recipes.filter((aRecipe: Recipe) => aRecipe.id === recipeId)[0]);
 
+    const navigate = useNavigate();
+
     const recipeData = user.userInfo.user.recipes.filter((aRecipe: Recipe) => aRecipe.id === recipeId)[0];
 
-    return <>{recipeData ? <DisplayRecipe recipeData={recipeData} /> : <h1>No Recipe</h1>}</>;
+    return (
+        <>
+            {recipeData ? (
+                <DisplayRecipe recipeData={recipeData} />
+            ) : (
+                <div className='p-5'>
+                    <h1 className='mb-5'>Recipe does not exist</h1>
+                    <Button as='input' variant='primary' value='Return To Dashboard' onClick={() => navigate("/dashboard")} />
+                </div>
+            )}
+        </>
+    );
 };
 
 export default RecipePage;
