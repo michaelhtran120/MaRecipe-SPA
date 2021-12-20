@@ -10,7 +10,7 @@ const LandingHero = (): JSX.Element => {
         <>
             <Container id='hero' fluid>
                 {/* Hero section video background */}
-                <div id='video-container'>
+                <div data-testid='parallaxVideo' id='video-container'>
                     <div id='video-overlay' />
                     <video poster='./media/poster.jpg' autoPlay={true} muted={true} loop={true}>
                         <source src={videoOgv} type='video/ogv' />

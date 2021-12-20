@@ -7,21 +7,6 @@ import { useNavigate } from "react-router";
 type ComponentProp = {
     recipes: Recipe[];
 };
-
-const UserRecipes = ({ recipes }: ComponentProp) => {
-    return (
-        <div>
-            <Container className='fluid'>
-                <Row className={styles.recipeRow}>
-                    {recipes.map((aRecipe: Recipe) => (
-                        <RecipeCard title={aRecipe.name} url={aRecipe.imageUrl} description={aRecipe.description} key={aRecipe.id} data={aRecipe} />
-                    ))}
-                </Row>
-            </Container>
-        </div>
-    );
-};
-
 type RecipeProp = {
     title: string;
     url: string;
@@ -36,7 +21,7 @@ const RecipeCard = ({ title, url, description, data }: RecipeProp): JSX.Element 
         navigate(`/dashboard/${data.id}`, { state: data });
     };
     return (
-        <Card className={`${styles.recipeCard} p-0`}>
+        <Card data-testid='recipeCard' className={`${styles.recipeCard} p-0`}>
             <Image className={styles.recipeImage} src={url} fluid />
 
             <Card.Body>
@@ -52,6 +37,20 @@ const RecipeCard = ({ title, url, description, data }: RecipeProp): JSX.Element 
                 </Button>
             </Card.Body>
         </Card>
+    );
+};
+
+const UserRecipes = ({ recipes }: ComponentProp) => {
+    return (
+        <div>
+            <Container className='fluid'>
+                <Row className={styles.recipeRow}>
+                    {recipes.map((aRecipe: Recipe) => (
+                        <RecipeCard title={aRecipe.name} url={aRecipe.imageUrl} description={aRecipe.description} key={aRecipe.id} data={aRecipe} />
+                    ))}
+                </Row>
+            </Container>
+        </div>
     );
 };
 
