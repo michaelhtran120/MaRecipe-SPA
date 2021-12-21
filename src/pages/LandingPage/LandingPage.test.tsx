@@ -1,6 +1,6 @@
 import React from "react";
 import * as ReactDOM from "react-dom";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, cleanup } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "../../redux/index";
@@ -20,6 +20,7 @@ describe("Landing Page renders correctly", () => {
     beforeEach(() => {
         render(<MockLandingPage />);
     });
+    afterEach(cleanup);
 
     test("Landing Page Elements", () => {
         const heroHeader = screen.getByRole("heading", { name: /macro recipe application/i });

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, cleanup } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "../../redux/index";
@@ -97,6 +97,8 @@ describe("Recipe Card", () => {
     beforeEach(() => {
         render(<MockRecipeCard />);
     });
+
+    afterEach(cleanup);
 
     test("Recipe Card renders", () => {
         const cards = screen.getAllByTestId("recipeCard");

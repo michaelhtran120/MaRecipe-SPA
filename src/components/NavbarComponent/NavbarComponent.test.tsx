@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, cleanup } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "../../redux/index";
@@ -25,6 +25,8 @@ describe("Landing Page Navbar", () => {
     beforeEach(() => {
         render(<MockNavbar page='landing' />);
     });
+
+    afterEach(cleanup);
 
     test("Navbar renders properly", () => {
         const buttons = screen.getAllByRole("button");

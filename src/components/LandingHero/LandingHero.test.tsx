@@ -1,5 +1,5 @@
 import LandingHero from "./LandingHero";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, cleanup } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "../../redux/index";
@@ -18,6 +18,8 @@ describe("Landing Hero components", () => {
     beforeEach(() => {
         render(<MockLandingHero />);
     });
+
+    afterEach(cleanup);
 
     test("Landing video background renders", () => {
         const video = screen.getByTestId("parallaxVideo");

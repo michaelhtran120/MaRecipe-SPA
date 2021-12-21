@@ -105,7 +105,7 @@ const SignUpModal = ({ open, toggleSignUpModal }: Props): JSX.Element => {
                     </Modal.Body>
                     <Modal.Footer>
                         <Button as='input' variant='secondary' type='button' onClick={toggleSignUpModal} value='Close' />
-                        <Button as='input' type='submit' variant='primary' value='Sign Up' />
+                        <Button data-testid='modalSignUpBtn' as='input' type='submit' variant='primary' value='Sign Up' />
                     </Modal.Footer>
                 </Form>
             </Modal>

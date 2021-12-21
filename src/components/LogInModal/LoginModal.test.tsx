@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "../../redux/index";
@@ -17,8 +17,8 @@ const MockLogInModalComponent = (): JSX.Element => {
     );
 };
 
-describe("Sign Up Modal", () => {
-    test("Renders sign up form correctly", () => {
+describe("Log in Modal", () => {
+    test("Renders log in form correctly", () => {
         const component = render(<MockLogInModalComponent />);
         const inputs = component.getAllByTestId("input");
         const buttons = component.getAllByRole("button");

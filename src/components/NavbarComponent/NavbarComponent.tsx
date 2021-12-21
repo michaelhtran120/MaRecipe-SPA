@@ -85,10 +85,15 @@ const NavbarComponent = ({ page, toggleLoginModal, toggleSignUpModal }: Props): 
                             {/* Conditiionally render user icon and name if window is large */}
                             {!isWindowSmall ? (
                                 <>
-                                    <Button variant='outline-primary' className='mt-3 mt-md-0 me-md-3 mb-3 mb-md-0' onClick={toggleSignUpModal}>
+                                    <Button
+                                        data-testid='navSignUpBtn'
+                                        variant='outline-primary'
+                                        className='mt-3 mt-md-0 me-md-3 mb-3 mb-md-0'
+                                        onClick={toggleSignUpModal}
+                                    >
                                         Sign Up
                                     </Button>
-                                    <Button variant='outline-primary' className=' mt-md-0' onClick={toggleLoginModal}>
+                                    <Button data-testid='navLogInBtn' variant='outline-primary' className=' mt-md-0' onClick={toggleLoginModal}>
                                         Log In
                                     </Button>
                                 </>

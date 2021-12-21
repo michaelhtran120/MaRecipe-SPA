@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, cleanup } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "../../redux/index";
@@ -74,6 +74,7 @@ describe("New Recipe Form", () => {
     beforeEach(() => {
         render(<MockNewRecipeForm />);
     });
+    afterEach(cleanup);
 
     test("New Recipe Form inputs renders correctly", () => {
         const inputs = screen.getAllByTestId("input");
@@ -99,6 +100,8 @@ describe("Edit Recipe Form", () => {
     beforeEach(() => {
         render(<MockEditRecipeForm recipe={sampleRecipe} />);
     });
+
+    afterEach(cleanup);
 
     test("Edit Recipe Form renders correctly", () => {
         const inputs = screen.getAllByTestId("input");
