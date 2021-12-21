@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import logo from "../../assets/images/logo.svg";
 import styles from "./NavbarComponent.module.css";
 import userIcon from "../../assets/images/user-icon.svg";
@@ -30,15 +30,21 @@ const NavbarComponent = ({ page, toggleLoginModal, toggleSignUpModal }: Props): 
     const mobileScreen = window.innerWidth < 768;
     const [isWindowSmall, setIsWindowSmall] = useState<boolean>(mobileScreen);
 
-    // Resize event listener to help conditionally render navbar UI
-
-    window.addEventListener("resize", () => {
+    const handleWindowResize = useCallback(() => {
         if (window.innerWidth < 768) {
             setIsWindowSmall(true);
         } else {
             setIsWindowSmall(false);
         }
-    });
+    }, []);
+
+    // Resize event listener to help conditionally render navbar UI
+    useEffect(() => {
+        window.addEventListener("resize", handleWindowResize);
+        return () => {
+            window.removeEventListener("resize", handleWindowResize);
+        };
+    }, [handleWindowResize]);
 
     // Method to handle log out
     const handleLogOut = () => {
@@ -76,6 +82,7 @@ const NavbarComponent = ({ page, toggleLoginModal, toggleSignUpModal }: Props): 
                 {!user.userInfo ? (
                     <Navbar.Collapse className='ps-3 ps-md-0 justify-content-end' id='navbar-nav'>
                         <Nav className=' justify-content-center align-items-center align-items-md-end'>
+                            {/* Conditiionally render user icon and name if window is large */}
                             {!isWindowSmall ? (
                                 <>
                                     <Button variant='outline-primary' className='mt-3 mt-md-0 me-md-3 mb-3 mb-md-0' onClick={toggleSignUpModal}>
@@ -87,10 +94,10 @@ const NavbarComponent = ({ page, toggleLoginModal, toggleSignUpModal }: Props): 
                                 </>
                             ) : (
                                 <>
-                                    <span className= {`${styles.dropDownItem} lead my-3`} onClick={toggleSignUpModal}>
+                                    <span className={`${styles.dropDownItem} lead my-3`} onClick={toggleSignUpModal}>
                                         Sign up
                                     </span>
-                                    <span className= {`${styles.dropDownItem} lead`}  onClick={toggleLoginModal}>
+                                    <span className={`${styles.dropDownItem} lead`} onClick={toggleLoginModal}>
                                         Log In
                                     </span>
                                 </>
