@@ -23,9 +23,14 @@ describe("App", () => {
 });
 
 describe("Log in functionality", () => {
-    afterEach(cleanup);
-    test("User can log in", async () => {
+    beforeEach(() => {
         render(<MockApp />);
+    });
+    afterEach(() => {
+        cleanup();
+    });
+
+    test("User can log in", async () => {
         const navLogInBtn = screen.getByTestId("navLogInBtn");
         fireEvent.click(navLogInBtn);
         const emailInput = screen.getByPlaceholderText(/enter email/i);
@@ -39,5 +44,25 @@ describe("Log in functionality", () => {
         const userProfileButton = await screen.getByRole("button", { name: /michael tran/i });
         expect(dashboardText).toBeInTheDocument();
         expect(userProfileButton).toBeInTheDocument();
+        fireEvent.click(userProfileButton);
+        fireEvent.click(screen.getByRole("button", { name: /log out/i }));
+    });
+
+    test("User can log in 2", async () => {
+        const navLogInBtn = screen.getByTestId("navLogInBtn");
+        fireEvent.click(navLogInBtn);
+        const emailInput = screen.getByPlaceholderText(/enter email/i);
+        const passwordInput = screen.getByPlaceholderText(/password/i);
+        const logInBtn = screen.getByTestId("modalLoginBtn");
+        fireEvent.change(emailInput, { target: { value: "admin2@admin.com" } });
+        fireEvent.change(passwordInput, { target: { value: "admin1" } });
+        fireEvent.click(logInBtn);
+
+        const dashboardText = await screen.findByRole("heading", { name: /your favorite recipes/i });
+        const userProfileButton = await screen.getByRole("button", { name: /admin test2/i });
+        expect(dashboardText).toBeInTheDocument();
+        expect(userProfileButton).toBeInTheDocument();
+        fireEvent.click(userProfileButton);
+        fireEvent.click(screen.getByRole("button", { name: /log out/i }));
     });
 });
