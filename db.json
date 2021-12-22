@@ -2,10 +2,46 @@
   "users": [
     {
       "email": "admin@admin.com",
-      "password": "$2a$10$krFRCTx4G4gBhBrPtrY2WunPuCaiVFIgyYnL.gc2aakTM9DNEJvFK",
+      "password": "$2a$10$OFKUuz6B2DZCsd4UsMHghOvnvEW3Az500zzcxiu2mAnjGzb5nxWSC",
       "firstName": "Michael",
       "lastName": "Tran",
       "recipes": [
+        {
+          "id": "b139d7a9-3589-4606-9d39-bac226b4b58a",
+          "name": "Test Recipe",
+          "imageUrl": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8Zm9vZHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
+          "description": "Test Recipe",
+          "ingredients": [
+            {
+              "id": "513576b6-1f40-4952-b071-9217fb1ed826",
+              "name": "Ingredient 1",
+              "quantity": "10",
+              "proteins": "10",
+              "carbs": "20",
+              "fats": "30"
+            },
+            {
+              "id": "c3cabafb-469b-4cb9-b4a7-dd0b91214848",
+              "name": "Ingredient 2",
+              "quantity": "10",
+              "proteins": "1",
+              "carbs": "2",
+              "fats": "3"
+            }
+          ],
+          "servings": "4",
+          "instructions": [
+            {
+              "id": "62115b15-f9bc-4f95-802e-6a6d7210cc12",
+              "instruction": "TEST"
+            },
+            {
+              "id": "7c27ffc6-2ab6-4098-8cdb-6ed455ed2126",
+              "instruction": "TEST2"
+            }
+          ],
+          "favorite": true
+        },
         {
           "id": "20186289-dbc0-48d1-be30-d60108875623",
           "name": "Simply Carne Asada",
@@ -169,42 +205,6 @@
             }
           ],
           "favorite": false
-        },
-        {
-          "id": "b139d7a9-3589-4606-9d39-bac226b4b58a",
-          "name": "Update Recipe TEST DELAY ETC",
-          "imageUrl": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8Zm9vZHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
-          "description": "update test",
-          "ingredients": [
-            {
-              "id": "513576b6-1f40-4952-b071-9217fb1ed826",
-              "name": "Ingredient 1",
-              "quantity": "10",
-              "proteins": "10",
-              "carbs": "20",
-              "fats": "30"
-            },
-            {
-              "id": "c3cabafb-469b-4cb9-b4a7-dd0b91214848",
-              "name": "Ingredient 2",
-              "quantity": "10",
-              "proteins": "1",
-              "carbs": "2",
-              "fats": "3"
-            }
-          ],
-          "servings": "4",
-          "instructions": [
-            {
-              "id": "62115b15-f9bc-4f95-802e-6a6d7210cc12",
-              "instruction": "TEST"
-            },
-            {
-              "id": "7c27ffc6-2ab6-4098-8cdb-6ed455ed2126",
-              "instruction": "TEST2"
-            }
-          ],
-          "favorite": true
         }
       ],
       "id": "1"
