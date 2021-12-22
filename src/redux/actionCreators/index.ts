@@ -1,6 +1,7 @@
 import { Dispatch } from "redux";
 import { CurrentUser, Recipe, UserInfo } from "../actions";
 import { ActionType } from "../actionTypes";
+import { logInAPICall, postRecipeAPICall, signUpAPICall } from "./apiCalls";
 
 const sampleRecipe = {
     id: "2c7bd673-9a2a-4cfe-bb83-e1bf295486dc",
@@ -45,18 +46,7 @@ const API_URL = "http://localhost:3004/";
 export const signUp = (credentials: { firstName: string; lastName: string; email: string; password: string }) => {
     return async (dispatch: Dispatch<any>) => {
         try {
-            const response = await fetch("http://localhost:3004/register", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                credentials: "include",
-                body: JSON.stringify({
-                    firstName: credentials.firstName,
-                    lastName: credentials.lastName,
-                    email: credentials.email,
-                    password: credentials.password,
-                    recipes: [sampleRecipe]
-                })
-            });
+            const response = await signUpAPICall(credentials);
             if (response.status === 400) {
                 const body = await response.json();
                 console.log(body);
@@ -79,14 +69,7 @@ export const logIn = (credentials: { email: string; password: string }) => {
     return async (dispatch: Dispatch) => {
         dispatch(logInRequest());
         try {
-            const response = await fetch(API_URL + "login", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    email: credentials.email,
-                    password: credentials.password
-                })
-            });
+            const response = await logInAPICall(credentials.email, credentials.password);
             if (response.status === 400) {
                 const body = await response.json();
                 if (body === "Incorrect password" || body === "Cannot find user") {
@@ -138,17 +121,7 @@ export const logOut = () => {
 export const postRecipe = (recipeArray: Recipe[], user: UserInfo["userInfo"], toggleModal: () => void) => {
     return async (dispatch: any) => {
         try {
-            const response = await fetch(API_URL + `users/${user.user.id}`, {
-                method: "PUT",
-                headers: { "Content-type": "application/json" },
-                body: JSON.stringify({
-                    email: user.user.email,
-                    password: localStorage.getItem("pw"),
-                    firstName: user.user.firstName,
-                    lastName: user.user.lastName,
-                    recipes: recipeArray
-                })
-            });
+            const response = await postRecipeAPICall(recipeArray, user);
             if (!response.ok) {
                 const message = `An error has occured: ${response.status}`;
                 throw new Error(message);
@@ -169,17 +142,7 @@ export const postRecipe = (recipeArray: Recipe[], user: UserInfo["userInfo"], to
 export const deleteRecipe = (recipeArray: Recipe[], user: UserInfo["userInfo"], navigate: void) => {
     return async (dispatch: any) => {
         try {
-            const response = await fetch(API_URL + `users/${user.user.id}`, {
-                method: "PUT",
-                headers: { "Content-type": "application/json" },
-                body: JSON.stringify({
-                    email: user.user.email,
-                    password: localStorage.getItem("pw"),
-                    firstName: user.user.firstName,
-                    lastName: user.user.lastName,
-                    recipes: recipeArray
-                })
-            });
+            const response = await postRecipeAPICall(recipeArray, user);
             if (!response.ok) {
                 const message = `An error has occured: ${response.status}`;
                 throw new Error(message);

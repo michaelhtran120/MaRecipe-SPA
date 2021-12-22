@@ -26,9 +26,7 @@ describe("Log in functionality", () => {
     beforeEach(() => {
         render(<MockApp />);
     });
-    afterEach(() => {
-        cleanup();
-    });
+    afterEach(cleanup);
 
     test("User can log in", async () => {
         const navLogInBtn = screen.getByTestId("navLogInBtn");
@@ -48,7 +46,7 @@ describe("Log in functionality", () => {
         fireEvent.click(screen.getByRole("button", { name: /log out/i }));
     });
 
-    test("User can log in 2", async () => {
+    test("User2 can log in", async () => {
         const navLogInBtn = screen.getByTestId("navLogInBtn");
         fireEvent.click(navLogInBtn);
         const emailInput = screen.getByPlaceholderText(/enter email/i);
