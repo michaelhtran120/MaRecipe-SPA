@@ -52,7 +52,7 @@ export const logIn = (credentials: { email: string; password: string }) => {
     };
 };
 
-const logInRequest = () => {
+export const logInRequest = () => {
     return {
         type: ActionType.LOG_IN_REQUEST
     };
@@ -63,7 +63,7 @@ export const logInSuccess = (user: CurrentUser) => {
         payload: user
     };
 };
-const logInFail = (error: any) => {
+export const logInFail = (error: any) => {
     return {
         type: ActionType.LOG_IN_FAIL,
         payload: error
