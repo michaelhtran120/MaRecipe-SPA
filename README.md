@@ -1,6 +1,6 @@
 # MaRecipe SPA
 
-![](/assets/images/DashboardscreenShot.png)
+![](/assets/images/DashboardscreenShot.jpg)
 
 ## About
 
