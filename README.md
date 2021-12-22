@@ -4,7 +4,7 @@
 
 ## About
 
-MaRecipe is an application that is geared towards fitness and cooking enthusiasts as it allows users to save recipes, but also provide the macros per serving. Like other recipe applications, users would input recipe details such as ingredients, instructions, etc. But the key difference here is that MaRecipe requires users to input the macros per ingredient. The application then will provide a breakdown of the calories and macros per serving for the user.
+MaRecipe is an application that is geared towards fitness and cooking enthusiasts as it allows users to save recipes, but also provide the macros per serving. Like other recipe applications, users would input recipe details such as ingredients, instructions, etc. But the key difference here is that MaRecipe requires users to input the macros per ingredient. The application then will provide a breakdown of the calories and macros per serving for the user. This provides the user a more granular control of the macronutrients of their recipes.
 
 This application is a small part of a bigger planned project.
 
