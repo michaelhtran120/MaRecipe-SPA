@@ -1,4 +1,4 @@
-import { CurrentUser, Recipe, UserInfo } from "../actions";
+import { Recipe, UserInfo } from "../actions";
 
 const API_URL = "http://localhost:3004/";
 const sampleRecipe = {

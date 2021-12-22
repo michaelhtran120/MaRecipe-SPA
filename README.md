@@ -6,7 +6,7 @@ MaRecipe is an application that is geared towards fitness and cooking enthusiast
 
 This application is a small part of a bigger planned project.
 
-## For Developers & Individuals Interested In Testing
+## For Developers & Individuals Interested In The Application
 
 If you would like to help, please note that I am using json-server for back-end at the moment.
 
@@ -16,20 +16,22 @@ I am currently looking into how I can host the fake backend I built using [json-
 
 If you would like to get started, please clone this repository.
 You will need two terminal windows open, one for the MaRecipe application and another for initialize the json-server-auth.
+
 1. In first terminal, type 'npm start'
 2. In second terminal, type 'npm run server-auth'
 3. You should now be able to access the application via localhost.
 
 ### Using the Application
+
 1. You can sign up and explore features.
 2. You can use the following credentials to log in.
     1. Email: admin@admin.com
     2. Password: admin1
 
-
-
 ## Retrospect
 
 My goal in developing this project was to learn Typescript, Jest and Redux. It took some time to understand the fundamentals while building this project, but I am grateful for learning the fundamentals and want to explore these in a bigger application.
 
-Since this is a small part of a bigger project, I can see how I would better structure the code to fit a bigger application.
+I did struggle to write tests for Redux as well as mocking fetch request as they resided within my Redux action creators. I plan on working on a smaller project that does not require Redux so I can fully understand how to write tests for http request (fetch / axios). Before I move on to implementing Typescript, Jest and Redux in a bigger application, I do want to fully learn how to implement these in a more controlled project that focuses on these individual technologies/libraries.
+
+After building this recipe project, I realized that I could have restructure my code to be more efficient and plan on rebuilding this application along side building a RESTful API. The plan is to implement additional features to this application.

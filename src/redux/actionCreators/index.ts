@@ -63,7 +63,7 @@ export const logInSuccess = (user: CurrentUser) => {
         payload: user
     };
 };
-export const logInFail = (error: any) => {
+export const logInFail = (error: string | unknown) => {
     return {
         type: ActionType.LOG_IN_FAIL,
         payload: error
