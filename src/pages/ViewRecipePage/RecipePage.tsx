@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./RecipePage.module.css";
 import { Button, Container, Image, Row, Modal, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
@@ -16,6 +16,10 @@ const DisplayRecipe = ({ recipeData }: { recipeData: Recipe }) => {
     // react router params variables & navigate(redirect)
     const { recipeId } = useParams();
     const navigate = useNavigate();
+
+    useEffect(() => {
+        document.documentElement.scrollTop = 0;
+    }, []);
 
     // grab state from redux store
     const user = useSelector((state: State) => state.user);

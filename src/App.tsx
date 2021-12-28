@@ -5,6 +5,7 @@ import DashboardPage from "./pages/DashboardPage/DashboardPage";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import { useSelector, useDispatch } from "react-redux";
 import { actionCreators, State } from "./redux";
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 
 function App() {
     const user = useSelector((state: State) => state.user);
@@ -54,6 +55,7 @@ function App() {
                         </div>
                     }
                 />
+                \
             </Routes>
         </div>
     );

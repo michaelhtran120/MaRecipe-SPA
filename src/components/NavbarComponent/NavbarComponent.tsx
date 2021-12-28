@@ -41,6 +41,7 @@ const NavbarComponent = ({ page, toggleLoginModal, toggleSignUpModal }: Props): 
     // Resize event listener to help conditionally render navbar UI
     useEffect(() => {
         window.addEventListener("resize", handleWindowResize);
+        document.documentElement.scrollTop = 0;
         return () => {
             window.removeEventListener("resize", handleWindowResize);
         };

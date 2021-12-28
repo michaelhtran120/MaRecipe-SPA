@@ -31,7 +31,7 @@ const LoginModal = ({ open, toggleLoginModal }: Props): JSX.Element => {
 
     const handleLogInSubmit = (event: SyntheticEvent) => {
         event.preventDefault();
-        // Redux think action returns promise, if response contains accesstoken, close modal and navigate user to dashboard
+        // Redux thunk action returns promise, if response contains accesstoken, close modal and navigate user to dashboard
         //Prior to this, the dashboard page would render before redux store received a valid user, which would render "forbidden page" for a split second then properly render the dashboard to user.
         (async () => {
             const response = await dispatch(actionCreators.logIn(credentials) as any);
